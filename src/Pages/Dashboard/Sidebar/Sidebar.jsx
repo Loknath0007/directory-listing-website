@@ -63,7 +63,9 @@ const Sidebar = () => {
               <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
                 Categories
               </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>Cities</MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
+                Manage Cities
+              </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faDollar} />}>
                 Payment
               </MenuItem>
