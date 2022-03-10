@@ -9,9 +9,14 @@ const Dashboard = () => {
         <Sidebar />
 
         <div
-          style={{ overflowX: "hidden", overflowY: "scroll" }}
+          style={{
+            overflowX: "hidden",
+            overflowY: "scroll",
+            backgroundColor: "#f0f7ff",
+          }}
           className="w-100 p-2 vh-100"
         >
+          <div></div>
           <Outlet />
         </div>
       </div>

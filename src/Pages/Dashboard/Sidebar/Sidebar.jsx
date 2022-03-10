@@ -30,7 +30,7 @@ const Sidebar = () => {
       <div className="vh-100">
         <ProSidebar toggled="true" collapsed={isCollapse}>
           <SidebarHeader>
-            <div className="d-flex align-items-center justify-content-around py-2">
+            <div className="d-flex align-items-center justify-content-around py-1">
               {!isCollapse && <h3>Wellcome</h3>}
               <div
                 className="cursor-pointer p-2"
@@ -46,7 +46,7 @@ const Sidebar = () => {
                 title="Dashboard"
                 icon={<FontAwesomeIcon icon={faChartLine} />}
               >
-                Dashboard
+                <Link to="/dashboard"> Dashboard</Link>
               </MenuItem>
 
               <MenuItem icon={<FontAwesomeIcon icon={faHeader} />}>
@@ -61,10 +61,10 @@ const Sidebar = () => {
               </MenuItem>
 
               <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
-                Categories
+                <Link to="/dashboard/categories"> Categories</Link>
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
-                Manage Cities
+                <Link to="/dashboard/manage-cities"> Manage Cities</Link>
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faDollar} />}>
                 Payment
