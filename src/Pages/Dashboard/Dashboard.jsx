@@ -14,7 +14,7 @@ const Dashboard = () => {
             overflowY: "scroll",
             backgroundColor: "#f0f7ff",
           }}
-          className="w-100 p-2 vh-100"
+          className="w-100 vh-100"
         >
           <div></div>
           <Outlet />
