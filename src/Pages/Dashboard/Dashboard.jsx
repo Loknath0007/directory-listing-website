@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar/Sidebar";
 
 const Dashboard = () => {
+  useEffect(() => {
+    document.title = "Dashboard";
+  }, []);
   return (
     <>
       <div style={{ overflow: "hidden" }} className="d-flex ">
