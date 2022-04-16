@@ -3,7 +3,7 @@ import React from "react";
 const Headers = () => {
   return (
     <div>
-      Headers Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
+      Headers Lorem, dolor sit amet consectetur adipisicing elit. Cumque
       nisi quibusdam quis praesentium? Quod minus asperiores provident ea,
       officiis magni repudiandae, unde debitis harum, totam rerum dignissimos.
       Aliquid, excepturi facere! Lorem ipsum dolor sit amet consectetur
