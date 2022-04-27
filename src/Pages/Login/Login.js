@@ -15,6 +15,7 @@ initializeAuthentication();
 const provider = new GoogleAuthProvider();
 const Login = () => {
   const [user, setUser] = useState({});
+
   const auth = getAuth();
   function handleGoogleLogin() {
     signInWithPopup(auth, provider)
@@ -77,7 +78,7 @@ const Login = () => {
       <div className="login_form">
         {!user.name ? (
           <div>
-            <h2>Please Login</h2>
+            <h3>Please Login</h3>
             <Button variant="warning" onClick={handleGoogleLogin}>
               Login with google
             </Button>
@@ -88,7 +89,7 @@ const Login = () => {
         {user.name && (
           <div className="display_user mt-5">
             <h2>Welcome {user.displayName}</h2>
-            <h4>User Email: {user.email}</h4>
+            <h5>User Email: {user.email}</h5>
           </div>
         )}
       </div>
