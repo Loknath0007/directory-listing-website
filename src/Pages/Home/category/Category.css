@@ -1,0 +1,23 @@
+.category_container{
+    max-width: 1170px;
+   margin: 0 auto;
+
+}
+.category{
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 50px;
+   padding: 15px;
+}
+.category_item{
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+.category_item svg{
+    font-size: 40px;
+    color: rgb(10, 149, 61);
+}
+.category_quantity{
+    color: gray;
+}

@@ -1,8 +1,8 @@
 import React from "react";
-import Location from "../../components/Location/Location";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
 import Category from "./category/Category";
+import Location from "./Location/Location";
 import SearchBanner from "./searchBanner/SearchBanner";
 
 const Home = () => {
