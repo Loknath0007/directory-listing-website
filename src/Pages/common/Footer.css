@@ -1,0 +1,25 @@
+.footer_container{
+    max-width: 1170px;
+
+}
+.footer_container ul{  
+    list-style: none;  
+    padding-left: 0; 
+
+}
+.footer_container ul li a, .footer_container a{
+    text-decoration: none;
+    color: rgb(14, 147, 229);
+}
+
+
+.footer_app{
+    display: flex; 
+    column-gap: 20px;
+}
+.footer_app img{
+    width: 35%;
+}
+.fb_logo svg{
+    font-size: 28px;
+}

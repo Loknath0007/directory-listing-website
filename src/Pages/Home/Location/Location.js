@@ -379,6 +379,7 @@ const Location = () => {
           </div>
         </div>
       </div>
+      <hr />
     </div>
   );
 };

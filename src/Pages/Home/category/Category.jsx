@@ -24,7 +24,7 @@ const Category = () => {
     <Container>
       <div className="category_container">
         <h5>Browse items by category</h5>
-        <div className="category">
+        <div className="category" md={2} lg={4}>
           <div className="category_item">
             <div className="category_icon">
               <GoDeviceMobile />
