@@ -3,8 +3,8 @@ import "./Location.css";
 
 const Location = () => {
   return (
-    <div>
-      <div className="location_container">
+    <div className="main_container">
+      <div className="location_container ">
         <div className="usa country">
           <div>
             <h4 className="country_heading">United States</h4>

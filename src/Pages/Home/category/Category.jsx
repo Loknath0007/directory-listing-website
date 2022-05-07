@@ -18,15 +18,16 @@ import {
 } from "react-icons/gi";
 import { IoFootball, IoHome } from "react-icons/io5";
 import { FaIndustry, FaGraduationCap, FaDog } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Category = () => {
   return (
     <div>
       <Container>
-        <div className="category_container">
+        <div className="main_container">
           <h5>Browse items by category</h5>
-          <div className="category" md={2} lg={4}>
-            <div className="category_item">
+          <div className="category mb-5" md={2} lg={4}>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <GoDeviceMobile />
               </div>
@@ -36,8 +37,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <MdMonitor />
               </div>
@@ -47,8 +48,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <MdOutlineChair />
               </div>
@@ -58,8 +59,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <AiFillCar />
               </div>
@@ -69,8 +70,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <FaDog />
               </div>
@@ -80,8 +81,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <IoHome />
               </div>
@@ -91,9 +92,9 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="category_item">
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <GiTShirt />
               </div>
@@ -103,9 +104,9 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="category_item">
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <GiLargeDress />
               </div>
@@ -115,9 +116,9 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="category_item">
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <IoFootball />
               </div>
@@ -127,8 +128,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <FaIndustry />
               </div>
@@ -138,8 +139,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <FaGraduationCap />
               </div>
@@ -149,9 +150,9 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="category_item">
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <GiCrystalGrowth />
               </div>
@@ -161,8 +162,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <MdWork />
               </div>
@@ -172,8 +173,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <MdDesignServices />
               </div>
@@ -183,8 +184,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <GiPalmTree />
               </div>
@@ -194,8 +195,8 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
-            <div className="category_item">
+            </Link>
+            <Link to="" className="category_item">
               <div className="category_icon">
                 <MdHomeWork />
               </div>
@@ -205,11 +206,10 @@ const Category = () => {
                   122 <span>ads</span>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </Container>
-      <div className="hr_category" />
     </div>
   );
 };

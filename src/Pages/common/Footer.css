@@ -13,11 +13,11 @@
     color: rgb(14, 147, 229);
 }
 
-
-.footer_app{
-    /* display: flex;  */
-    
-    /* column-gap: 20px; */
+.hr_footer{
+    height: 3px;
+    width: 100%;
+    background-color: rgb(10, 149, 61);
+ 
 }
 .footer_app img{
     width: 100%;
