@@ -1,6 +1,7 @@
 .footer_container{
     max-width: 1170px;
 
+
 }
 .footer_container ul{  
     list-style: none;  
@@ -14,12 +15,24 @@
 
 
 .footer_app{
-    display: flex; 
-    column-gap: 20px;
+    /* display: flex;  */
+    
+    /* column-gap: 20px; */
 }
 .footer_app img{
-    width: 35%;
+    width: 100%;
+}
+
+.fb_logo{
+    color: rgb(66, 66, 180);
+    font-weight: 500;
 }
 .fb_logo svg{
     font-size: 28px;
+}
+.copyright{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
 }

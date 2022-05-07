@@ -7,15 +7,20 @@ import { AiFillFacebook } from "react-icons/ai";
 
 const Footer = () => {
   return (
-    <div>
-      <Container className="footer_container">
+    <div className="location_container">
+      <div className="footer_container">
         <Row>
-          <Col xs={12} sm={6} md={4} lg={4} className="footer_left">
+          <Col xs={12} sm={6} md={3} lg={3} className="footer_left me-5 mb-3">
             <h6>Download our app</h6>
-            <div className="footer_app">
-              <img src={playStore} alt="play store" />
-              <img src={appStore} alt="app store" />
-            </div>
+            <Row xs={2} sm={2} md={2} lg={2} className="footer_app">
+              <a href="http://">
+                {" "}
+                <img src={playStore} alt="play store" />
+              </a>
+              <a href="">
+                <img src={appStore} alt="app store" />
+              </a>
+            </Row>
             <h6 className="mt-4">Connect with</h6>
             <div className="fb_logo">
               <AiFillFacebook /> Like us on facebook
@@ -26,8 +31,8 @@ const Footer = () => {
             </div>
           </Col>
 
-          <Col xs={12} sm={6} md={8} lg={8} className="footer_right">
-            <Row>
+          <Col xs={12} sm={12} md={8} lg={8} className="footer_right">
+            <Row xs={2} sm={4} md={4} lg={4}>
               <Col>
                 <h6>More from Bikroy</h6>
                 <ul>
@@ -105,7 +110,13 @@ const Footer = () => {
             </Row>
           </Col>
         </Row>
-      </Container>
+        <hr />
+      </div>
+
+      <div className="copyright">
+        <p>Copyright &copy; Softfy Technologies </p>
+        <p>Bikroy.com</p>
+      </div>
     </div>
   );
 };

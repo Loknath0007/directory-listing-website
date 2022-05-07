@@ -21,6 +21,12 @@
 .category_quantity{
     color: gray;
 }
+.hr_category{
+    height: 3px;
+    width: 100%;
+    background-color: rgb(10, 149, 61);
+    margin-top: 30px;
+}
 
 @media (max-width: 768px) {
     .category{
