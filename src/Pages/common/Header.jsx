@@ -28,8 +28,8 @@ const Header = () => {
                   Login
                 </Link>
               </Nav.Link>
-              <Button variant="warning" className="text-white">
-                post your add
+              <Button variant="warning" className="text-dark">
+                POST YOUR AD
               </Button>
             </Nav>
           </Navbar.Collapse>

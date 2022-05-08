@@ -24,7 +24,7 @@ color: unset;
 }
 .category_item svg{
     font-size: 40px;
-    color: rgb(10, 149, 61);
+    color: rgb(0, 0, 0);
 }
 .category_quantity{
     color: gray;
