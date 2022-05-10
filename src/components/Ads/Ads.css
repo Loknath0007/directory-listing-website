@@ -1,0 +1,55 @@
+.ads_top{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    
+}
+.ads_top_left{
+    display: flex;
+    width: 50%;
+}
+.ads_top_left button{
+    border: 0;
+    background-color: white;
+
+}
+.ads_top_left svg{
+    font-size: 25px;
+    color: rgb(10, 149, 61);
+    margin-right: 5px;
+
+}
+.ads_top_location, .ads_top_category{
+    flex-basis: 50%;    
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.ads_top_search{
+    border: 1px solid black;
+    padding: 2px 5px ;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+.ads_top_search input{
+    border: none;
+    outline: 0;
+    width: 100%;
+    margin: 10px 20px;
+}
+.ads_top_search input::placeholder{
+    color: rgb(152, 151, 151);
+    /* font-weight: 500; */
+    font-size: 18px;
+}
+.ads_search_icon{
+ padding: 7px;
+    background-color: rgb(252, 222, 72);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    
+}

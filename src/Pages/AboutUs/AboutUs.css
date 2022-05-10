@@ -1,0 +1,24 @@
+.about_us_body{
+    background-color: #E7EDEE;
+}
+.about_us_body_container{
+    background-color: white;
+}
+.about_sell_buy svg{
+    font-size: 60px;
+}
+.get_in_touch_container{
+    display: flex;
+    justify-content: center;
+}
+.get_in_touch{
+    max-width: 400px;
+   
+}
+
+@media (max-width:768px) {
+    .about_sell_buy{
+        text-align: center;
+    }
+   
+}

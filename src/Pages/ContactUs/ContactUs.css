@@ -1,0 +1,14 @@
+.contact_us_body{
+    background-color: #E7EDEE;
+
+}
+.call_or_email{
+    max-width: 400px;
+    margin: 0 auto;
+
+}
+.contact_text{
+    max-width: 700px;
+text-align: center;   
+margin: 0 auto; 
+}
