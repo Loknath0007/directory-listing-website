@@ -28,11 +28,11 @@ const SingleAd = () => {
   return (
     <div style={{backgroundColor:"#E7EDEE"}}>
       <Header></Header>
-          <Container fluid="md"  >
+          <Container fluid="lg"  >
         <div className="my-3">
           <img className="w-100 " src="/images/ad.jpg" alt="ad"></img>
         </div>
-              <div className="bg-light p-2">
+              <div style={{backgroundColor:"#fff"}} className="p-2">
         {/* title of ad */}
         <div className="d-flex mx-3 justify-content-between">
           <div>
