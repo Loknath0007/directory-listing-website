@@ -21,7 +21,7 @@ import {
   AiOutlineWechat,
   AiFillSafetyCertificate,
 } from "react-icons/ai";
-import SimilarAd from "../../Components/SimilarAd/SimilarAd";
+import SimilarAd from "../../components/SimilarAdd/SimilarAd";
 import Footer from "../common/Footer";
 
 const SingleAd = () => {
