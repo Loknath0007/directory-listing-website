@@ -10,10 +10,10 @@ const AddCategoriesModal = (props) => {
 
   const handleAddSubCategory = () => {
     if (subCategory.trim() !== "") {
-      const newSubCategoies = [...allSubCategories];
-      if (newSubCategoies.indexOf(subCategory.trim()) === -1) {
-        newSubCategoies.push(subCategory.trim());
-        setAllSubCategories(newSubCategoies);
+      const newSubCategories = [...allSubCategories];
+      if (newSubCategories.indexOf(subCategory.trim()) === -1) {
+        newSubCategories.push(subCategory.trim());
+        setAllSubCategories(newSubCategories);
         setSubCategory("");
       } else {
         alert("items already exist");
@@ -23,10 +23,10 @@ const AddCategoriesModal = (props) => {
 
   const handleClose = (categoryName) => {
     const existSubCategories = [...allSubCategories];
-    const newSubCategoies = existSubCategories.filter(
+    const newSubCategories = existSubCategories.filter(
       (c) => c !== categoryName
     );
-    setAllSubCategories(newSubCategoies);
+    setAllSubCategories(newSubCategories);
   };
 
   return (

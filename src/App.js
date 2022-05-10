@@ -11,6 +11,8 @@ import ManageCities from "./Pages/Dashboard/ManageCities/ManageCities";
 import Login from "./Pages/Login/Login";
 import Registration from "./Pages/Registration/Registration";
 import Ads from "./components/Ads/Ads";
+import AboutUs from "./Pages/AboutUs/AboutUs";
+import ContactUs from "./Pages/ContactUs/ContactUs";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
       <Route path="login" element={<Login />} />
       <Route path="registration" element={<Registration />} />
       <Route path="ads" element={<Ads />} />
+      <Route path="about" element={<AboutUs />} />
+      <Route path="contact" element={<ContactUs />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
