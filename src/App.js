@@ -13,6 +13,7 @@ import Registration from "./Pages/Registration/Registration";
 import Ads from "./components/Ads/Ads";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import ContactUs from "./Pages/ContactUs/ContactUs";
+import SingleAd from "./Pages/Dashboard/SingleAd/SingleAd";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="categories" element={<Categories />} />
         <Route path="manage-cities" element={<ManageCities />} />
       </Route>
+      <Route path="ad" element={<SingleAd />} />
       <Route path="login" element={<Login />} />
       <Route path="registration" element={<Registration />} />
       <Route path="ads" element={<Ads />} />
