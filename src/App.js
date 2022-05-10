@@ -10,6 +10,7 @@ import Categories from "./Pages/Dashboard/Categories/Categories";
 import ManageCities from "./Pages/Dashboard/ManageCities/ManageCities";
 import Login from "./Pages/Login/Login";
 import Registration from "./Pages/Registration/Registration";
+import SingleAd from "./Pages/Dashboard/SingleAd/SingleAd";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="categories" element={<Categories />} />
         <Route path="manage-cities" element={<ManageCities />} />
       </Route>
+      <Route path="ad" element={<SingleAd />} />
       <Route path="login" element={<Login />} />
       <Route path="registration" element={<Registration />} />
       <Route path="*" element={<NotFound />} />
