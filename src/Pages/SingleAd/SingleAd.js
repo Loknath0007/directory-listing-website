@@ -7,7 +7,7 @@ import {
   ListGroup,
   Row,
 } from "react-bootstrap";
-import Header from "../../common/Header";
+import Header from "../common/Header";
 import { ImShare2 } from "react-icons/im";
 import { BsTwitter, BsWhatsapp, BsFacebook } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
@@ -21,8 +21,8 @@ import {
   AiOutlineWechat,
   AiFillSafetyCertificate,
 } from "react-icons/ai";
-import SimilarAd from "../../../Components/SimilarAd";
-import Footer from "../../common/Footer";
+import SimilarAd from "../../Components/SimilarAd/SimilarAd";
+import Footer from "../common/Footer";
 
 const SingleAd = () => {
   return (
