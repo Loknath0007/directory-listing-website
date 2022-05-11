@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 const UpdateLogo = () => {
-  const [logo, setLogo] = useState([]);
+  const [images, setImages] = useState([]);
+
+  const handleImageChange = (files) => {
+    setImages([...files]);
+    // console.log(files);
+  };
 
   const updateLogo = () => {};
   return (
@@ -11,11 +16,13 @@ const UpdateLogo = () => {
 
       <div class="input-group">
         <input
+          onChange={(e) => handleImageChange(e.target.files)}
+          className="form-control"
+          id="ad-images"
           type="file"
-          class="form-control"
-          id="inputGroupFile04"
-          aria-describedby="inputGroupFileAddon04"
-          aria-label="Upload"
+          accept="image/*"
+          multiple="false"
+          max={5}
         />
         <Button
           onClick={updateLogo}
@@ -26,6 +33,21 @@ const UpdateLogo = () => {
         >
           Update
         </Button>
+      </div>
+
+      {/* show images preview */}
+      <div className="mt-4 w-100 d-inline-block">
+        {images &&
+          images.map((image) => (
+            <div className="position-relative d-inline-block me-3">
+              <img
+                className="rounded-3 single-img  mb-2 shadow"
+                style={{ width: "100px", height: "80px", objectFit: "cover" }}
+                src={URL.createObjectURL(image)}
+                alt=""
+              />
+            </div>
+          ))}
       </div>
     </div>
   );
