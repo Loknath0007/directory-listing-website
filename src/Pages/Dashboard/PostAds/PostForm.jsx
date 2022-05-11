@@ -197,6 +197,8 @@ const PostForm = () => {
           ))}
         </datalist>
 
+        <Form.Label htmlFor="category">Add Location</Form.Label>
+
         {/* show sub categories */}
         <div>
           {selectedCategory && (

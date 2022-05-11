@@ -1,21 +1,14 @@
+import { Button } from "react-bootstrap";
 import React, { useState } from "react";
+import DeleteLogo from "./DeleteLogo";
+import UpdateLogo from "./UpdateLogo";
+import "./Headers.css";
 
 const Headers = () => {
-  const [logo, setLogo] = useState([]);
-
-  const updateLogo = () => {};
-
   return (
     <div>
-      <h2>Update or Delete Logo</h2>
-      <form>
-        <input type="file" />
-        <button onClick={updateLogo} type="submit">
-          Update logo
-        </button>
-      </form>
-
-      <h2>Delete Logo</h2>
+      <DeleteLogo />
+      <UpdateLogo />
     </div>
   );
 };
