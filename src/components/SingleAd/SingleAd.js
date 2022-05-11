@@ -4,7 +4,7 @@ import "./SingleAd.css";
 const SingleAd = ({ mobile, ad }) => {
   return (
     <div>
-      <div class="card mb-3 single_ad">
+      <div class="card my-3 single_ad">
         <div class="row g-0">
           <div class="col-md-4">
             <img src={mobile} class="img-fluid rounded-start" alt="..." />
