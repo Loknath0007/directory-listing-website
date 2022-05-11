@@ -197,8 +197,6 @@ const PostForm = () => {
           ))}
         </datalist>
 
-        <Form.Label htmlFor="category">Add Location</Form.Label>
-
         {/* show sub categories */}
         <div>
           {selectedCategory && (
@@ -217,6 +215,16 @@ const PostForm = () => {
             ))}
           </div>
         </div>
+
+        <Form.Group className="mb-3" controlId="description">
+          <Form.Label>Add location</Form.Label>
+          <Form.Control
+            as="textarea"
+            type="text"
+            rows="1"
+            placeholder="Add your location"
+          />
+        </Form.Group>
 
         {/* addImage */}
         <AddImages />

@@ -6,8 +6,8 @@ const UpdateLogo = () => {
 
   const updateLogo = () => {};
   return (
-    <div className="text-center update_logo p-4">
-      <h2>Update Logo</h2>
+    <div className="text-center update_logo bg-dark text-white p-4">
+      <h4 className="pb-3">Update Logo</h4>
 
       <div class="input-group">
         <input
