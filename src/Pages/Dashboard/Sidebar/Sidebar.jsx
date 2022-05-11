@@ -18,6 +18,7 @@ import {
   faDollar,
   faHeader,
 } from "@fortawesome/free-solid-svg-icons";
+import { GoLocation } from "react-icons/go";
 import { Link, Outlet } from "react-router-dom";
 
 // const element = <FontAwesomeIcon icon={faCoffee} />;
@@ -63,15 +64,38 @@ const Sidebar = () => {
               <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
                 <Link to="/dashboard/categories"> Categories</Link>
               </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
-                <Link to="/dashboard/manage-cities"> Manage Cities</Link>
+              <MenuItem icon={<GoLocation />}>
+                <Link to="/dashboard/manage-locations"> Manage Locations</Link>
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faDollar} />}>
                 Payment
               </MenuItem>
             </Menu>
           </SidebarContent>
-          <SidebarFooter>Footer</SidebarFooter>
+          <SidebarFooter className=" text-center">
+            <Link
+              className="text-decoration-none text-secondary"
+              to="/dashboard/footers"
+            >
+              {" "}
+            
+              <Menu iconShape="square">
+  <SubMenu title=" Footer">
+    <MenuItem><Link
+              
+              to="/dashboard/detail"
+            >Detail </Link></MenuItem>
+    <SubMenu title="Columns" >
+    <MenuItem>Col 1 </MenuItem>
+    <MenuItem>Col 2 </MenuItem>
+    <MenuItem>Col 3 </MenuItem>
+    <MenuItem>Col 4 </MenuItem>
+    </SubMenu>
+  </SubMenu>
+</Menu>
+            </Link>
+           
+          </SidebarFooter>
         </ProSidebar>
       </div>
     </>
