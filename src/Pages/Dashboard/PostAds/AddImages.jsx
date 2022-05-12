@@ -6,7 +6,7 @@ const AddImages = () => {
   const [images, setImages] = useState([]);
 
   const handleImageChange = (files) => {
-    setImages([...files]);
+    setImages([...images, ...files]);
     console.log(files);
   };
   return (

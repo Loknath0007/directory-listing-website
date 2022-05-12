@@ -58,12 +58,12 @@ const ManageLocations = () => {
 
   // handle single country item click event
   const handleItemClick = (_id) => {
-    const newCategory = locations.find((c) => c._id === _id);
-    setCountry(newCategory);
+    const newCountry = locations.find((c) => c._id === _id);
+    setCountry(newCountry);
   };
 
-  const handleEditCategoryBtn = (category) => {
-    setEditCountryItem(category);
+  const handleEditCountryBtn = (country) => {
+    setEditCountryItem(country);
     setEditCountryModal(true);
   };
 
@@ -117,7 +117,7 @@ const ManageLocations = () => {
                   key={c._id}
                   activeCategory={country}
                   category={c}
-                  handleEditCategoryBtn={handleEditCategoryBtn}
+                  handleEditCategoryBtn={handleEditCountryBtn}
                   handleItemClick={handleItemClick}
                 />
               ))}

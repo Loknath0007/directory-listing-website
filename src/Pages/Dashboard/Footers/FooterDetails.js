@@ -65,21 +65,21 @@ const FooterDetails = () => {
    
    {/* title 2 */}
                         <Form.Label className="mb-2  fw-bold">Title 2</Form.Label>
-    <Form.Control type="email" placeholder="Connect with" onChange={e=>handleTitle2(e.target.value)} />
+    <Form.Control type="text" placeholder="Connect with" onChange={e=>handleTitle2(e.target.value)} />
   </Form.Group>         
                     <Form.Group className="pb-3 border-bottom" controlId="exampleForm.ControlInput1">
     <Form.Label className="mb-2 fw-bold ">Like Us on Facebook</Form.Label>
-    <Form.Control type="email" placeholder="Facebook URL" onChange={e=>handleFacebookUrl(e.target.value)} />
+    <Form.Control type="text" placeholder="Facebook URL" onChange={e=>handleFacebookUrl(e.target.value)} />
                     </Form.Group>    
 
                     {/* title 3 */}
                <Form.Group className="py-3 " controlId="exampleForm.ControlInput1">
     <Form.Label className="mb-2 fw-bold">Title 3</Form.Label>
-    <Form.Control type="email" placeholder="Other countries" onChange={e=>handleTitle3(e.target.value)} />
+    <Form.Control type="text" placeholder="Other countries" onChange={e=>handleTitle3(e.target.value)} />
   </Form.Group>         
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
     <Form.Label className="mb-2 fw-bold">Country Name</Form.Label>
-    <Form.Control type="email" placeholder="Sri Lanka" onChange={e=>handleCountryName(e.target.value)} />
+    <Form.Control type="text" placeholder="Sri Lanka" onChange={e=>handleCountryName(e.target.value)} />
                     </Form.Group>        
                     <Button onClick={handleSubmit} variant="primary" type="submit">
           Submit

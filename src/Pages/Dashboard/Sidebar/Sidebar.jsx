@@ -17,6 +17,7 @@ import {
   faSearch,
   faDollar,
   faHeader,
+  faPager,
 } from "@fortawesome/free-solid-svg-icons";
 import { GoLocation } from "react-icons/go";
 import { Link, Outlet } from "react-router-dom";
@@ -32,7 +33,7 @@ const Sidebar = () => {
         <ProSidebar toggled="true" collapsed={isCollapse}>
           <SidebarHeader>
             <div className="d-flex align-items-center justify-content-around py-1">
-              {!isCollapse && <h3>Wellcome</h3>}
+              {!isCollapse && <h3>Welcome</h3>}
               <div
                 className="cursor-pointer p-2"
                 onClick={() => setIsCollapse(!isCollapse)}
@@ -60,6 +61,15 @@ const Sidebar = () => {
               <MenuItem icon={<FontAwesomeIcon icon={faSearch} />}>
                 <Link to="/dashboard/search-ads"> Search Ads</Link>
               </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faPager} />}>
+                <Link to="/dashboard/pages"><SubMenu title=" Pages">
+                
+    <MenuItem><Link
+              
+              to="/dashboard/addNewPage"
+            >Add New Page </Link></MenuItem>
+    </SubMenu></Link>
+              </MenuItem>
 
               <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
                 <Link to="/dashboard/categories"> Categories</Link>
@@ -80,7 +90,7 @@ const Sidebar = () => {
               {" "}
             
               <Menu iconShape="square">
-  <SubMenu title=" Footer">
+  <SubMenu title=" Footers">
     <MenuItem><Link
               
               to="/dashboard/detail"
@@ -90,9 +100,15 @@ const Sidebar = () => {
     <MenuItem>Col 2 </MenuItem>
     <MenuItem>Col 3 </MenuItem>
     <MenuItem>Col 4 </MenuItem>
-    </SubMenu>
-  </SubMenu>
-</Menu>
+                  </SubMenu>
+                  <MenuItem><Link
+              
+              to="/dashboard/subFooter"
+            >Sub Footer </Link></MenuItem>
+                </SubMenu>
+              
+              </Menu>
+              
             </Link>
            
           </SidebarFooter>
