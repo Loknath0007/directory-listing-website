@@ -17,7 +17,9 @@ import {
   faSearch,
   faDollar,
   faHeader,
+  faPager,
 } from "@fortawesome/free-solid-svg-icons";
+import { GoLocation } from "react-icons/go";
 import { Link, Outlet } from "react-router-dom";
 
 // const element = <FontAwesomeIcon icon={faCoffee} />;
@@ -31,7 +33,7 @@ const Sidebar = () => {
         <ProSidebar toggled="true" collapsed={isCollapse}>
           <SidebarHeader>
             <div className="d-flex align-items-center justify-content-around py-1">
-              {!isCollapse && <h3>Wellcome</h3>}
+              {!isCollapse && <h3>Welcome</h3>}
               <div
                 className="cursor-pointer p-2"
                 onClick={() => setIsCollapse(!isCollapse)}
@@ -59,19 +61,57 @@ const Sidebar = () => {
               <MenuItem icon={<FontAwesomeIcon icon={faSearch} />}>
                 <Link to="/dashboard/search-ads"> Search Ads</Link>
               </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faPager} />}>
+                <Link to="/dashboard/pages"><SubMenu title=" Pages">
+                
+    <MenuItem><Link
+              
+              to="/dashboard/addNewPage"
+            >Add New Page </Link></MenuItem>
+    </SubMenu></Link>
+              </MenuItem>
 
               <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
                 <Link to="/dashboard/categories"> Categories</Link>
               </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
-                <Link to="/dashboard/manage-cities"> Manage Cities</Link>
+              <MenuItem icon={<GoLocation />}>
+                <Link to="/dashboard/manage-locations"> Manage Locations</Link>
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faDollar} />}>
                 Payment
               </MenuItem>
             </Menu>
           </SidebarContent>
-          <SidebarFooter>Footer</SidebarFooter>
+          <SidebarFooter className=" text-center">
+            <Link
+              className="text-decoration-none text-secondary"
+              to="/dashboard/footers"
+            >
+              {" "}
+            
+              <Menu iconShape="square">
+  <SubMenu title=" Footers">
+    <MenuItem><Link
+              
+              to="/dashboard/detail"
+            >Detail </Link></MenuItem>
+    <SubMenu title="Columns" >
+    <MenuItem>Col 1 </MenuItem>
+    <MenuItem>Col 2 </MenuItem>
+    <MenuItem>Col 3 </MenuItem>
+    <MenuItem>Col 4 </MenuItem>
+                  </SubMenu>
+                  <MenuItem><Link
+              
+              to="/dashboard/subFooter"
+            >Sub Footer </Link></MenuItem>
+                </SubMenu>
+              
+              </Menu>
+              
+            </Link>
+           
+          </SidebarFooter>
         </ProSidebar>
       </div>
     </>
