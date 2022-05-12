@@ -204,7 +204,7 @@ const PostForm = () => {
               Select Sub Category for {selectedCategory?.categoryName}
             </div>
           )}
-          <div className="ms-5 mb-3">
+          {/* <div className="ms-5 mb-3">
             {selectedCategory?.subCategories.map((subCategory) => (
               <Form.Check
                 onChange={() => handleCheckboxChange(subCategory)}
@@ -213,7 +213,23 @@ const PostForm = () => {
                 label={subCategory.Name}
               />
             ))}
-          </div>
+          </div> */}
+
+          {selectedCategory && (
+            <div className="ms-5 mb-3">
+              <Form.Select name="category" id="category" form="category">
+                {selectedCategory?.subCategories.map((subCategory) => (
+                  // <Form.Check
+                  //   onChange={() => handleCheckboxChange(subCategory)}
+                  //   type="checkbox"
+                  //   id={subCategory.Name}
+                  //   label={subCategory.Name}
+                  // />
+                  <option value="volvo">{subCategory.Name}</option>
+                ))}
+              </Form.Select>
+            </div>
+          )}
         </div>
 
         <Form.Group className="mb-3" controlId="description">
