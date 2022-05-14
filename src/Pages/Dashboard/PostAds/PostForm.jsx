@@ -129,22 +129,45 @@ const PostForm = () => {
     setSelectedSubCategories([]);
   };
 
-  const handleCheckboxChange = (subCategory) => {
+  // const handleSubCategoryChange = (subCategory) => {
+  //   console.log(subCategory.target.value);
+  //   const newSubCategories = [...selectedSubCategories];
+  //   const existSubC = newSubCategories.find(
+  //     (subC) => subC.Name === subCategory.Name
+  //   );
+  //   if (!existSubC) {
+  //     newSubCategories.push(subCategory);
+  //     setSelectedSubCategories(newSubCategories);
+  //   } else {
+  //     const filterSubC = newSubCategories.filter(
+  //       (subC) => subC.Name !== subCategory.Name
+  //     );
+  //     setSelectedSubCategories(filterSubC);
+  //   }
+  // };
+  const handleSubCategoryChange = (subCategory) => {
+    console.log(subCategory);
     const newSubCategories = [...selectedSubCategories];
-    const existSubC = newSubCategories.find(
-      (subC) => subC.Name === subCategory.Name
-    );
+    const existSubC = newSubCategories.find((subC) => subC === subCategory);
     if (!existSubC) {
       newSubCategories.push(subCategory);
       setSelectedSubCategories(newSubCategories);
     } else {
-      const filterSubC = newSubCategories.filter(
-        (subC) => subC.Name !== subCategory.Name
-      );
-      setSelectedSubCategories(filterSubC);
+      // const filterSubC = newSubCategories.filter(
+      //   (subC) => subC !== subCategory
+      // );
+      setSelectedSubCategories(newSubCategories);
     }
   };
 
+  const handleClose = (categoryName) => {
+    const existSubCategories = [...selectedSubCategories];
+    const newSubCategories = existSubCategories.filter(
+      (c) => c !== categoryName
+    );
+    setSelectedSubCategories(newSubCategories);
+  };
+  console.log(selectedSubCategories, selectedSubCategories.length);
   return (
     <div className="w-50 mx-auto">
       <Form>
@@ -198,7 +221,7 @@ const PostForm = () => {
         </datalist>
 
         {/* show sub categories */}
-        <div>
+        <Form.Label>
           {selectedCategory && (
             <div className="fw-bold my-2">
               Select Sub Category for {selectedCategory?.categoryName}
@@ -217,7 +240,16 @@ const PostForm = () => {
 
           {selectedCategory && (
             <div className="ms-5 mb-3">
-              <Form.Select name="category" id="category" form="category">
+              <Form.Select
+                onChange={(e) => handleSubCategoryChange(e.target.value)}
+                name="sub-category"
+                id="sub-category"
+                form="sub-category"
+              >
+                <option selected disabled>
+                  --Select Sub Category--
+                </option>
+
                 {selectedCategory?.subCategories.map((subCategory) => (
                   // <Form.Check
                   //   onChange={() => handleCheckboxChange(subCategory)}
@@ -225,12 +257,26 @@ const PostForm = () => {
                   //   id={subCategory.Name}
                   //   label={subCategory.Name}
                   // />
-                  <option value="volvo">{subCategory.Name}</option>
+                  <option value={subCategory.Name}>{subCategory.Name}</option>
                 ))}
               </Form.Select>
             </div>
           )}
-        </div>
+
+          <div>
+            {selectedSubCategories.map((slc) => (
+              <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
+                {slc}{" "}
+                <FontAwesomeIcon
+                  onClick={() => handleClose(slc)}
+                  className="ms-1 cursor-pointer"
+                  size="lg"
+                  icon={faXmark}
+                />
+              </div>
+            ))}
+          </div>
+        </Form.Label>
 
         <Form.Group className="mb-3" controlId="description">
           <Form.Label>Add location</Form.Label>
