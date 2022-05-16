@@ -113,11 +113,11 @@ const ManageLocations = () => {
 
             <ul className="list-group list-group-flush">
               {locations.map((c) => (
-                <CategoriesListItem
+                <CountriesListItem
                   key={c._id}
                   activeCategory={country}
                   category={c}
-                  handleEditCategoryBtn={handleEditCountryBtn}
+                  handleEditCountryBtn={handleEditCountryBtn}
                   handleItemClick={handleItemClick}
                 />
               ))}
@@ -160,9 +160,9 @@ export default ManageLocations;
 
 // fake data
 
-const CategoriesListItem = (props) => {
+const CountriesListItem = (props) => {
   const { countryName, _id } = props.category;
-  const { handleItemClick, activeCategory, handleEditCategoryBtn } = props;
+  const { handleItemClick, activeCategory,  handleEditCountryBtn } = props;
 
   return (
     <li
@@ -174,7 +174,7 @@ const CategoriesListItem = (props) => {
       </div>
       <div className="d-flex align-items-center">
         <Button
-          onClick={() => handleEditCategoryBtn(props.category)}
+          onClick={() => handleEditCountryBtn(props.category)}
           variant="warning"
           size="sm"
           className="me-3"

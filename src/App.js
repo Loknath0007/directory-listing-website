@@ -19,6 +19,8 @@ import FooterDetails from "./Pages/Dashboard/Footers/FooterDetails";
 import Pages from "./Pages/Dashboard/DashboardPages/Pages";
 import AddNewPage from "./Pages/Dashboard/DashboardPages/AddNewPage";
 import SubFooter from "./Pages/Dashboard/Footers/SubFooter";
+import ColOne from "./Pages/Dashboard/Footers/Columns/ColOne";
+import UserProfile from "./Pages/Dashboard/UserProfile/UserProfile";
 
 function App() {
   return (
@@ -28,11 +30,15 @@ function App() {
         <Route path="headers" element={<Headers />} />
         <Route path="new-post-ads" element={<PostAds />} />
         <Route path="search-ads" element={<SearchAds />} />
-        <Route path="pages" element={<Pages />}/>
+        <Route path="userProfile" element={<UserProfile />} />
+        <Route path="pages" element={<Pages />} />
         <Route path="categories" element={<Categories />} />
         <Route path="manage-locations" element={<ManageLocations />} />
-        <Route path="footers" element={<Footers />}></Route>
+        <Route path="footers" element={<Footers />}>
+          
+        </Route>
         <Route path="detail" element={<FooterDetails />}></Route>
+        <Route path={`columns/:col`} element={<ColOne />} />
         <Route path="subFooter" element={<SubFooter />} />
         <Route path="addNewPage" element={<AddNewPage />} />
       </Route>

@@ -8,16 +8,17 @@ const AddLocationModal = (props) => {
   const [city, setCity] = useState("");
   const [allCity, setAllCity] = useState([]);
   const [country, setCountry] = useState("");
-    const [allStates, setStates] = useState([]);
-    
-// remove city if multiple states
-    useEffect(() => {
-        
-  if (allStates.length > 1 && allStates.length === 0 ) {
-    setAllCity([])
- }
-    },[allStates])
+  const [allStates, setStates] = useState([]);
 
+  // remove city if multiple states
+  useEffect(() => {
+    if (allStates.length > 1 && allStates.length === 0) {
+      const nope = [];
+      setAllCity(nope);
+    }
+    console.log(allCity);
+    console.log(allStates);
+  }, [allStates]);
   // handle State
   const handleAddState = () => {
     if (state.trim() !== "") {
@@ -26,12 +27,9 @@ const AddLocationModal = (props) => {
         newState.push(state.trim());
         setStates(newState);
         setState("");
-      }
-        if (allStates.length > 1) {
-            setAllCity([])
-         }
-
-          else {
+      }  if (allStates.length > 1) {
+        setAllCity([]);
+      } else {
         alert("items already exist");
       }
     }
@@ -160,9 +158,8 @@ const AddLocationModal = (props) => {
                   ))}
               </div>
             </div>
-          ) }
-              </div>
-              
+          )}
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button
@@ -170,9 +167,9 @@ const AddLocationModal = (props) => {
             props.onHide();
             setStates([]);
             setState("");
-                      setCountry("");
-                      setAllCity([])
-                      setCity("")
+            setCountry("");
+            setAllCity([]);
+            setCity("");
           }}
           className="btn-danger"
         >

@@ -9,6 +9,7 @@ import {
   SidebarContent,
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
+import { CgProfile } from "react-icons/cg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -61,14 +62,17 @@ const Sidebar = () => {
               <MenuItem icon={<FontAwesomeIcon icon={faSearch} />}>
                 <Link to="/dashboard/search-ads"> Search Ads</Link>
               </MenuItem>
+              <MenuItem icon={<CgProfile/>}>
+                <Link to="/dashboard/userProfile"> User Profile</Link>
+              </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faPager} />}>
-                <Link to="/dashboard/pages"><SubMenu title=" Pages">
-                
-    <MenuItem><Link
-              
-              to="/dashboard/addNewPage"
-            >Add New Page </Link></MenuItem>
-    </SubMenu></Link>
+                <Link to="/dashboard/pages">
+                  <SubMenu title=" Pages">
+                    <MenuItem>
+                      <Link to="/dashboard/addNewPage">Add New Page </Link>
+                    </MenuItem>
+                  </SubMenu>
+                </Link>
               </MenuItem>
 
               <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
@@ -88,29 +92,25 @@ const Sidebar = () => {
               to="/dashboard/footers"
             >
               {" "}
-            
               <Menu iconShape="square">
-  <SubMenu title=" Footers">
-    <MenuItem><Link
-              
-              to="/dashboard/detail"
-            >Detail </Link></MenuItem>
-    <SubMenu title="Columns" >
-    <MenuItem>Col 1 </MenuItem>
-    <MenuItem>Col 2 </MenuItem>
-    <MenuItem>Col 3 </MenuItem>
-    <MenuItem>Col 4 </MenuItem>
+                <SubMenu title=" Footers">
+                  <MenuItem>
+                    <Link to="/dashboard/detail">Detail </Link>
+                  </MenuItem>
+                  <SubMenu title="Columns">
+                    <MenuItem>
+                      <Link to={`/dashboard/columns/col${1}`}>Col 1</Link>{" "}
+                    </MenuItem>
+                    <MenuItem> <Link to={`/dashboard/columns/col${2}`}>Col 2</Link> </MenuItem>
+                    <MenuItem> <Link to={`/dashboard/columns/col${3}`}>Col 3</Link> </MenuItem>
+                    <MenuItem> <Link to={`/dashboard/columns/col${4}`}>Col 4</Link></MenuItem>
                   </SubMenu>
-                  <MenuItem><Link
-              
-              to="/dashboard/subFooter"
-            >Sub Footer </Link></MenuItem>
+                  <MenuItem>
+                    <Link to="/dashboard/subFooter">Sub Footer </Link>
+                  </MenuItem>
                 </SubMenu>
-              
               </Menu>
-              
             </Link>
-           
           </SidebarFooter>
         </ProSidebar>
       </div>
