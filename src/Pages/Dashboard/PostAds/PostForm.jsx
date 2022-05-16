@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -108,8 +108,18 @@ const PostForm = () => {
   const [categoryText, setCategoryText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const [stateText, setStateText] = useState("");
+  const [selectedState, setSelectedState] = useState(null);
+  const [selectedCities, setSelectedCities] = useState([]);
 
-  const handleChange = (value) => {
+  useEffect(() => {
+    fetch("/locations.json")
+      .then((res) => res.json())
+      .then((data) => setLocations(data));
+  }, []);
+
+  const handleCategoryChange = (value) => {
     setCategoryText(value);
     const selectCategory = categories.find(
       (c) => c.categoryName === value.trim()
@@ -122,11 +132,27 @@ const PostForm = () => {
       setSelectedSubCategories([]);
     }
   };
+  const handleLocationChange = (value) => {
+    setStateText(value);
+    const selectLocation = locations.find((c) => c.state === value.trim());
+    if (selectLocation) {
+      setSelectedState(selectLocation);
+    } else {
+      setSelectedState(selectLocation);
+      setSelectedCities([]);
+    }
+  };
 
-  const handleClear = () => {
+  const handleCategoryClear = () => {
     setCategoryText("");
     setSelectedCategory(null);
     setSelectedSubCategories([]);
+  };
+
+  const handleLocationClear = () => {
+    setStateText("");
+    setSelectedState(null);
+    setSelectedCities([]);
   };
 
   // const handleSubCategoryChange = (subCategory) => {
@@ -159,8 +185,19 @@ const PostForm = () => {
       setSelectedSubCategories(newSubCategories);
     }
   };
+  const handleCityChange = (city) => {
+    console.log(city);
+    const newCities = [...selectedCities];
+    const existCity = newCities.find((c) => c === city);
+    if (!existCity) {
+      newCities.push(city);
+      setSelectedCities(newCities);
+    } else {
+      setSelectedCities(newCities);
+    }
+  };
 
-  const handleClose = (categoryName) => {
+  const handleSubCategoryClose = (categoryName) => {
     const existSubCategories = [...selectedSubCategories];
     const newSubCategories = existSubCategories.filter(
       (c) => c !== categoryName
@@ -168,6 +205,12 @@ const PostForm = () => {
     setSelectedSubCategories(newSubCategories);
   };
   console.log(selectedSubCategories, selectedSubCategories.length);
+
+  const handleCityClose = (city) => {
+    const existCities = [...selectedCities];
+    const newCities = existCities.filter((c) => c !== city);
+    setSelectedCities(newCities);
+  };
   return (
     <div className="w-50 mx-auto">
       <Form>
@@ -194,18 +237,20 @@ const PostForm = () => {
             required
           />
         </Form.Group>
+        {/* <Form.Group className="mb-3" controlId="category"> */}
         <Form.Label htmlFor="category">Select Category</Form.Label>
         <div className="position-relative">
           <input
             value={categoryText}
             type="text"
+            name="category"
             className="form-control "
             list="category"
             placeholder="Select Category"
-            onChange={(e) => handleChange(e.target.value)}
+            onChange={(e) => handleCategoryChange(e.target.value)}
           />
           <FontAwesomeIcon
-            onClick={() => handleClear()}
+            onClick={() => handleCategoryClear()}
             className={`ms-1 ${
               !categoryText && "d-none"
             } select-category-Xmark cursor-pointer`}
@@ -268,7 +313,7 @@ const PostForm = () => {
               <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
                 {slc}{" "}
                 <FontAwesomeIcon
-                  onClick={() => handleClose(slc)}
+                  onClick={() => handleSubCategoryClose(slc)}
                   className="ms-1 cursor-pointer"
                   size="lg"
                   icon={faXmark}
@@ -278,14 +323,77 @@ const PostForm = () => {
           </div>
         </Form.Label>
 
-        <Form.Group className="mb-3" controlId="description">
-          <Form.Label>Add location</Form.Label>
-          <Form.Control
-            as="textarea"
-            type="text"
-            rows="1"
-            placeholder="Add your location"
-          />
+        {/* select location */}
+
+        <Form.Group className="mb-3" controlId="location">
+          <Form.Label htmlFor="locationx">Select Location</Form.Label>
+          <div className="position-relative">
+            <input
+              value={stateText}
+              type="text"
+              className="form-control "
+              list="location"
+              placeholder="Select State"
+              name="location"
+              onChange={(e) => handleLocationChange(e.target.value)}
+            />
+            <FontAwesomeIcon
+              onClick={() => handleLocationClear()}
+              className={`ms-1 ${
+                !stateText && "d-none"
+              } select-category-Xmark cursor-pointer`}
+              size="lg"
+              icon={faXmark}
+            />
+          </div>
+
+          <datalist id="location" className="w-100">
+            {locations.map((c) => (
+              <option value={c.state}></option>
+            ))}
+          </datalist>
+
+          {/* show cities */}
+          <Form.Label>
+            {selectedState && (
+              <div className="fw-bold my-2">
+                Select City for {selectedState?.state}
+              </div>
+            )}
+
+            {selectedState && (
+              <div className="ms-5 mb-3">
+                <Form.Select
+                  onChange={(e) => handleCityChange(e.target.value)}
+                  name="city"
+                  id="city"
+                  form="city"
+                >
+                  <option selected disabled>
+                    --Select City--
+                  </option>
+
+                  {selectedState?.cities.map((city) => (
+                    <option value={city.Name}>{city.Name}</option>
+                  ))}
+                </Form.Select>
+              </div>
+            )}
+
+            <div>
+              {selectedCities.map((city) => (
+                <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
+                  {city}{" "}
+                  <FontAwesomeIcon
+                    onClick={() => handleCityClose(city)}
+                    className="ms-1 cursor-pointer"
+                    size="lg"
+                    icon={faXmark}
+                  />
+                </div>
+              ))}
+            </div>
+          </Form.Label>
         </Form.Group>
 
         {/* addImage */}
