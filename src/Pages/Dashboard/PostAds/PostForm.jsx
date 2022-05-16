@@ -132,13 +132,13 @@ const PostForm = () => {
       setSelectedSubCategories([]);
     }
   };
-  const handleLocationChange = (value) => {
+  const handleStateChange = (value) => {
     setStateText(value);
-    const selectLocation = locations.find((c) => c.state === value.trim());
-    if (selectLocation) {
-      setSelectedState(selectLocation);
+    const selectState = locations.find((c) => c.state === value.trim());
+    if (selectState) {
+      setSelectedState(selectState);
     } else {
-      setSelectedState(selectLocation);
+      setSelectedState(selectState);
       setSelectedCities([]);
     }
   };
@@ -204,7 +204,6 @@ const PostForm = () => {
     );
     setSelectedSubCategories(newSubCategories);
   };
-  console.log(selectedSubCategories, selectedSubCategories.length);
 
   const handleCityClose = (city) => {
     const existCities = [...selectedCities];
@@ -220,8 +219,9 @@ const PostForm = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="description">
-          <Form.Label>Descriptions</Form.Label>
+          <Form.Label htmlFor="description">Descriptions</Form.Label>
           <Form.Control
+            id="description"
             as="textarea"
             type="text"
             rows="5"
@@ -229,9 +229,10 @@ const PostForm = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="Price">
+        <Form.Group className="mb-3" controlId="price">
           <Form.Label>Price (BDT)</Form.Label>
           <Form.Control
+            id="price"
             type="number"
             placeholder="What would you pay? Give a price!"
             required
@@ -266,7 +267,7 @@ const PostForm = () => {
         </datalist>
 
         {/* show sub categories */}
-        <Form.Label>
+        <Form.Label htmlFor="sub-category">
           {selectedCategory && (
             <div className="fw-bold my-2">
               Select Sub Category for {selectedCategory?.categoryName}
@@ -326,7 +327,7 @@ const PostForm = () => {
         {/* select location */}
 
         <Form.Group className="mb-3" controlId="location">
-          <Form.Label htmlFor="locationx">Select Location</Form.Label>
+          <Form.Label htmlFor="location">Select Location</Form.Label>
           <div className="position-relative">
             <input
               value={stateText}
@@ -335,7 +336,7 @@ const PostForm = () => {
               list="location"
               placeholder="Select State"
               name="location"
-              onChange={(e) => handleLocationChange(e.target.value)}
+              onChange={(e) => handleStateChange(e.target.value)}
             />
             <FontAwesomeIcon
               onClick={() => handleLocationClear()}
@@ -354,7 +355,7 @@ const PostForm = () => {
           </datalist>
 
           {/* show cities */}
-          <Form.Label>
+          <Form.Label htmlFor="city">
             {selectedState && (
               <div className="fw-bold my-2">
                 Select City for {selectedState?.state}
