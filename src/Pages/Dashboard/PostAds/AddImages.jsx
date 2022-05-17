@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import "./AddImages.css";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { IoIosCloseCircle } from "react-icons/io";
 
 const AddImages = () => {
   const [images, setImages] = useState([]);
@@ -60,7 +60,6 @@ const AddImages = () => {
         maxLength={5}
       />
 
-      {images.length ? <p className="m-2">You can reorder your photos</p> : ""}
       <DragDropContext onDragEnd={onEnd}>
         <Droppable droppableId="123" direction="horizontal">
           {(provided, snapshot) => (
@@ -81,11 +80,12 @@ const AddImages = () => {
                       {/* show images preview */}
                       <div className="position-relative">
                         <img
-                          className="rounded-3 mb-2 shadow "
+                          className="rounded-3 my-3 shadow "
                           style={{
                             width: "92px",
                             height: "80px",
                             objectFit: "cover",
+                            cursor: "default",
                           }}
                           src={URL.createObjectURL(image)}
                           alt=""
@@ -95,7 +95,7 @@ const AddImages = () => {
                           onClick={() => removeImages(image)}
                           className="img-remove-icon position-absolute"
                         >
-                          <AiOutlineCloseCircle title="Remove Photo"></AiOutlineCloseCircle>
+                          <IoIosCloseCircle title="Remove Photo"></IoIosCloseCircle>
                         </div>
                       </div>
                     </div>
@@ -103,6 +103,13 @@ const AddImages = () => {
                 </Draggable>
               ))}
               {/* {provided.placeholder} */}
+              {images.length ? (
+                <p className=" text-muted">
+                  You can reorder the images by dragging them.
+                </p>
+              ) : (
+                ""
+              )}
             </div>
           )}
         </Droppable>
