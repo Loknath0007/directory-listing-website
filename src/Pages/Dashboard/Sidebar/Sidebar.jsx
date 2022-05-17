@@ -22,7 +22,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { GoLocation } from "react-icons/go";
 import { Link, Outlet } from "react-router-dom";
-
+import { GrPlan } from "react-icons/gr";
 // const element = <FontAwesomeIcon icon={faCoffee} />;
 
 const Sidebar = () => {
@@ -49,7 +49,7 @@ const Sidebar = () => {
                 title="Dashboard"
                 icon={<FontAwesomeIcon icon={faChartLine} />}
               >
-                <Link to="/dashboard"> Dashboard</Link>
+                <Link to="/dashboard/home"> Dashboard</Link>
               </MenuItem>
 
               <MenuItem icon={<FontAwesomeIcon icon={faHeader} />}>
@@ -82,7 +82,10 @@ const Sidebar = () => {
                 <Link to="/dashboard/manage-locations"> Manage Locations</Link>
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faDollar} />}>
-                Payment
+              <Link to="/dashboard/payment"> Payment</Link>
+              </MenuItem>
+              <MenuItem icon={<GrPlan style={{backgroundColor: "lightgray"}}/>}>
+              <Link to="/dashboard/packages"> Packages</Link> 
               </MenuItem>
             </Menu>
           </SidebarContent>

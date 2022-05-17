@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
-import { Button, Card, ListGroup, ListGroupItem, ProgressBar } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 const UserAccount = () => {
     return (
         <div>
             
-    <Card.Texxt className="border-bottom text-center">
+    <Card.Title className="border-bottom text-center">
       <div className="mb-3 mx-auto">          
         <img
           className="rounded-circle"
@@ -20,7 +20,7 @@ const UserAccount = () => {
       <Button variant="outline-primary"   className="mb-3">
         Follow
       </Button>
-    </Card.Texxt>
+    </Card.Title>
     
  
         </div>

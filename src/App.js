@@ -21,12 +21,16 @@ import AddNewPage from "./Pages/Dashboard/DashboardPages/AddNewPage";
 import SubFooter from "./Pages/Dashboard/Footers/SubFooter";
 import ColOne from "./Pages/Dashboard/Footers/Columns/ColOne";
 import UserProfile from "./Pages/Dashboard/UserProfile/UserProfile";
+import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
+import Packages from "./Pages/Dashboard/Packages/Packages";
+import Payment from "./Pages/Dashboard/Payment/Payment";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="dashboard" element={<Dashboard />}>
+        <Route path="home" element={<DashboardHome />} />
         <Route path="headers" element={<Headers />} />
         <Route path="new-post-ads" element={<PostAds />} />
         <Route path="search-ads" element={<SearchAds />} />
@@ -34,6 +38,8 @@ function App() {
         <Route path="pages" element={<Pages />} />
         <Route path="categories" element={<Categories />} />
         <Route path="manage-locations" element={<ManageLocations />} />
+        <Route path="payment" element={<Payment />} />
+        <Route path="packages" element={<Packages />} />
         <Route path="footers" element={<Footers />}>
           
         </Route>
