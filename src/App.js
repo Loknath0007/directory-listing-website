@@ -24,6 +24,7 @@ import UserProfile from "./Pages/Dashboard/UserProfile/UserProfile";
 import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
 import Packages from "./Pages/Dashboard/Packages/Packages";
 import Payment from "./Pages/Dashboard/Payment/Payment";
+import Users from "./Pages/Dashboard/Users/Users";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="new-post-ads" element={<PostAds />} />
         <Route path="search-ads" element={<SearchAds />} />
         <Route path="userProfile" element={<UserProfile />} />
+        <Route path="users" element={<Users />} />
         <Route path="pages" element={<Pages />} />
         <Route path="categories" element={<Categories />} />
         <Route path="manage-locations" element={<ManageLocations />} />

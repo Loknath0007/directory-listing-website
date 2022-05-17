@@ -18,7 +18,7 @@ import {
   faSearch,
   faDollar,
   faHeader,
-  faPager,
+  faPager,faUsers
 } from "@fortawesome/free-solid-svg-icons";
 import { GoLocation } from "react-icons/go";
 import { Link, Outlet } from "react-router-dom";
@@ -64,6 +64,9 @@ const Sidebar = () => {
               </MenuItem>
               <MenuItem icon={<CgProfile/>}>
                 <Link to="/dashboard/userProfile"> User Profile</Link>
+              </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faUsers} />}>
+                <Link to="/dashboard/users"> Users</Link>
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faPager} />}>
                 <Link to="/dashboard/pages">
