@@ -9,3 +9,19 @@
   width: 100px;
   height: 80px;
 } */
+
+.img-remove-icon {
+  top:0;
+  right:0;
+}
+.img-remove-icon svg{
+  top:-10px;
+  right:0;
+  color: red;
+  font-size: 20px;
+
+}
+.img-remove-icon svg:hover{
+  /* font-size: 25px; */
+  cursor: pointer;
+}

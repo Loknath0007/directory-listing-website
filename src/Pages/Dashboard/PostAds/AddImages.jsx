@@ -1,34 +1,40 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
 import "./AddImages.css";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
-import { Provider } from "react-redux";
-const AddImages = () => {
-  // const handleImageChange = (files) => {
-  //   if (images.length >= 5) {
-  //     alert("You can only upload a maximum of 5 files");
-  //     return false;
-  //   } else {
-  //     setImages([...images, ...files]);
-  //     console.log(...files);
-  //   }
-  // };
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
-  const [list, setList] = useState([
-    { id: "0", name: "one" },
-    { id: "1", name: "two" },
-    { id: "2", name: "three" },
-  ]);
-  const reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
+const AddImages = () => {
+  const [images, setImages] = useState([]);
+
+  // upload image functionalities
+  const handleImageChange = (files) => {
+    if (images.length >= 5) {
+      alert("You can only upload a maximum of 5 files");
+      return false;
+    } else {
+      setImages([...images, ...files]);
+    }
+  };
+
+  // draggable images ordering
+  const reorder = (images, startIndex, endIndex) => {
+    const result = Array.from(images);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
     return result;
   };
   const onEnd = (result) => {
     console.log(result);
-    setList(reorder(list, result.source.index, result.destination.index));
+    setImages(reorder(images, result.source.index, result.destination.index));
+  };
+
+  // remove images
+  const removeImages = (img) => {
+    const newImages = [...images];
+    const restImages = newImages.filter((image) => image !== img);
+    setImages(restImages);
   };
   return (
     <div className="border-top py-3 border-bottom">
@@ -44,50 +50,59 @@ const AddImages = () => {
         />
         <div>Add Photos</div>
       </label>
-      {/* <input
+      <input
         onChange={(e) => handleImageChange(e.target.files)}
         className="d-none"
         id="ad-images"
         type="file"
         accept="image/*"
-        multiple
-        max={5}
-      /> */}
-      {/* show images preview */}
-      {/* <div className="mt-2 w-100 d-inline-block">
-        {images &&
-          images.map((image, index) => (
-            <div className="position-relative d-inline-block me-3">
-              <img
-                className="rounded-3 single-img  mb-2 shadow"
-                style={{ width: "100px", height: "80px", objectFit: "cover" }}
-                src={URL.createObjectURL(image)}
-                alt=""
-              />
-              <FontAwesomeIcon icon={faMinus} />
-              {console.log(index)}
-            </div>
-          ))}
-      </div> */}
+        multiple={false}
+        maxLength={5}
+      />
 
+      {images.length ? <p className="m-2">You can reorder your photos</p> : ""}
       <DragDropContext onDragEnd={onEnd}>
-        <Droppable droppableId="12345678">
+        <Droppable droppableId="123" direction="horizontal">
           {(provided, snapshot) => (
-            <div ref={provided.innerRef}>
-              {list.map((list, index) => (
-                <Draggable draggableId={list.id} key={list.id} index={index}>
+            <div ref={provided.innerRef} className="mt-2 w-100 d-inline-block">
+              {images.map((image, index) => (
+                <Draggable
+                  draggableId={index + ""}
+                  key={index + ""}
+                  index={index}
+                >
                   {(provided, snapshot) => (
                     <div
+                      className="mt-0 d-inline-block me-3 "
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <div className="d-inline">{list.name}</div>
+                      {/* show images preview */}
+                      <div className="position-relative">
+                        <img
+                          className="rounded-3 mb-2 shadow "
+                          style={{
+                            width: "92px",
+                            height: "80px",
+                            objectFit: "cover",
+                          }}
+                          src={URL.createObjectURL(image)}
+                          alt=""
+                        />
+                        {/* image remove icon */}
+                        <div
+                          onClick={() => removeImages(image)}
+                          className="img-remove-icon position-absolute"
+                        >
+                          <AiOutlineCloseCircle title="Remove Photo"></AiOutlineCloseCircle>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </Draggable>
               ))}
-              {provided.placeholder}
+              {/* {provided.placeholder} */}
             </div>
           )}
         </Droppable>
