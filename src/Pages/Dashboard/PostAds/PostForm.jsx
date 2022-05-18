@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Row, Col, FormControl } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./PostForm.css";
@@ -108,6 +108,9 @@ const PostForm = () => {
   const [categoryText, setCategoryText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
+  const [brandText, setBrandText] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState(null);
+  const [selectedModel, setSelectedModel] = useState([]);
   const [locations, setLocations] = useState([]);
   const [stateText, setStateText] = useState("");
   const [selectedState, setSelectedState] = useState(null);
@@ -133,6 +136,17 @@ const PostForm = () => {
       setSelectedCategory(selectCategory);
 
       setSelectedSubCategories([]);
+    }
+  };
+  const handleBrandChange = (value) => {
+    setBrandText(value);
+    console.log(value);
+
+    const selectBrand = categories.find((c) => c.categoryName === value.trim());
+    if (selectBrand) {
+      setSelectedBrand(selectBrand);
+    } else {
+      setSelectedBrand(selectBrand);
     }
   };
 
@@ -163,6 +177,9 @@ const PostForm = () => {
     setCategoryText("");
     setSelectedCategory(null);
     setSelectedSubCategories([]);
+  };
+  const handleBrandClear = () => {
+    setBrandText("");
   };
 
   const handleLocationClear = () => {
@@ -241,52 +258,91 @@ const PostForm = () => {
             as="textarea"
             type="text"
             rows="5"
-            placeholder="Share more details to make effectives"
+            placeholder="Share more details to make effective"
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="price">
           <Form.Label>Price (BDT)</Form.Label>
           <Form.Control
-            className="mb-2"
             id="price"
             type="number"
             placeholder="What would you pay? Give a price!"
             required
           />
-          <Form.Check
-            type="radio"
-            value="Negotiable"
-            label="Negotiable"
-            id="negotiable"
-            name="isNegotiable"
-          />
-          <Form.Check
-            type="radio"
-            value="Fixed"
-            label="Fixed"
-            id="fixed"
-            name="isNegotiable"
-          />
+        </Form.Group>
+        <Form.Group>
+          <Row md={2}>
+            <Form.Check
+              type="radio"
+              value="Negotiable"
+              label="Negotiable"
+              id="negotiable"
+              name="isNegotiable"
+            />
+            <Form.Check
+              type="radio"
+              value="Fixed"
+              label="Fixed"
+              id="fixed"
+              name="isNegotiable"
+            />
+          </Row>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="price">
+        <Form.Group className="my-4" controlId="condition">
           <Form.Label>Condition</Form.Label>
+          <Row md={2} className="">
+            <Form.Check
+              type="radio"
+              value="Used"
+              label="Used"
+              id="used"
+              name="condition"
+            />
+            <Form.Check
+              type="radio"
+              value="New"
+              label="New"
+              id="new"
+              name="condition"
+            />
+          </Row>
+        </Form.Group>
+        {/* select brand */}
+        <Form.Group className="mb-3" controlId="brand">
+          <Form.Label htmlFor="brand">Brand</Form.Label>
+          <div className="position-relative">
+            <input
+              value={brandText}
+              type="text"
+              name="brand"
+              className="form-control "
+              list="brand"
+              placeholder="Select Brand"
+              onChange={(e) => handleBrandChange(e.target.value)}
+              required
+            />
+            <FontAwesomeIcon
+              onClick={() => handleBrandClear()}
+              className={`ms-1 ${
+                !brandText && "d-none"
+              } select-category-Xmark cursor-pointer`}
+              size="lg"
+              icon={faXmark}
+            />
+          </div>
 
-          <Form.Check
-            type="radio"
-            value="Used"
-            label="Used"
-            id="used"
-            name="condition"
-          />
-          <Form.Check
-            type="radio"
-            value="New"
-            label="New"
-            id="new"
-            name="condition"
-          />
+          <datalist id="brand" className="w-100">
+            {categories.map((c) => (
+              <option value={c.categoryName}></option>
+            ))}
+          </datalist>
+        </Form.Group>
+        {/* brand model */}
+        <Form.Group className="mb-3" controlId="title">
+          <Form.Label>Model</Form.Label>
+          <Form.Control type="text" name="model" placeholder="Model" required />
         </Form.Group>
 
         {/* <Form.Group className="mb-3" controlId="category"> */}
