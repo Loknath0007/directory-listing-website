@@ -248,10 +248,44 @@ const PostForm = () => {
         <Form.Group className="mb-3" controlId="price">
           <Form.Label>Price (BDT)</Form.Label>
           <Form.Control
+            className="mb-2"
             id="price"
             type="number"
             placeholder="What would you pay? Give a price!"
             required
+          />
+          <Form.Check
+            type="radio"
+            value="Negotiable"
+            label="Negotiable"
+            id="negotiable"
+            name="isNegotiable"
+          />
+          <Form.Check
+            type="radio"
+            value="Fixed"
+            label="Fixed"
+            id="fixed"
+            name="isNegotiable"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="price">
+          <Form.Label>Condition</Form.Label>
+
+          <Form.Check
+            type="radio"
+            value="Used"
+            label="Used"
+            id="used"
+            name="condition"
+          />
+          <Form.Check
+            type="radio"
+            value="New"
+            label="New"
+            id="new"
+            name="condition"
           />
         </Form.Group>
 
