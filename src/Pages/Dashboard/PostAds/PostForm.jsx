@@ -112,7 +112,9 @@ const PostForm = () => {
   const [stateText, setStateText] = useState("");
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCities, setSelectedCities] = useState([]);
+  const [multiState, setMultiState] = useState([]);
 
+  // console.log(selectedState?.state);
   useEffect(() => {
     fetch("/locations.json")
       .then((res) => res.json())
@@ -121,6 +123,7 @@ const PostForm = () => {
 
   const handleCategoryChange = (value) => {
     setCategoryText(value);
+
     const selectCategory = categories.find(
       (c) => c.categoryName === value.trim()
     );
@@ -132,8 +135,21 @@ const PostForm = () => {
       setSelectedSubCategories([]);
     }
   };
+
+  console.log(multiState);
+
   const handleStateChange = (value) => {
     setStateText(value);
+    const existingMultiState = [...multiState];
+    const state = locations.find((c) => c.state === value.trim());
+    if (value === state.state) {
+      if (!existingMultiState.includes(value)) {
+        existingMultiState.push(state.state);
+        setMultiState(existingMultiState);
+      }
+    }
+    console.log(value, state);
+
     const selectState = locations.find((c) => c.state === value.trim());
     if (selectState) {
       setSelectedState(selectState);
@@ -238,6 +254,7 @@ const PostForm = () => {
             required
           />
         </Form.Group>
+
         {/* <Form.Group className="mb-3" controlId="category"> */}
         <Form.Label htmlFor="category">Select Category</Form.Label>
         <div className="position-relative">
@@ -332,7 +349,7 @@ const PostForm = () => {
             <input
               value={stateText}
               type="text"
-              className="form-control "
+              className="form-control"
               list="location"
               placeholder="Select State"
               name="location"
@@ -347,6 +364,19 @@ const PostForm = () => {
               icon={faXmark}
             />
           </div>
+          <div>
+            {multiState?.map((state) => (
+              <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
+                {state}{" "}
+                <FontAwesomeIcon
+                  onClick={() => handleCityClose(state)}
+                  className="ms-1 cursor-pointer"
+                  size="lg"
+                  icon={faXmark}
+                />
+              </div>
+            ))}
+          </div>
 
           <datalist id="location" className="w-100">
             {locations.map((c) => (
@@ -355,46 +385,48 @@ const PostForm = () => {
           </datalist>
 
           {/* show cities */}
-          <Form.Label htmlFor="city">
-            {selectedState && (
-              <div className="fw-bold my-2">
-                Select City for {selectedState?.state}
-              </div>
-            )}
-
-            {selectedState && (
-              <div className="ms-5 mb-3">
-                <Form.Select
-                  onChange={(e) => handleCityChange(e.target.value)}
-                  name="city"
-                  id="city"
-                  form="city"
-                >
-                  <option selected disabled>
-                    --Select City--
-                  </option>
-
-                  {selectedState?.cities.map((city) => (
-                    <option value={city.Name}>{city.Name}</option>
-                  ))}
-                </Form.Select>
-              </div>
-            )}
-
-            <div>
-              {selectedCities.map((city) => (
-                <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-                  {city}{" "}
-                  <FontAwesomeIcon
-                    onClick={() => handleCityClose(city)}
-                    className="ms-1 cursor-pointer"
-                    size="lg"
-                    icon={faXmark}
-                  />
+          {multiState.length <= 1 && (
+            <Form.Label htmlFor="city">
+              {selectedState && (
+                <div className="fw-bold my-2">
+                  Select City for {selectedState?.state}
                 </div>
-              ))}
-            </div>
-          </Form.Label>
+              )}
+
+              {selectedState && (
+                <div className="ms-5 mb-3">
+                  <Form.Select
+                    onChange={(e) => handleCityChange(e.target.value)}
+                    name="city"
+                    id="city"
+                    form="city"
+                  >
+                    <option selected disabled>
+                      --Select City--
+                    </option>
+
+                    {selectedState?.cities.map((city) => (
+                      <option value={city.Name}>{city.Name}</option>
+                    ))}
+                  </Form.Select>
+                </div>
+              )}
+
+              <div>
+                {selectedCities.map((city) => (
+                  <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
+                    {city}{" "}
+                    <FontAwesomeIcon
+                      onClick={() => handleCityClose(city)}
+                      className="ms-1 cursor-pointer"
+                      size="lg"
+                      icon={faXmark}
+                    />
+                  </div>
+                ))}
+              </div>
+            </Form.Label>
+          )}
         </Form.Group>
 
         {/* addImage */}
