@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Row, Col, FormControl } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./PostForm.css";
 import AddImages from "./AddImages";
 import ContactDetails from "./ContactDetails";
+import BrandModel from "./BrandModel";
 
 const PostForm = () => {
   const [categories, setCategories] = useState([
@@ -108,11 +109,16 @@ const PostForm = () => {
   const [categoryText, setCategoryText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
+  const [brandText, setBrandText] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState(null);
+  const [selectedModel, setSelectedModel] = useState([]);
   const [locations, setLocations] = useState([]);
   const [stateText, setStateText] = useState("");
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCities, setSelectedCities] = useState([]);
   const [multiState, setMultiState] = useState([]);
+  const [condition, setCondition] = useState("");
+  const [priceType, setPriceType] = useState("");
 
   // console.log(selectedState?.state);
   useEffect(() => {
@@ -133,6 +139,17 @@ const PostForm = () => {
       setSelectedCategory(selectCategory);
 
       setSelectedSubCategories([]);
+    }
+  };
+  const handleBrandChange = (value) => {
+    setBrandText(value);
+    console.log(value);
+
+    const selectBrand = categories.find((c) => c.categoryName === value.trim());
+    if (selectBrand) {
+      setSelectedBrand(selectBrand);
+    } else {
+      setSelectedBrand(selectBrand);
     }
   };
 
@@ -163,6 +180,9 @@ const PostForm = () => {
     setCategoryText("");
     setSelectedCategory(null);
     setSelectedSubCategories([]);
+  };
+  const handleBrandClear = () => {
+    setBrandText("");
   };
 
   const handleLocationClear = () => {
@@ -226,6 +246,53 @@ const PostForm = () => {
     const newCities = existCities.filter((c) => c !== city);
     setSelectedCities(newCities);
   };
+
+  const [usedCheck, setOneCheck] = useState(false);
+  const [newCheck, setTwoCheck] = useState(false);
+  const handleCondition = (e) => {
+    let condition = e.target.value;
+    console.log(condition);
+  };
+
+  function used() {
+    if (newCheck) {
+      setTwoCheck(false);
+      setOneCheck(true);
+    } else if (!usedCheck) {
+      setOneCheck(true);
+    } else if (usedCheck) {
+      setOneCheck(false);
+    }
+  }
+  function newP() {
+    if (usedCheck) {
+      setTwoCheck(true);
+      setOneCheck(false);
+    } else if (!newCheck) {
+      setTwoCheck(true);
+    } else if (newCheck) {
+      setTwoCheck(false);
+    }
+  }
+
+  const handlePriceTypeChange = (e) => {
+    setPriceType(e.target.value);
+
+    if (priceType === e.target.value) {
+      setPriceType("");
+    }
+  };
+  console.log(priceType);
+
+  const handleConditionChange = (e) => {
+    setCondition(e.target.value);
+
+    if (condition === e.target.value) {
+      setCondition("");
+    }
+  };
+  console.log(condition);
+
   return (
     <div className="w-50 mx-auto">
       <Form>
@@ -241,7 +308,7 @@ const PostForm = () => {
             as="textarea"
             type="text"
             rows="5"
-            placeholder="Share more details to make effectives"
+            placeholder="Share more details to make effective"
           />
         </Form.Group>
 
@@ -253,6 +320,83 @@ const PostForm = () => {
             placeholder="What would you pay? Give a price!"
             required
           />
+        </Form.Group>
+        <Form.Group>
+          <Row md={2} className="">
+            <Form.Check
+              onChange={handlePriceTypeChange}
+              value="Negotiable"
+              checked={priceType === "Negotiable"}
+              label="Negotiable"
+              id="negotiable"
+              name="negotiable"
+            />
+            <Form.Check
+              onChange={handlePriceTypeChange}
+              value="Fixed"
+              checked={priceType === "Fixed"}
+              label="Fixed"
+              id="fixed"
+              name="fixed"
+            />
+          </Row>
+        </Form.Group>
+
+        <Form.Group className="my-4" controlId="condition">
+          <Form.Label>Condition</Form.Label>
+          <Row md={2} className="">
+            <Form.Check
+              onChange={handleConditionChange}
+              value="Used"
+              checked={condition === "Used"}
+              label="Used"
+              id="used"
+              name="used"
+            />
+            <Form.Check
+              onChange={handleConditionChange}
+              value="New"
+              checked={condition === "New"}
+              label="New"
+              id="new"
+              name="new"
+            />
+          </Row>
+        </Form.Group>
+        {/* select brand */}
+        <Form.Group className="mb-3" controlId="brand">
+          <Form.Label htmlFor="brand">Brand</Form.Label>
+          <div className="position-relative">
+            <input
+              value={brandText}
+              type="text"
+              name="brand"
+              className="form-control "
+              list="brand"
+              placeholder="Select Brand"
+              onChange={(e) => handleBrandChange(e.target.value)}
+              required
+            />
+            <FontAwesomeIcon
+              onClick={() => handleBrandClear()}
+              className={`ms-1 ${
+                !brandText && "d-none"
+              } select-category-Xmark cursor-pointer`}
+              size="lg"
+              icon={faXmark}
+            />
+          </div>
+
+          <datalist id="brand" className="w-100">
+            {categories.map((c) => (
+              <option value={c.categoryName}></option>
+            ))}
+          </datalist>
+        </Form.Group>
+        {/* brand model */}
+        <Form.Group className="mb-3" controlId="title">
+          <Form.Label>Model</Form.Label>
+          <Form.Control type="text" name="model" placeholder="Model" required />
         </Form.Group>
 
         {/* <Form.Group className="mb-3" controlId="category"> */}
