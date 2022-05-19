@@ -5,6 +5,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./PostForm.css";
 import AddImages from "./AddImages";
 import ContactDetails from "./ContactDetails";
+import BrandModel from "./BrandModel";
 
 const PostForm = () => {
   const [categories, setCategories] = useState([
@@ -116,6 +117,8 @@ const PostForm = () => {
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCities, setSelectedCities] = useState([]);
   const [multiState, setMultiState] = useState([]);
+  const [condition, setCondition] = useState("");
+  const [priceType, setPriceType] = useState("");
 
   // console.log(selectedState?.state);
   useEffect(() => {
@@ -243,6 +246,53 @@ const PostForm = () => {
     const newCities = existCities.filter((c) => c !== city);
     setSelectedCities(newCities);
   };
+
+  const [usedCheck, setOneCheck] = useState(false);
+  const [newCheck, setTwoCheck] = useState(false);
+  const handleCondition = (e) => {
+    let condition = e.target.value;
+    console.log(condition);
+  };
+
+  function used() {
+    if (newCheck) {
+      setTwoCheck(false);
+      setOneCheck(true);
+    } else if (!usedCheck) {
+      setOneCheck(true);
+    } else if (usedCheck) {
+      setOneCheck(false);
+    }
+  }
+  function newP() {
+    if (usedCheck) {
+      setTwoCheck(true);
+      setOneCheck(false);
+    } else if (!newCheck) {
+      setTwoCheck(true);
+    } else if (newCheck) {
+      setTwoCheck(false);
+    }
+  }
+
+  const handlePriceTypeChange = (e) => {
+    setPriceType(e.target.value);
+
+    if (priceType === e.target.value) {
+      setPriceType("");
+    }
+  };
+  console.log(priceType);
+
+  const handleConditionChange = (e) => {
+    setCondition(e.target.value);
+
+    if (condition === e.target.value) {
+      setCondition("");
+    }
+  };
+  console.log(condition);
+
   return (
     <div className="w-50 mx-auto">
       <Form>
@@ -272,20 +322,22 @@ const PostForm = () => {
           />
         </Form.Group>
         <Form.Group>
-          <Row md={2}>
+          <Row md={2} className="">
             <Form.Check
-              type="radio"
+              onChange={handlePriceTypeChange}
               value="Negotiable"
+              checked={priceType === "Negotiable"}
               label="Negotiable"
               id="negotiable"
-              name="isNegotiable"
+              name="negotiable"
             />
             <Form.Check
-              type="radio"
+              onChange={handlePriceTypeChange}
               value="Fixed"
+              checked={priceType === "Fixed"}
               label="Fixed"
               id="fixed"
-              name="isNegotiable"
+              name="fixed"
             />
           </Row>
         </Form.Group>
@@ -294,18 +346,20 @@ const PostForm = () => {
           <Form.Label>Condition</Form.Label>
           <Row md={2} className="">
             <Form.Check
-              type="radio"
+              onChange={handleConditionChange}
               value="Used"
+              checked={condition === "Used"}
               label="Used"
               id="used"
-              name="condition"
+              name="used"
             />
             <Form.Check
-              type="radio"
+              onChange={handleConditionChange}
               value="New"
+              checked={condition === "New"}
               label="New"
               id="new"
-              name="condition"
+              name="new"
             />
           </Row>
         </Form.Group>
