@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
-const PackageModal = ({ setShow, show, pack }) => {
-    console.log(pack);
+const PackageModal = ({ setShow, show, pack}) => {
+    // console.log(pack);
+    const { packTitle } = useParams()
+    console.log(packTitle);
     const [title, setTitle]=useState('')
     const [price, setPrice]=useState('')
     const [features, setFeatures]=useState('')

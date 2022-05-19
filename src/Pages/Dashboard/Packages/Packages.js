@@ -6,6 +6,7 @@ import { BsFillCloudCheckFill } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import PackageModal from "./PackageModal";
+import { Link } from "react-router-dom";
 
 const Packages = () => {
     const [show, setShow] = useState(false);
@@ -94,7 +95,7 @@ const Packages = () => {
                   </ListGroup>
                               </Card.Text>
                               <div className="  d-flex align-items-center justify-content-center">
-                              <Button   onClick={handleShow} className="mx-2" variant="warning">
+                             <Button as={ Link} to={`/dashboard/packages/${pack.title}`} onClick={handleShow} className="mx-2" variant="warning">
                     <FaEdit />{" Edit "}
                               </Button>
                               <Button className="mx-2"  variant="danger">
@@ -102,10 +103,12 @@ const Packages = () => {
                   </Button>
                               </div>
               </Card.Body>
-                      </Card>
-                      <PackageModal  pack={pack} show={show} setShow={setShow}/>
+                 </Card>
+                 {console.log("pack",pack)}
+                     
+                 <PackageModal pack={pack} show={show} setShow={setShow} />
           </Col>
-)}
+                  )}
         </Row>
       </div>
     </div>

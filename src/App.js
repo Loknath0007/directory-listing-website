@@ -25,6 +25,7 @@ import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
 import Packages from "./Pages/Dashboard/Packages/Packages";
 import Payment from "./Pages/Dashboard/Payment/Payment";
 import Users from "./Pages/Dashboard/Users/Users";
+import Settings from "./Pages/Dashboard/Settings/Settings";
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
         <Route path="manage-locations" element={<ManageLocations />} />
         <Route path="payment" element={<Payment />} />
         <Route path="packages" element={<Packages />} />
+        <Route path="packages/:packTitle" element={<Packages />} />
+        <Route path="settings" element={<Settings />} />
         <Route path="footers" element={<Footers />}>
           
         </Route>
