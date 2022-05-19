@@ -28,8 +28,14 @@ const BuyCredits = () => {
                     <input
                       type="number"
                       className="form-control"
+                      min={10}
                       value={amount}
-                      onChange={(e) => setAmount(e.target.value)}
+                      onChange={(e) => {
+                        setAmount(e.target.value);
+                        if (e.target.value < 10) {
+                          setAmount(10);
+                        }
+                      }}
                     />
                   </div>
                 </div>

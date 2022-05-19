@@ -24,10 +24,11 @@ import {
 import SimilarAd from "../../components/SimilarAdd/SimilarAd";
 import Footer from "../common/Footer";
 import AdImage from "../../components/AdImage/AdImage";
+import ReportModal from "./ReportModal";
 
 const SingleAdDetail = () => {
   return (
-    <div style={{ backgroundColor: "#E7EDEE" }}>
+    <div style={{ backgroundColor: '#E7EDEE' }}>
       <Header></Header>
       <Container fluid="md">
         <div className="my-3">
@@ -49,7 +50,7 @@ const SingleAdDetail = () => {
 
                 <Dropdown.Menu>
                   <Dropdown.Item target="_" href="https://www.whatsapp.com/">
-                    {" "}
+                    {' '}
                     <BsWhatsapp></BsWhatsapp> Whatsapp
                   </Dropdown.Item>
                   <Dropdown.Item href="https://www.facebook.com/">
@@ -78,7 +79,7 @@ const SingleAdDetail = () => {
               <AdImage></AdImage>
               {/* ad details */}
               <h3 className="my-4 text-success">
-                Tk 48,000{" "}
+                Tk 48,000{' '}
                 <span className="fs-6 fw-normal text-secondary fst-italic">
                   Negotiable
                 </span>
@@ -92,7 +93,7 @@ const SingleAdDetail = () => {
                 <p>
                   টিভি সম্পুর্ন নতুন (৫ দিন ব্যবহৃত)। একবারে অরজিনাল সনি
                   ব্রান্ডের। সাথে সকল কিছু আছে। ইমার্জেন্সি টাকা দরকার বলে
-                  বিক্রি করবো।{" "}
+                  বিক্রি করবো।{' '}
                 </p>
 
                 <ul>
@@ -109,14 +110,14 @@ const SingleAdDetail = () => {
             <Col>
               <ListGroup>
                 <ListGroup.Item>
-                  For sale by <span className="fw-bold"> Jannatul Ajmiry</span>{" "}
+                  For sale by <span className="fw-bold"> Jannatul Ajmiry</span>{' '}
                 </ListGroup.Item>
                 <ListGroup.Item className="d-flex ">
                   <AiTwotonePhone fontSize={20}></AiTwotonePhone>
 
                   <p className="ms-2">
                     <span className="fw-bold"> 01400XXXXXX </span> <br></br>
-                    Click to show phone number{" "}
+                    Click to show phone number{' '}
                   </p>
                 </ListGroup.Item>
                 <ListGroup.Item className="fw-bold">
@@ -128,7 +129,7 @@ const SingleAdDetail = () => {
                 <p className="fw-bold">
                   <AiFillSafetyCertificate
                     fontSize={20}
-                  ></AiFillSafetyCertificate>{" "}
+                  ></AiFillSafetyCertificate>{' '}
                   Safety tips
                 </p>
                 <ul>
@@ -149,14 +150,22 @@ const SingleAdDetail = () => {
             <Button variant="warning">
               <BiUpArrowCircle></BiUpArrowCircle> Promote this ad
             </Button>
-            <Button variant="light" className="ms-2">
+            <Button
+              variant="light"
+              className="ms-2"
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#reportModal"
+            >
               <RiForbid2Line></RiForbid2Line> Report this ad
             </Button>
+            <ReportModal />
           </div>
         </div>
-        <SimilarAd></SimilarAd>
+        <SimilarAd />
       </Container>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };

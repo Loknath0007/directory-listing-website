@@ -1,207 +1,136 @@
 import React from 'react';
+import {
+  BsCreditCard,
+  BsThreeDotsVertical,
+  BsFolder2Open,
+} from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const ProfileHome = () => {
   return (
-    <div class="card my-4">
-      <h5 class="card-header">Profile Details</h5>
-      <div class="card-body">
-        <div class="d-flex align-items-start align-items-sm-center gap-4">
-          <img
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-            alt="user-avatar"
-            class="d-block rounded"
-            height="100"
-            width="100"
-            id="uploadedAvatar"
-          />
-          <div class="button-wrapper">
-            <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-              <span class="d-none d-sm-block">Upload new photo</span>
-              <i class="bx bx-upload d-block d-sm-none"></i>
-              <input
-                type="file"
-                id="upload"
-                class="account-file-input"
-                hidden
-                accept="image/png, image/jpeg"
-              />
-            </label>
-            {/* <button
-              type="button"
-              class="btn btn-outline-secondary account-image-reset mb-4"
-            >
-              <i class="bx bx-reset d-block d-sm-none"></i>
-              <span class="d-none d-sm-block">Reset</span>
-            </button> */}
+    <div className="container-xxl flex-grow-1 container-p-y">
+      <div className="row my-4">
+        <div className="col-lg-6 mb-4 order-0">
+          <div className="card">
+            <div className="d-flex align-items-center row">
+              <div className="col-sm-7">
+                <div className="card-body">
+                  <h5 className="card-title text-primary">Welcome Tanveer! 🎉</h5>
+                  <p className="mb-4">
+                    You have credits of <span className="fw-bold">$20</span>.
+                    Please get the verified badge and get started.
+                  </p>
 
-            <p class="text-muted mb-0">
-              Allowed JPG, GIF or PNG. Max size of 800K
-            </p>
-          </div>
-        </div>
-      </div>
-      <hr class="my-0" />
-      <div class="card-body">
-        <form id="formAccountSettings" method="POST" onsubmit="return false">
-          <div class="row">
-            <div class="mb-3 col-md-6">
-              <label for="firstName" class="form-label">
-                First Name
-              </label>
-              <input
-                class="form-control"
-                type="text"
-                id="firstName"
-                name="firstName"
-                value="Mostofa"
-                autofocus
-              />
-            </div>
-            <div class="mb-3 col-md-6">
-              <label for="lastName" class="form-label">
-                Last Name
-              </label>
-              <input
-                class="form-control"
-                type="text"
-                name="lastName"
-                id="lastName"
-                value="Nobi Tanveer"
-              />
-            </div>
-            <div class="mb-3 col-md-6">
-              <label for="email" class="form-label">
-                E-mail
-              </label>
-              <input
-                class="form-control"
-                type="text"
-                id="email"
-                name="email"
-                value="m.mostofanobi@gmail.com"
-                placeholder="john.doe@example.com"
-              />
-            </div>
-            <div class="mb-3 col-md-6">
-              <label class="form-label" for="phoneNumber">
-                Phone Number
-              </label>
-              <div class="input-group input-group-merge">
-                <span class="input-group-text">BD (+880)</span>
-                <input
-                  type="text"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  class="form-control"
-                  placeholder="1XXXXXXXXX"
-                />
+                  <Link
+                    to={'/profile/get-verified-badge'}
+                    className="btn btn-sm btn-outline-primary"
+                  >
+                    Get Verified Badge
+                  </Link>
+                </div>
+              </div>
+              <div className="col-sm-5 text-center text-sm-left">
+                <div className="card-body pb-0 px-0 px-md-4">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2017/05/09/13/33/laptop-2298286__480.png"
+                    className="img-fluid"
+                    alt="View Badge User"
+                    data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                    data-app-light-img="illustrations/man-with-laptop-light.png"
+                  />
+                </div>
               </div>
             </div>
-            <div class="mb-3 col-md-6">
-              <label for="address" class="form-label">
-                Address
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                id="address"
-                name="address"
-                placeholder="Address"
-              />
+          </div>
+        </div>
+        <div className="col-lg-6 order-1">
+          <div className="row">
+            <div className="col-lg-6 col-md-6 col-6 mb-4">
+              <div className="card">
+                <div className="card-body">
+                  <div className="card-title d-flex align-items-start justify-content-between">
+                    <div className="avatar flex-shrink-0">
+                      <BsFolder2Open className="fs-3" />
+                    </div>
+                    <div className="dropdown">
+                      <button
+                        className="btn p-0"
+                        type="button"
+                        id="cardOpt3"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <BsThreeDotsVertical />
+                      </button>
+                      <div
+                        className="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="cardOpt3"
+                      >
+                        <Link to={'/post-ad'} className="dropdown-item">
+                          Post Ad
+                        </Link>
+                        <Link
+                          to={'/profile/manage-ads'}
+                          className="dropdown-item"
+                        >
+                          Manage Ad
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <span className="fw-semibold d-block mb-1">Ads</span>
+                  <h3 className="card-title mb-2">00</h3>
+                  {/* <small className="text-success fw-semibold">
+                    Ads that you have posted
+                  </small> */}
+                </div>
+              </div>
             </div>
-            <div class="mb-3 col-md-6">
-              <label for="state" class="form-label">
-                State
-              </label>
-              <input
-                class="form-control"
-                type="text"
-                id="state"
-                name="state"
-                placeholder="Dhaka"
-              />
-            </div>
-            <div class="mb-3 col-md-6">
-              <label for="zipCode" class="form-label">
-                Zip Code
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                id="zipCode"
-                name="zipCode"
-                placeholder="1720"
-                maxlength="6"
-              />
-            </div>
-            <div class="mb-3 col-md-6">
-              <label class="form-label" for="country">
-                Country
-              </label>
-              <select id="country" class="select2 form-select">
-                <option value="">Select</option>
-                <option value="Australia">Australia</option>
-                <option value="Bangladesh">Bangladesh</option>
-                <option value="Belarus">Belarus</option>
-                <option value="Brazil">Brazil</option>
-                <option value="Canada">Canada</option>
-                <option value="China">China</option>
-                <option value="France">France</option>
-                <option value="Germany">Germany</option>
-                <option value="India">India</option>
-                <option value="Indonesia">Indonesia</option>
-                <option value="Israel">Israel</option>
-                <option value="Italy">Italy</option>
-                <option value="Japan">Japan</option>
-                <option value="Korea">Korea, Republic of</option>
-                <option value="Mexico">Mexico</option>
-                <option value="Philippines">Philippines</option>
-                <option value="Russia">Russian Federation</option>
-                <option value="South Africa">South Africa</option>
-                <option value="Thailand">Thailand</option>
-                <option value="Turkey">Turkey</option>
-                <option value="Ukraine">Ukraine</option>
-                <option value="United Arab Emirates">
-                  United Arab Emirates
-                </option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="United States">United States</option>
-              </select>
-            </div>
-            <div class="mb-3 col-md-6">
-              <label for="language" class="form-label">
-                Language
-              </label>
-              <select id="language" class="select2 form-select">
-                <option value="">Select Language</option>
-                <option value="en">English</option>
-                <option value="fr">French</option>
-                <option value="de">German</option>
-                <option value="pt">Portuguese</option>
-              </select>
-            </div>
-            <div class="mb-3 col-md-6">
-              <label for="currency" class="form-label">
-                Currency
-              </label>
-              <select id="currency" class="select2 form-select">
-                <option value="">Select Currency</option>
-                <option value="usd">USD</option>
-                <option value="euro">Euro</option>
-                <option value="pound">Pound</option>
-                <option value="bitcoin">Bitcoin</option>
-              </select>
+            <div className="col-lg-6 col-md-6 col-6 mb-4">
+              <div className="card">
+                <div className="card-body">
+                  <div className="card-title d-flex align-items-start justify-content-between">
+                    <div className="flex-shrink-0">
+                      <BsCreditCard className="fs-3" />
+                    </div>
+                    <div className="dropdown">
+                      <button
+                        className="btn p-0"
+                        type="button"
+                        id="cardOpt6"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <BsThreeDotsVertical />
+                      </button>
+                      <div
+                        className="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="cardOpt6"
+                      >
+                        <Link
+                          to={'/profile/buy-credits'}
+                          className="dropdown-item"
+                        >
+                          Buy cedits
+                        </Link>
+                        <Link to={'/post-ad'} className="dropdown-item">
+                          Post Ad
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <span>Credits</span>
+                  <h3 className="card-title text-nowrap mb-2">$4,679</h3>
+                  {/* <small className="text-success fw-semibold">
+                    <i className="bx bx-up-arrow-alt"></i> +28.42%
+                  </small> */}
+                </div>
+              </div>
             </div>
           </div>
-          <div class="mt-2">
-            <button type="submit" class="btn btn-primary me-2">
-              Save changes
-            </button>
-            <button type="reset" class="btn btn-outline-secondary">
-              Cancel
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   );

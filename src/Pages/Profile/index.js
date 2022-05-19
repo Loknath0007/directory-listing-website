@@ -47,6 +47,7 @@ const Profile = () => {
               <div className="navbar-nav mt-3 mt-lg-0">
                 {userNavs.map((nav, index) => (
                   <NavLink
+                    key={index}
                     to={nav.link}
                     className={({ isActive }) =>
                       isActive ? 'nav-link active ms-3' : 'nav-link ms-3'
