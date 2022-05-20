@@ -1,54 +1,145 @@
 [
-    {   "id": 1,
-        "state":"Dhaka",
-        "cities": [ { "Name": "Gazipur", "_id": 645645454456 },
-            { "Name": "Narayangonj", "_id": 2165454344645313 },
-            { "Name": "Narshingdi", "_id": 216545346454313 }
-            
-        ]
-     
-    },
-    {   "id": 2,
-        "state":"Rajshahi",
-        "cities": [ { "Name": "Naogaon", "_id": 645645454456 },
-            { "Name": "Bogra", "_id": 2165454344645313 },
-            { "Name": "Natore", "_id": 216545346454313 }
-            
-        ]
-     
-    },{   "id": 3,
-        "state":"Khulna",
-        "cities": [ { "Name": "Jhinaidah", "_id": 645645454456 },
-            { "Name": "Jessore", "_id": 2165454344645313 },
-            { "Name": "Satkhira", "_id": 216545346454313 }
-            
-        ]
-     
-    },{   "id": 4,
-        "state":"Sylhet",
-        "cities": [ { "Name": "Moulvibazar", "_id": 645645454456 },
-            { "Name": "Habigonj", "_id": 2165454344645313 },
-            { "Name": "Sunamgonj", "_id": 216545346454313 }
-            
-        ]
-     
-    },{   "id": 5,
-        "state":"Chottrogram",
-        "cities": [ { "Name": "Cox's Bazar", "_id": 645645454456 },
-            { "Name": "Bandorban", "_id": 2165454344645313 },
-            { "Name": "Khagrachori", "_id": 216545346454313 }
-            
-        ]
-     
-    },{   "id": 6,
-        "state":"Rangpur",
-        "cities": [ { "Name": "Dinajpur", "_id": 645645454456 },
-            { "Name": "Nilphamari", "_id": 2165454344645313 },
-            { "Name": "Kurigram", "_id": 216545346454313 }
-            
-        ]
-     
-    }
+  {
+    "country": "Bangladesh",
+    "states": [
+      {
+        "state": "Dhaka",
+        "cities": ["Gazipur", "Narayangonj", "Narshingdi"]
+      },
+      {
+        "state": "Rajshahi",
+        "cities": ["Naogaon", "Bogra", "Natore"]
+      },
+      {
+        "state": "Khulna",
+        "cities": ["Jhinaidah", "Jessore", "Satkhira"]
+      },
+      {
+        "state": "Sylhet",
+        "cities": ["Moulvibazar", "Habigonj", "Sunamgonj"]
+      },
+      {
+        "state": "Chottrogram",
+        "cities": ["Cox's Bazar", "Bandorban", "Khagrachori"]
+      }
+    ]
+  },
+  {
+    "country": "India",
+    "states": [
+      {
+        "state": "Andhra Pradesh",
+        "cities": ["Vizag", "Nellore", "Guntur"]
+      },
+      {
+        "state": "Arunachal Pradesh",
+        "cities": ["Itanagar", "Tawang", "Bomdila"]
+      },
+      {
+        "state": "Assam",
+        "cities": ["Guwahati", "Silchar", "Dibrugarh"]
+      },
+      {
+        "state": "Bihar",
+        "cities": ["Patna", "Gaya", "Bhagalpur"]
+      },
+      {
+        "state": "Chhattisgarh",
+        "cities": ["Raipur", "Bilaspur", "Korba"]
+      },
+      {
+        "state": "Goa",
+        "cities": ["Panaji", "Mapusa", "Margao"]
+      },
+      {
+        "state": "Gujarat",
+        "cities": ["Surat", "Vadodara", "Rajkot"]
+      },
+      {
+        "state": "Haryana",
+        "cities": ["Chandigarh", "Faridabad", "Gurgaon"]
+      },
+      {
+        "state": "Himachal Pradesh",
+        "cities": ["Shimla", "Kullu", "Mandi"]
+      },
+      {
+        "state": "Jammu and Kashmir",
+        "cities": ["Jammu", "Srinagar", "Anantnag"]
+      },
+      {
+        "state": "Jharkhand",
+        "cities": ["Ranchi", "Bokaro", "Dhanbad"]
+      },
+      {
+        "state": "Karnataka",
+        "cities": ["Bangalore", "Mysore", "Mangalore"]
+      },
+      {
+        "state": "Kerala",
+        "cities": ["Thiruvananthapuram", "Kochi", "Kozhikode"]
+      }
+    ]
+  },
+  {
+    "country": "Japan",
+    "states": [
+      {
+        "state": "Hokkaido",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Aomori",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Akita",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Iwate",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Miyagi",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Yamagata",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Fukushima",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Ibaraki",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Tochigi",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Gunma",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Saitama",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Chiba",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Tokyo",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Kanagawa",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      }
+    ]
+  }
 ]
-
-

@@ -8,7 +8,6 @@ import PostAds from "./Pages/Dashboard/PostAds/PostAds";
 import SearchAds from "./Pages/Dashboard/SearchAds/SearchAds";
 import Categories from "./Pages/Dashboard/Categories/Categories";
 import ManageLocations from "./Pages/Dashboard/ManageLocations/ManageLocations";
-import Login from "./Pages/Login/Login";
 import Registration from "./Pages/Registration/Registration";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import ContactUs from "./Pages/ContactUs/ContactUs";
@@ -26,6 +25,11 @@ import Packages from "./Pages/Dashboard/Packages/Packages";
 import Payment from "./Pages/Dashboard/Payment/Payment";
 import Users from "./Pages/Dashboard/Users/Users";
 import Settings from "./Pages/Dashboard/Settings/Settings";
+import Profile from './Pages/Profile';
+import ProfileHome from './Pages/Profile/ProfileHome';
+import BuyCredits from './Pages/Profile/BuyCredits';
+import VerifyBadge from './Pages/Profile/VerifyBadge';
+import ManageAds from './Pages/Profile/ManageAds';
 
 function App() {
   return (
@@ -43,6 +47,7 @@ function App() {
         <Route path="manage-locations" element={<ManageLocations />} />
         <Route path="payment" element={<Payment />} />
         <Route path="packages" element={<Packages />} />
+        <Route path="footers" element={<Footers />}></Route>
         <Route path="packages/:packTitle" element={<Packages />} />
         <Route path="settings" element={<Settings />} />
         <Route path="footers" element={<Footers />}>
@@ -61,6 +66,13 @@ function App() {
       <Route path="about" element={<AboutUs />} />
       <Route path="contact" element={<ContactUs />} />
       <Route path="*" element={<NotFound />} />
+
+      <Route path="profile" element={<Profile />}>
+        <Route path="" element={<ProfileHome />} />
+        <Route path="buy-credits" element={<BuyCredits />} />
+        <Route path="get-verified-badge" element={<VerifyBadge />} />
+        <Route path="manage-ads" element={<ManageAds />} />
+      </Route>
     </Routes>
   );
 }

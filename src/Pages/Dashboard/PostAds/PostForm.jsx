@@ -6,123 +6,124 @@ import "./PostForm.css";
 import AddImages from "./AddImages";
 import ContactDetails from "./ContactDetails";
 import BrandModel from "./BrandModel";
+import LocationForm from "./LocationForm";
 
 const PostForm = () => {
+  const [condition, setCondition] = useState('');
   const [categories, setCategories] = useState([
     {
       _id: 634163136854,
-      categoryName: "Phones",
+      categoryName: 'Phones',
       subCategories: [
-        { Name: "Home Appliances", _id: 64564464556 },
-        { Name: "Living Room Furniture", _id: 216344444645313 },
-        { Name: "Sim card", _id: 21634644445313 },
-        { Name: "Bedroom Furniture", _id: 21634554645313 },
+        { Name: 'Home Appliances', _id: 64564464556 },
+        { Name: 'Living Room Furniture', _id: 216344444645313 },
+        { Name: 'Sim card', _id: 21634644445313 },
+        { Name: 'Bedroom Furniture', _id: 21634554645313 },
       ],
     },
     {
       _id: 634163135466854,
-      categoryName: "Electronics",
+      categoryName: 'Electronics',
       subCategories: [
-        { Name: "Mobile Phone", _id: 645645454456 },
-        { Name: "Home Appliances", _id: 2165454344645313 },
-        { Name: "Bedroom Furniture", _id: 216545346454313 },
+        { Name: 'Mobile Phone', _id: 645645454456 },
+        { Name: 'Home Appliances', _id: 2165454344645313 },
+        { Name: 'Bedroom Furniture', _id: 216545346454313 },
       ],
     },
     {
       _id: 6341645663136854,
-      categoryName: "Home and Living",
+      categoryName: 'Home and Living',
       subCategories: [
-        { Name: "Home Appliances", _id: 64564464556 },
-        { Name: "Living Room Furniture", _id: 216344444645313 },
-        { Name: "Sim card", _id: 21634644445313 },
-        { Name: "Bedroom Furniture", _id: 21634554645313 },
+        { Name: 'Home Appliances', _id: 64564464556 },
+        { Name: 'Living Room Furniture', _id: 216344444645313 },
+        { Name: 'Sim card', _id: 21634644445313 },
+        { Name: 'Bedroom Furniture', _id: 21634554645313 },
       ],
     },
     {
       _id: 63416313681154,
-      categoryName: "Property",
+      categoryName: 'Property',
       subCategories: [
-        { Name: "Mobile Phone", _id: 645645454456 },
-        { Name: "Home Appliances", _id: 2165454344645313 },
-        { Name: "Bedroom Furniture", _id: 216545346454313 },
+        { Name: 'Mobile Phone', _id: 645645454456 },
+        { Name: 'Home Appliances', _id: 2165454344645313 },
+        { Name: 'Bedroom Furniture', _id: 216545346454313 },
       ],
     },
     {
       _id: 63416341114136854,
-      categoryName: "Fashion and Beauty",
+      categoryName: 'Fashion and Beauty',
       subCategories: [
-        { Name: "Home Appliances", _id: 645665445456 },
-        { Name: "Living Room Furniture", _id: 216344645645313 },
-        { Name: "Sim card", _id: 21634645313 },
-        { Name: "Bedroom Furniture", _id: 2163354344645313 },
+        { Name: 'Home Appliances', _id: 645665445456 },
+        { Name: 'Living Room Furniture', _id: 216344645645313 },
+        { Name: 'Sim card', _id: 21634645313 },
+        { Name: 'Bedroom Furniture', _id: 2163354344645313 },
       ],
     },
     {
       _id: 634163136854,
-      categoryName: "Phones",
+      categoryName: 'Phones',
       subCategories: [
-        { Name: "Home Appliances", _id: 64564464556 },
-        { Name: "Living Room Furniture", _id: 216344444645313 },
-        { Name: "Sim card", _id: 21634644445313 },
-        { Name: "Bedroom Furniture", _id: 21634554645313 },
+        { Name: 'Home Appliances', _id: 64564464556 },
+        { Name: 'Living Room Furniture', _id: 216344444645313 },
+        { Name: 'Sim card', _id: 21634644445313 },
+        { Name: 'Bedroom Furniture', _id: 21634554645313 },
       ],
     },
     {
       _id: 634163135466854,
-      categoryName: "Electronics",
+      categoryName: 'Electronics',
       subCategories: [
-        { Name: "Mobile Phone", _id: 645645454456 },
-        { Name: "Home Appliances", _id: 2165454344645313 },
-        { Name: "Bedroom Furniture", _id: 216545346454313 },
+        { Name: 'Mobile Phone', _id: 645645454456 },
+        { Name: 'Home Appliances', _id: 2165454344645313 },
+        { Name: 'Bedroom Furniture', _id: 216545346454313 },
       ],
     },
     {
       _id: 6341645663136854,
-      categoryName: "Home and Living",
+      categoryName: 'Home and Living',
       subCategories: [
-        { Name: "Home Appliances", _id: 64564464556 },
-        { Name: "Living Room Furniture", _id: 216344444645313 },
-        { Name: "Sim card", _id: 21634644445313 },
-        { Name: "Bedroom Furniture", _id: 21634554645313 },
+        { Name: 'Home Appliances', _id: 64564464556 },
+        { Name: 'Living Room Furniture', _id: 216344444645313 },
+        { Name: 'Sim card', _id: 21634644445313 },
+        { Name: 'Bedroom Furniture', _id: 21634554645313 },
       ],
     },
     {
       _id: 63416313681154,
-      categoryName: "Property",
+      categoryName: 'Property',
       subCategories: [
-        { Name: "Mobile Phone", _id: 645645454456 },
-        { Name: "Home Appliances", _id: 2165454344645313 },
-        { Name: "Bedroom Furniture", _id: 216545346454313 },
+        { Name: 'Mobile Phone', _id: 645645454456 },
+        { Name: 'Home Appliances', _id: 2165454344645313 },
+        { Name: 'Bedroom Furniture', _id: 216545346454313 },
       ],
     },
     {
       _id: 63416341114136854,
-      categoryName: "Fashion and Beauty",
+      categoryName: 'Fashion and Beauty',
       subCategories: [
-        { Name: "Home Appliances", _id: 645665445456 },
-        { Name: "Living Room Furniture", _id: 216344645645313 },
-        { Name: "Sim card", _id: 21634645313 },
-        { Name: "Bedroom Furniture", _id: 2163354344645313 },
+        { Name: 'Home Appliances', _id: 645665445456 },
+        { Name: 'Living Room Furniture', _id: 216344645645313 },
+        { Name: 'Sim card', _id: 21634645313 },
+        { Name: 'Bedroom Furniture', _id: 2163354344645313 },
       ],
     },
   ]);
-  const [categoryText, setCategoryText] = useState("");
+  const [categoryText, setCategoryText] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
   const [brandText, setBrandText] = useState("");
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [selectedModel, setSelectedModel] = useState([]);
   const [locations, setLocations] = useState([]);
-  const [stateText, setStateText] = useState("");
+  const [stateText, setStateText] = useState('');
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCities, setSelectedCities] = useState([]);
   const [multiState, setMultiState] = useState([]);
-  const [condition, setCondition] = useState("");
   const [priceType, setPriceType] = useState("");
 
   // console.log(selectedState?.state);
   useEffect(() => {
-    fetch("/locations.json")
+    fetch('/locations.json')
       .then((res) => res.json())
       .then((data) => setLocations(data));
   }, []);
@@ -177,7 +178,7 @@ const PostForm = () => {
   };
 
   const handleCategoryClear = () => {
-    setCategoryText("");
+    setCategoryText('');
     setSelectedCategory(null);
     setSelectedSubCategories([]);
   };
@@ -186,7 +187,7 @@ const PostForm = () => {
   };
 
   const handleLocationClear = () => {
-    setStateText("");
+    setStateText('');
     setSelectedState(null);
     setSelectedCities([]);
   };
@@ -247,34 +248,6 @@ const PostForm = () => {
     setSelectedCities(newCities);
   };
 
-  const [usedCheck, setOneCheck] = useState(false);
-  const [newCheck, setTwoCheck] = useState(false);
-  const handleCondition = (e) => {
-    let condition = e.target.value;
-    console.log(condition);
-  };
-
-  function used() {
-    if (newCheck) {
-      setTwoCheck(false);
-      setOneCheck(true);
-    } else if (!usedCheck) {
-      setOneCheck(true);
-    } else if (usedCheck) {
-      setOneCheck(false);
-    }
-  }
-  function newP() {
-    if (usedCheck) {
-      setTwoCheck(true);
-      setOneCheck(false);
-    } else if (!newCheck) {
-      setTwoCheck(true);
-    } else if (newCheck) {
-      setTwoCheck(false);
-    }
-  }
-
   const handlePriceTypeChange = (e) => {
     setPriceType(e.target.value);
 
@@ -282,7 +255,6 @@ const PostForm = () => {
       setPriceType("");
     }
   };
-  console.log(priceType);
 
   const handleConditionChange = (e) => {
     setCondition(e.target.value);
@@ -291,7 +263,6 @@ const PostForm = () => {
       setCondition("");
     }
   };
-  console.log(condition);
 
   return (
     <div className="w-50 mx-auto">
@@ -487,91 +458,7 @@ const PostForm = () => {
 
         {/* select location */}
 
-        <Form.Group className="mb-3" controlId="location">
-          <Form.Label htmlFor="location">Select Location</Form.Label>
-          <div className="position-relative">
-            <input
-              value={stateText}
-              type="text"
-              className="form-control"
-              list="location"
-              placeholder="Select State"
-              name="location"
-              onChange={(e) => handleStateChange(e.target.value)}
-            />
-            <FontAwesomeIcon
-              onClick={() => handleLocationClear()}
-              className={`ms-1 ${
-                !stateText && "d-none"
-              } select-category-Xmark cursor-pointer`}
-              size="lg"
-              icon={faXmark}
-            />
-          </div>
-          <div>
-            {multiState?.map((state) => (
-              <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-                {state}{" "}
-                <FontAwesomeIcon
-                  onClick={() => handleCityClose(state)}
-                  className="ms-1 cursor-pointer"
-                  size="lg"
-                  icon={faXmark}
-                />
-              </div>
-            ))}
-          </div>
-
-          <datalist id="location" className="w-100">
-            {locations.map((c) => (
-              <option value={c.state}></option>
-            ))}
-          </datalist>
-
-          {/* show cities */}
-          {multiState.length <= 1 && (
-            <Form.Label htmlFor="city">
-              {selectedState && (
-                <div className="fw-bold my-2">
-                  Select City for {selectedState?.state}
-                </div>
-              )}
-
-              {selectedState && (
-                <div className="ms-5 mb-3">
-                  <Form.Select
-                    onChange={(e) => handleCityChange(e.target.value)}
-                    name="city"
-                    id="city"
-                    form="city"
-                  >
-                    <option selected disabled>
-                      --Select City--
-                    </option>
-
-                    {selectedState?.cities.map((city) => (
-                      <option value={city.Name}>{city.Name}</option>
-                    ))}
-                  </Form.Select>
-                </div>
-              )}
-
-              <div>
-                {selectedCities.map((city) => (
-                  <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-                    {city}{" "}
-                    <FontAwesomeIcon
-                      onClick={() => handleCityClose(city)}
-                      className="ms-1 cursor-pointer"
-                      size="lg"
-                      icon={faXmark}
-                    />
-                  </div>
-                ))}
-              </div>
-            </Form.Label>
-          )}
-        </Form.Group>
+        <LocationForm />
 
         {/* addImage */}
         <AddImages />

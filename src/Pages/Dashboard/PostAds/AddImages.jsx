@@ -1,20 +1,18 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage } from "@fortawesome/free-solid-svg-icons";
-import "./AddImages.css";
-import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
-import { IoIosCloseCircle } from "react-icons/io";
+import React, { useState } from 'react';
+import { BsImages } from 'react-icons/bs';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
+import './AddImages.css';
+import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
+import { IoIosCloseCircle } from 'react-icons/io';
 
 const AddImages = () => {
   const [images, setImages] = useState([]);
 
   // upload image functionalities
   const handleImageChange = (files) => {
-    if (images.length >= 5) {
-      alert("You can only upload a maximum of 5 files");
-      return false;
-    } else {
-      setImages([...images, ...files]);
+    setImages([...images, ...files].slice(0, 5));
+    if (files.length > 5 || images.length > 5) {
+      alert('You can only upload 5 images');
     }
   };
 
@@ -36,28 +34,29 @@ const AddImages = () => {
     const restImages = newImages.filter((image) => image !== img);
     setImages(restImages);
   };
+
+  // const imagesArr = images.length > 5 ? images.slice(0, 5) : images;
   return (
     <div className="border-top py-3 border-bottom">
-      <div className="mb-2 fw-bold">Select Your Ads Photos (up to 5)</div>
+      <div className="mb-2">Select Your Ads Photos (up to 5)</div>
       <label
+        role="button"
         htmlFor="ad-images"
-        className="p-3 fw-bold border cursor-pointer shadow-sm mx-auto d-block text-center rounded-3"
+        className="p-3 border cursor-pointer shadow-sm mx-auto d-block text-center rounded-3"
       >
-        <FontAwesomeIcon
-          className={`ms-1 cursor-pointer`}
-          size="3x"
-          icon={faImage}
-        />
+        <BsImages className="ms-1 fs-1 cursor-pointer" />
         <div>Add Photos</div>
       </label>
       <input
-        onChange={(e) => handleImageChange(e.target.files)}
+        onChange={(e) => {
+          handleImageChange(e.target.files);
+        }}
         className="d-none"
         id="ad-images"
         type="file"
         accept="image/*"
-        multiple={false}
-        maxLength={5}
+        multiple={true}
+        max="5"
       />
 
       <DragDropContext onDragEnd={onEnd}>
@@ -66,8 +65,8 @@ const AddImages = () => {
             <div ref={provided.innerRef} className="mt-2 w-100 d-inline-block">
               {images.map((image, index) => (
                 <Draggable
-                  draggableId={index + ""}
-                  key={index + ""}
+                  draggableId={index + ''}
+                  key={index + ''}
                   index={index}
                 >
                   {(provided, snapshot) => (
@@ -82,10 +81,10 @@ const AddImages = () => {
                         <img
                           className="rounded-3 my-3 shadow "
                           style={{
-                            width: "92px",
-                            height: "80px",
-                            objectFit: "cover",
-                            cursor: "default",
+                            width: '92px',
+                            height: '80px',
+                            objectFit: 'cover',
+                            cursor: 'default',
                           }}
                           src={URL.createObjectURL(image)}
                           alt=""
@@ -108,7 +107,7 @@ const AddImages = () => {
                   You can reorder the images by dragging them.
                 </p>
               ) : (
-                ""
+                ''
               )}
             </div>
           )}
