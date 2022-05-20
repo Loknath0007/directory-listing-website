@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Form, Button, Row } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import './PostForm.css';
-import AddImages from './AddImages';
-import ContactDetails from './ContactDetails';
-import LocationForm from './LocationForm';
+import React, { useEffect, useState } from "react";
+import { Form, Button, Row, Col, FormControl } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import "./PostForm.css";
+import AddImages from "./AddImages";
+import ContactDetails from "./ContactDetails";
+import BrandModel from "./BrandModel";
+import LocationForm from "./LocationForm";
 
 const PostForm = () => {
   const [condition, setCondition] = useState('');
@@ -110,13 +111,17 @@ const PostForm = () => {
   const [categoryText, setCategoryText] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
+  const [brandText, setBrandText] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState(null);
+  const [selectedModel, setSelectedModel] = useState([]);
   const [locations, setLocations] = useState([]);
   const [stateText, setStateText] = useState('');
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCities, setSelectedCities] = useState([]);
+  const [multiState, setMultiState] = useState([]);
+  const [priceType, setPriceType] = useState("");
 
-  const [userLocations, setUserLocations] = useState([]);
-
+  // console.log(selectedState?.state);
   useEffect(() => {
     fetch('/locations.json')
       .then((res) => res.json())
@@ -125,6 +130,7 @@ const PostForm = () => {
 
   const handleCategoryChange = (value) => {
     setCategoryText(value);
+
     const selectCategory = categories.find(
       (c) => c.categoryName === value.trim()
     );
@@ -136,8 +142,32 @@ const PostForm = () => {
       setSelectedSubCategories([]);
     }
   };
+  const handleBrandChange = (value) => {
+    setBrandText(value);
+    console.log(value);
+
+    const selectBrand = categories.find((c) => c.categoryName === value.trim());
+    if (selectBrand) {
+      setSelectedBrand(selectBrand);
+    } else {
+      setSelectedBrand(selectBrand);
+    }
+  };
+
+  console.log(multiState);
+
   const handleStateChange = (value) => {
     setStateText(value);
+    const existingMultiState = [...multiState];
+    const state = locations.find((c) => c.state === value.trim());
+    if (value === state.state) {
+      if (!existingMultiState.includes(value)) {
+        existingMultiState.push(state.state);
+        setMultiState(existingMultiState);
+      }
+    }
+    console.log(value, state);
+
     const selectState = locations.find((c) => c.state === value.trim());
     if (selectState) {
       setSelectedState(selectState);
@@ -151,6 +181,9 @@ const PostForm = () => {
     setCategoryText('');
     setSelectedCategory(null);
     setSelectedSubCategories([]);
+  };
+  const handleBrandClear = () => {
+    setBrandText("");
   };
 
   const handleLocationClear = () => {
@@ -214,17 +247,223 @@ const PostForm = () => {
     const newCities = existCities.filter((c) => c !== city);
     setSelectedCities(newCities);
   };
-  const handleConditionChange = (e) => {
-    setCondition(e.target.value);
-    if (condition === e.target.value) {
-      setCondition('');
+
+  const handlePriceTypeChange = (e) => {
+    setPriceType(e.target.value);
+
+    if (priceType === e.target.value) {
+      setPriceType("");
     }
   };
+
+  const handleConditionChange = (e) => {
+    setCondition(e.target.value);
+
+    if (condition === e.target.value) {
+      setCondition("");
+    }
+  };
+
   return (
     <div className="w-50 mx-auto">
       <Form>
-        {/* checkbox condition new/used */}
+        <Form.Group className="mb-3" controlId="title">
+          <Form.Label>Title</Form.Label>
+          <Form.Control type="text" placeholder="Title to be short!" required />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="description">
+          <Form.Label htmlFor="description">Descriptions</Form.Label>
+          <Form.Control
+            id="description"
+            as="textarea"
+            type="text"
+            rows="5"
+            placeholder="Share more details to make effective"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="price">
+          <Form.Label>Price (BDT)</Form.Label>
+          <Form.Control
+            id="price"
+            type="number"
+            placeholder="What would you pay? Give a price!"
+            required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Row md={2} className="">
+            <Form.Check
+              onChange={handlePriceTypeChange}
+              value="Negotiable"
+              checked={priceType === "Negotiable"}
+              label="Negotiable"
+              id="negotiable"
+              name="negotiable"
+            />
+            <Form.Check
+              onChange={handlePriceTypeChange}
+              value="Fixed"
+              checked={priceType === "Fixed"}
+              label="Fixed"
+              id="fixed"
+              name="fixed"
+            />
+          </Row>
+        </Form.Group>
+
+        <Form.Group className="my-4" controlId="condition">
+          <Form.Label>Condition</Form.Label>
+          <Row md={2} className="">
+            <Form.Check
+              onChange={handleConditionChange}
+              value="Used"
+              checked={condition === "Used"}
+              label="Used"
+              id="used"
+              name="used"
+            />
+            <Form.Check
+              onChange={handleConditionChange}
+              value="New"
+              checked={condition === "New"}
+              label="New"
+              id="new"
+              name="new"
+            />
+          </Row>
+        </Form.Group>
+        {/* select brand */}
+        <Form.Group className="mb-3" controlId="brand">
+          <Form.Label htmlFor="brand">Brand</Form.Label>
+          <div className="position-relative">
+            <input
+              value={brandText}
+              type="text"
+              name="brand"
+              className="form-control "
+              list="brand"
+              placeholder="Select Brand"
+              onChange={(e) => handleBrandChange(e.target.value)}
+              required
+            />
+            <FontAwesomeIcon
+              onClick={() => handleBrandClear()}
+              className={`ms-1 ${
+                !brandText && "d-none"
+              } select-category-Xmark cursor-pointer`}
+              size="lg"
+              icon={faXmark}
+            />
+          </div>
+
+          <datalist id="brand" className="w-100">
+            {categories.map((c) => (
+              <option value={c.categoryName}></option>
+            ))}
+          </datalist>
+        </Form.Group>
+        {/* brand model */}
+        <Form.Group className="mb-3" controlId="title">
+          <Form.Label>Model</Form.Label>
+          <Form.Control type="text" name="model" placeholder="Model" required />
+        </Form.Group>
+
+        {/* <Form.Group className="mb-3" controlId="category"> */}
+        <Form.Label htmlFor="category">Select Category</Form.Label>
+        <div className="position-relative">
+          <input
+            value={categoryText}
+            type="text"
+            name="category"
+            className="form-control "
+            list="category"
+            placeholder="Select Category"
+            onChange={(e) => handleCategoryChange(e.target.value)}
+          />
+          <FontAwesomeIcon
+            onClick={() => handleCategoryClear()}
+            className={`ms-1 ${
+              !categoryText && "d-none"
+            } select-category-Xmark cursor-pointer`}
+            size="lg"
+            icon={faXmark}
+          />
+        </div>
+
+        <datalist id="category" className="w-100">
+          {categories.map((c) => (
+            <option value={c.categoryName}></option>
+          ))}
+        </datalist>
+
+        {/* show sub categories */}
+        <Form.Label htmlFor="sub-category">
+          {selectedCategory && (
+            <div className="fw-bold my-2">
+              Select Sub Category for {selectedCategory?.categoryName}
+            </div>
+          )}
+          {/* <div className="ms-5 mb-3">
+            {selectedCategory?.subCategories.map((subCategory) => (
+              <Form.Check
+                onChange={() => handleCheckboxChange(subCategory)}
+                type="checkbox"
+                id={subCategory.Name}
+                label={subCategory.Name}
+              />
+            ))}
+          </div> */}
+
+          {selectedCategory && (
+            <div className="ms-5 mb-3">
+              <Form.Select
+                onChange={(e) => handleSubCategoryChange(e.target.value)}
+                name="sub-category"
+                id="sub-category"
+                form="sub-category"
+              >
+                <option selected disabled>
+                  --Select Sub Category--
+                </option>
+
+                {selectedCategory?.subCategories.map((subCategory) => (
+                  // <Form.Check
+                  //   onChange={() => handleCheckboxChange(subCategory)}
+                  //   type="checkbox"
+                  //   id={subCategory.Name}
+                  //   label={subCategory.Name}
+                  // />
+                  <option value={subCategory.Name}>{subCategory.Name}</option>
+                ))}
+              </Form.Select>
+            </div>
+          )}
+
+          <div>
+            {selectedSubCategories.map((slc) => (
+              <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
+                {slc}{" "}
+                <FontAwesomeIcon
+                  onClick={() => handleSubCategoryClose(slc)}
+                  className="ms-1 cursor-pointer"
+                  size="lg"
+                  icon={faXmark}
+                />
+              </div>
+            ))}
+          </div>
+        </Form.Label>
+
+        {/* select location */}
+
         <LocationForm />
+
+        {/* addImage */}
+        <AddImages />
+        {/* contact details */}
+        <ContactDetails />
         <Button variant="primary" type="submit">
           Submit
         </Button>

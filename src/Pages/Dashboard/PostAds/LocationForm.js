@@ -20,7 +20,7 @@ const LocationForm = () => {
   return (
     <div>
       {locations.map((location, index) => (
-        <Form.Group key={index} className="mb-4">
+        <Form.Group key={index} className="mb-2">
           <div className="d-flex justify-content-between align-items-center">
             <Form.Label>
               {index === 0 ? 'Select Location' : `Location ${index + 1}`}
@@ -40,7 +40,7 @@ const LocationForm = () => {
           <Row>
             <Col md="12">
               <Form.Select
-                className="mb-2"
+                className="mb-3"
                 type="text"
                 list="countries"
                 placeholder="Country"
@@ -62,7 +62,7 @@ const LocationForm = () => {
             </Col>
             <Col md="6">
               <Form.Select
-                className="mb-2"
+                className="mb-3"
                 type="text"
                 placeholder="State"
                 disabled={location.country === ''}
@@ -87,7 +87,7 @@ const LocationForm = () => {
             </Col>
             <Col md="6">
               <Form.Select
-                className="mb-2"
+                className="mb-3"
                 type="text"
                 placeholder="City"
                 disabled={location.state === ''}
@@ -120,7 +120,7 @@ const LocationForm = () => {
           setLocations([...locations, { country: '', city: '', state: '' }])
         }
         variant="link"
-        className="mr-2 ms-auto d-flex"
+        className="mr-2 mb-3 ms-auto d-flex"
       >
         + Add More Location
       </Button>

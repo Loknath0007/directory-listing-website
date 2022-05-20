@@ -4,7 +4,7 @@ import { Form, FormControl, FormLabel, InputGroup } from "react-bootstrap";
 const ContactDetails = () => {
   return (
     <div className="my-3">
-      <div className="fw-bold">Contact details</div>
+      {/* <div className="fw-bold">Contact details</div> */}
 
       <Form.Label htmlFor="name">Name</Form.Label>
       <InputGroup className="mb-3">

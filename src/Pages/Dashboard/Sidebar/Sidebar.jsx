@@ -18,9 +18,10 @@ import {
   faSearch,
   faDollar,
   faHeader,
-  faPager,
+  faPager,faUsers
 } from "@fortawesome/free-solid-svg-icons";
 import { GoLocation } from "react-icons/go";
+import { MdSettings } from "react-icons/md";
 import { Link, Outlet } from "react-router-dom";
 import { GrPlan } from "react-icons/gr";
 // const element = <FontAwesomeIcon icon={faCoffee} />;
@@ -65,6 +66,9 @@ const Sidebar = () => {
               <MenuItem icon={<CgProfile/>}>
                 <Link to="/dashboard/userProfile"> User Profile</Link>
               </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faUsers} />}>
+                <Link to="/dashboard/users"> Users</Link>
+              </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faPager} />}>
                 <Link to="/dashboard/pages">
                   <SubMenu title=" Pages">
@@ -86,6 +90,9 @@ const Sidebar = () => {
               </MenuItem>
               <MenuItem icon={<GrPlan style={{backgroundColor: "lightgray"}}/>}>
               <Link to="/dashboard/packages"> Packages</Link> 
+              </MenuItem>
+              <MenuItem icon={<MdSettings style={{backgroundColor: "lightgray"}}/>}>
+              <Link to="/dashboard/settings"> Settings</Link> 
               </MenuItem>
             </Menu>
           </SidebarContent>
