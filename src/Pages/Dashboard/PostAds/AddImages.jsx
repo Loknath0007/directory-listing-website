@@ -11,7 +11,7 @@ const AddImages = () => {
   // upload image functionalities
   const handleImageChange = (files) => {
     setImages([...images, ...files].slice(0, 5));
-    if (files.length > 5 || images.length > 5) {
+    if (files.length > 5 || images.length >= 5) {
       alert('You can only upload 5 images');
     }
   };
