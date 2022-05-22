@@ -10,7 +10,7 @@ const Registration = () => {
       <Header />
 
       <Form className="registration_form">
-        <h2 className="text-muted">Please Register</h2>
+        <h3 className="text-muted">Please Register</h3>
 
         <FormGroup className="my-3">
           <FormControl
@@ -48,7 +48,15 @@ const Registration = () => {
             required
           ></FormControl>
         </FormGroup>
-        <Button type="submit" className="registration_btn">
+        <FormGroup className="my-3">
+          <FormControl
+            name="mobile"
+            id="mobile"
+            placeholder="Mobile No"
+            type="text"
+          ></FormControl>
+        </FormGroup>
+        <Button type="submit" className="registration_btn mb-3">
           Register
         </Button>
         <NavLink as={Link} to="/login">
