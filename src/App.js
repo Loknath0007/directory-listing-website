@@ -25,11 +25,12 @@ import Packages from "./Pages/Dashboard/Packages/Packages";
 import Payment from "./Pages/Dashboard/Payment/Payment";
 import Users from "./Pages/Dashboard/Users/Users";
 import Settings from "./Pages/Dashboard/Settings/Settings";
-import Profile from './Pages/Profile';
-import ProfileHome from './Pages/Profile/ProfileHome';
-import BuyCredits from './Pages/Profile/BuyCredits';
-import VerifyBadge from './Pages/Profile/VerifyBadge';
-import ManageAds from './Pages/Profile/ManageAds';
+import Profile from "./Pages/Profile";
+import ProfileHome from "./Pages/Profile/ProfileHome";
+import BuyCredits from "./Pages/Profile/BuyCredits";
+import VerifyBadge from "./Pages/Profile/VerifyBadge";
+import ManageAds from "./Pages/Profile/ManageAds";
+import Login from "./Pages/Login/Login";
 
 function App() {
   return (
@@ -50,9 +51,7 @@ function App() {
         <Route path="footers" element={<Footers />}></Route>
         <Route path="packages/:packTitle" element={<Packages />} />
         <Route path="settings" element={<Settings />} />
-        <Route path="footers" element={<Footers />}>
-          
-        </Route>
+        <Route path="footers" element={<Footers />}></Route>
         <Route path="detail" element={<FooterDetails />}></Route>
         <Route path={`columns/:col`} element={<ColOne />} />
         <Route path="subFooter" element={<SubFooter />} />
@@ -65,6 +64,8 @@ function App() {
       <Route path="ads" element={<Ads />} />
       <Route path="about" element={<AboutUs />} />
       <Route path="contact" element={<ContactUs />} />
+      <Route path="login" element={<Login />} />
+      <Route path="registration" element={<Registration />} />
       <Route path="*" element={<NotFound />} />
 
       <Route path="profile" element={<Profile />}>

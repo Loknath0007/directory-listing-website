@@ -9,7 +9,16 @@ import {
 import initializeAuthentication from "../../firebase/firebase.initialize";
 import Header from "../common/Header";
 import "./Login.css";
-import { Button } from "react-bootstrap";
+import {
+  Button,
+  Form,
+  FormControl,
+  FormGroup,
+  FormLabel,
+  InputGroup,
+  NavLink,
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 initializeAuthentication();
 const provider = new GoogleAuthProvider();
@@ -75,13 +84,39 @@ const Login = () => {
     <>
       <Header />
 
-      <div className="login_form">
+      <Form className="login_form">
         {!user.name ? (
           <div>
-            <h3>Please Login</h3>
-            <Button variant="warning" onClick={handleGoogleLogin}>
-              Login with google
+            <h3 className="text-muted">Please Login</h3>
+            <FormGroup className="my-3">
+              <FormControl
+                placeholder="Enter Your Email"
+                id="email"
+                name="email"
+                type="email"
+                required
+              ></FormControl>
+            </FormGroup>
+            <FormGroup className="my-3">
+              <FormControl
+                name="password"
+                type="password"
+                id="password"
+                placeholder="Enter Your Password"
+                required
+              ></FormControl>
+            </FormGroup>
+
+            <Button type="submit" className="mb-3">
+              Login
             </Button>
+            <NavLink as={Link} to="/registration">
+              {"New use? Please register "}
+            </NavLink>
+
+            {/* <Button variant="warning" onClick={handleGoogleLogin}>
+              Login with google
+            </Button> */}
           </div>
         ) : (
           <Button onClick={logOut}>Log out</Button>
@@ -92,7 +127,7 @@ const Login = () => {
             <h5>User Email: {user.email}</h5>
           </div>
         )}
-      </div>
+      </Form>
     </>
   );
 };
