@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
 const UpdateLogo = () => {
   const [images, setImages] = useState([]);
@@ -14,7 +14,7 @@ const UpdateLogo = () => {
     <div className="text-center update_logo bg-dark text-white p-4">
       <h4 className="pb-3">Update Logo</h4>
 
-      <div class="input-group">
+      <div className="input-group">
         <input
           onChange={(e) => handleImageChange(e.target.files)}
           className="form-control"
@@ -27,7 +27,7 @@ const UpdateLogo = () => {
         <Button
           onClick={updateLogo}
           variant="warning"
-          class="btn btn-outline-secondary"
+          className="btn btn-outline-secondary"
           type="submit"
           id="inputGroupFileAddon04"
         >
@@ -42,7 +42,7 @@ const UpdateLogo = () => {
             <div className="position-relative d-inline-block me-3">
               <img
                 className="rounded-3 single-img  mb-2 shadow"
-                style={{ width: "100px", height: "80px", objectFit: "cover" }}
+                style={{ width: '100px', height: '80px', objectFit: 'cover' }}
                 src={URL.createObjectURL(image)}
                 alt=""
               />

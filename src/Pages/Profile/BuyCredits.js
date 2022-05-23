@@ -82,10 +82,10 @@ const BuyCredits = () => {
       </div>
 
       {/* <div className="ms-5 my-4 d-flex flex-column align-items-start">
-        <div class="dropdown d-flex align-items-center gap-2">
+        <div className="dropdown d-flex align-items-center gap-2">
           <div className="text-primary">Payment Amount:</div>
           <button
-            class="btn btn-outline-primary dropdown-toggle"
+            className="btn btn-outline-primary dropdown-toggle"
             type="button"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -93,15 +93,15 @@ const BuyCredits = () => {
           >
             US ${amount}
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             {[10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map((item) => (
-              <li onClick={() => setAmount(item)} class="dropdown-item">
+              <li onClick={() => setAmount(item)} className="dropdown-item">
                 ${item}
               </li>
             ))}
           </ul>
         </div>
-        <button type="button" class="btn btn-primary px-5 my-3">
+        <button type="button" className="btn btn-primary px-5 my-3">
           Add Bitcoin
         </button>
       </div> */}

@@ -1,6 +1,6 @@
-import { Modal } from "react-bootstrap";
-import React from "react";
-import { FormControl, InputGroup, Button } from "react-bootstrap";
+import { Modal } from 'react-bootstrap';
+import React from 'react';
+import { FormControl, InputGroup, Button } from 'react-bootstrap';
 
 const AddSubCategoryModal = (props) => {
   return (
@@ -19,7 +19,7 @@ const AddSubCategoryModal = (props) => {
         </Modal.Header>
         <Modal.Body>
           {/* add sub categories name */}
-          <label htmlFor="" className="mb-2">
+          <label htmlhtmlFor="" className="mb-2">
             Sub Category Name
           </label>
           <InputGroup className="mb-3">

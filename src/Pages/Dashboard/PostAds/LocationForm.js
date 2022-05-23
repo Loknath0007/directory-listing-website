@@ -11,6 +11,8 @@ const LocationForm = () => {
     },
   ]);
 
+  console.log(locations);
+
   useEffect(() => {
     fetch('/locations.json')
       .then((res) => res.json())

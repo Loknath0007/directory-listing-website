@@ -6,7 +6,7 @@ import NotFound from "./Pages/NotFound/NotFound";
 import Headers from "./Pages/Dashboard/Headers/Headers";
 import PostAds from "./Pages/Dashboard/PostAds/PostAds";
 import SearchAds from "./Pages/Dashboard/SearchAds/SearchAds";
-import Categories from "./Pages/Dashboard/Categories/Categories";
+import Categories from "./Pages/Dashboard/Categories";
 import ManageLocations from "./Pages/Dashboard/ManageLocations/ManageLocations";
 import Registration from "./Pages/Registration/Registration";
 import AboutUs from "./Pages/AboutUs/AboutUs";
@@ -52,7 +52,7 @@ function App() {
         <Route path="footers" element={<Footers />}></Route>
         <Route path="packages/:packTitle" element={<Packages />} />
         <Route path="settings" element={<Settings />} />
-        <Route path="footers" element={<Footers />}></Route>
+        <Route path="footers" element={<Footers />} />
         <Route path="detail" element={<FooterDetails />}></Route>
         <Route path={`columns/:col`} element={<ColOne />} />
         <Route path="subFooter" element={<SubFooter />} />
