@@ -3,7 +3,7 @@ import { Button, Card, Col, Form, FormGroup, FormSelect, ListGroup, ListGroupIte
 
 
 
-const UserDetails = () => {
+const AdminDetails = () => {
     return (
         <div>
            
@@ -119,4 +119,4 @@ const UserDetails = () => {
     );
 };
 
-export default UserDetails;
+export default AdminDetails;

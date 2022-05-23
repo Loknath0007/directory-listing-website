@@ -64,7 +64,7 @@ const Sidebar = () => {
                 <Link to="/dashboard/search-ads"> Search Ads</Link>
               </MenuItem>
               <MenuItem icon={<CgProfile/>}>
-                <Link to="/dashboard/userProfile"> User Profile</Link>
+                <Link to="/dashboard/profile">  Profile</Link>
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faUsers} />}>
                 <Link to="/dashboard/users"> Users</Link>
