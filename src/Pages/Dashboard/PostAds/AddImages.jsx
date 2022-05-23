@@ -41,7 +41,7 @@ const AddImages = () => {
       <div className="mb-2">Select Your Ads Photos (up to 5)</div>
       <label
         role="button"
-        htmlFor="ad-images"
+        htmlhtmlFor="ad-images"
         className="p-3 border cursor-pointer shadow-sm mx-auto d-block text-center rounded-3"
       >
         <BsImages className="ms-1 fs-1 cursor-pointer" />

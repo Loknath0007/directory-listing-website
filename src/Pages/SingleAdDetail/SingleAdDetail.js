@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   Col,
@@ -6,25 +6,25 @@ import {
   Dropdown,
   ListGroup,
   Row,
-} from "react-bootstrap";
-import Header from "../common/Header";
-import { ImShare2 } from "react-icons/im";
-import { BsTwitter, BsWhatsapp, BsFacebook } from "react-icons/bs";
-import { MdEmail } from "react-icons/md";
-import { FaCopy } from "react-icons/fa";
-import { BiUpArrowCircle } from "react-icons/bi";
-import { RiForbid2Line } from "react-icons/ri";
+} from 'react-bootstrap';
+import Header from '../common/Header';
+import { ImShare2 } from 'react-icons/im';
+import { BsTwitter, BsWhatsapp, BsFacebook } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md';
+import { FaCopy } from 'react-icons/fa';
+import { BiUpArrowCircle } from 'react-icons/bi';
+import { RiForbid2Line } from 'react-icons/ri';
 
 import {
   AiTwotoneStar,
   AiTwotonePhone,
   AiOutlineWechat,
   AiFillSafetyCertificate,
-} from "react-icons/ai";
-import SimilarAd from "../../components/SimilarAdd/SimilarAd";
-import Footer from "../common/Footer";
-import AdImage from "../../components/AdImage/AdImage";
-import ReportModal from "./ReportModal";
+} from 'react-icons/ai';
+import SimilarAd from '../../components/SimilarAdd/SimilarAd';
+import Footer from '../common/Footer';
+import AdImage from '../../components/AdImage/AdImage';
+import ReportModal from './ReportModal';
 
 const SingleAdDetail = () => {
   return (
@@ -154,7 +154,7 @@ const SingleAdDetail = () => {
               variant="light"
               className="ms-2"
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               data-bs-toggle="modal"
               data-bs-target="#reportModal"
             >

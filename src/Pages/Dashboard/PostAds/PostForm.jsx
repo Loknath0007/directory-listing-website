@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Form, Button, Row, Col, FormControl } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import "./PostForm.css";
-import AddImages from "./AddImages";
-import ContactDetails from "./ContactDetails";
-import BrandModel from "./BrandModel";
-import LocationForm from "./LocationForm";
+import React, { useEffect, useState } from 'react';
+import { Form, Button, Row, Col, FormControl } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import './PostForm.css';
+import AddImages from './AddImages';
+import ContactDetails from './ContactDetails';
+import BrandModel from './BrandModel';
+import LocationForm from './LocationForm';
 
 const PostForm = () => {
   const [condition, setCondition] = useState('');
@@ -111,7 +111,7 @@ const PostForm = () => {
   const [categoryText, setCategoryText] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
-  const [brandText, setBrandText] = useState("");
+  const [brandText, setBrandText] = useState('');
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [selectedModel, setSelectedModel] = useState([]);
   const [locations, setLocations] = useState([]);
@@ -119,7 +119,7 @@ const PostForm = () => {
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCities, setSelectedCities] = useState([]);
   const [multiState, setMultiState] = useState([]);
-  const [priceType, setPriceType] = useState("");
+  const [priceType, setPriceType] = useState('');
 
   // console.log(selectedState?.state);
   useEffect(() => {
@@ -127,6 +127,8 @@ const PostForm = () => {
       .then((res) => res.json())
       .then((data) => setLocations(data));
   }, []);
+
+  
 
   const handleCategoryChange = (value) => {
     setCategoryText(value);
@@ -183,7 +185,7 @@ const PostForm = () => {
     setSelectedSubCategories([]);
   };
   const handleBrandClear = () => {
-    setBrandText("");
+    setBrandText('');
   };
 
   const handleLocationClear = () => {
@@ -191,6 +193,7 @@ const PostForm = () => {
     setSelectedState(null);
     setSelectedCities([]);
   };
+
 
   // const handleSubCategoryChange = (subCategory) => {
   //   console.log(subCategory.target.value);
@@ -252,7 +255,7 @@ const PostForm = () => {
     setPriceType(e.target.value);
 
     if (priceType === e.target.value) {
-      setPriceType("");
+      setPriceType('');
     }
   };
 
@@ -260,7 +263,7 @@ const PostForm = () => {
     setCondition(e.target.value);
 
     if (condition === e.target.value) {
-      setCondition("");
+      setCondition('');
     }
   };
 
@@ -273,7 +276,7 @@ const PostForm = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="description">
-          <Form.Label htmlFor="description">Descriptions</Form.Label>
+          <Form.Label htmlhtmlFor="description">Descriptions</Form.Label>
           <Form.Control
             id="description"
             as="textarea"
@@ -297,7 +300,7 @@ const PostForm = () => {
             <Form.Check
               onChange={handlePriceTypeChange}
               value="Negotiable"
-              checked={priceType === "Negotiable"}
+              checked={priceType === 'Negotiable'}
               label="Negotiable"
               id="negotiable"
               name="negotiable"
@@ -305,7 +308,7 @@ const PostForm = () => {
             <Form.Check
               onChange={handlePriceTypeChange}
               value="Fixed"
-              checked={priceType === "Fixed"}
+              checked={priceType === 'Fixed'}
               label="Fixed"
               id="fixed"
               name="fixed"
@@ -319,7 +322,7 @@ const PostForm = () => {
             <Form.Check
               onChange={handleConditionChange}
               value="Used"
-              checked={condition === "Used"}
+              checked={condition === 'Used'}
               label="Used"
               id="used"
               name="used"
@@ -327,7 +330,7 @@ const PostForm = () => {
             <Form.Check
               onChange={handleConditionChange}
               value="New"
-              checked={condition === "New"}
+              checked={condition === 'New'}
               label="New"
               id="new"
               name="new"
@@ -336,7 +339,7 @@ const PostForm = () => {
         </Form.Group>
         {/* select brand */}
         <Form.Group className="mb-3" controlId="brand">
-          <Form.Label htmlFor="brand">Brand</Form.Label>
+          <Form.Label htmlhtmlFor="brand">Brand</Form.Label>
           <div className="position-relative">
             <input
               value={brandText}
@@ -351,7 +354,7 @@ const PostForm = () => {
             <FontAwesomeIcon
               onClick={() => handleBrandClear()}
               className={`ms-1 ${
-                !brandText && "d-none"
+                !brandText && 'd-none'
               } select-category-Xmark cursor-pointer`}
               size="lg"
               icon={faXmark}
@@ -371,7 +374,7 @@ const PostForm = () => {
         </Form.Group>
 
         {/* <Form.Group className="mb-3" controlId="category"> */}
-        <Form.Label htmlFor="category">Select Category</Form.Label>
+        <Form.Label htmlhtmlFor="category">Select Category</Form.Label>
         <div className="position-relative">
           <input
             value={categoryText}
@@ -385,7 +388,7 @@ const PostForm = () => {
           <FontAwesomeIcon
             onClick={() => handleCategoryClear()}
             className={`ms-1 ${
-              !categoryText && "d-none"
+              !categoryText && 'd-none'
             } select-category-Xmark cursor-pointer`}
             size="lg"
             icon={faXmark}
@@ -399,22 +402,22 @@ const PostForm = () => {
         </datalist>
 
         {/* show sub categories */}
-        <Form.Label htmlFor="sub-category">
+        <Form.Label htmlhtmlFor="sub-category">
           {selectedCategory && (
             <div className="fw-bold my-2">
               Select Sub Category for {selectedCategory?.categoryName}
             </div>
           )}
-          {/* <div className="ms-5 mb-3">
+          <div className="ms-5 mb-3">
             {selectedCategory?.subCategories.map((subCategory) => (
               <Form.Check
-                onChange={() => handleCheckboxChange(subCategory)}
+                // onChange={() => handleCheckboxChange(subCategory)}
                 type="checkbox"
                 id={subCategory.Name}
                 label={subCategory.Name}
               />
             ))}
-          </div> */}
+          </div>
 
           {selectedCategory && (
             <div className="ms-5 mb-3">
@@ -429,12 +432,6 @@ const PostForm = () => {
                 </option>
 
                 {selectedCategory?.subCategories.map((subCategory) => (
-                  // <Form.Check
-                  //   onChange={() => handleCheckboxChange(subCategory)}
-                  //   type="checkbox"
-                  //   id={subCategory.Name}
-                  //   label={subCategory.Name}
-                  // />
                   <option value={subCategory.Name}>{subCategory.Name}</option>
                 ))}
               </Form.Select>
@@ -444,7 +441,7 @@ const PostForm = () => {
           <div>
             {selectedSubCategories.map((slc) => (
               <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-                {slc}{" "}
+                {slc}{' '}
                 <FontAwesomeIcon
                   onClick={() => handleSubCategoryClose(slc)}
                   className="ms-1 cursor-pointer"
@@ -457,7 +454,6 @@ const PostForm = () => {
         </Form.Label>
 
         {/* select location */}
-
         <LocationForm />
 
         {/* addImage */}

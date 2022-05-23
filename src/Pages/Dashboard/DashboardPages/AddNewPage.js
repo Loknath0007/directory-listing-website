@@ -22,14 +22,14 @@ const AddNewPage = () => {
   }
   // handle Position
   const handlePosition = (e) => {
-    const value = e.target.value
+    const value = e.target.checked
     const id = e.target.id 
     // const pos = {}
     // pos[id.toLowerCase()]= value
 
     const pos = { ...position }    
     
-    setPosition()
+    setPosition(value)
     console.log(position);
    
 }
