@@ -1,122 +1,129 @@
-import React, { useEffect, useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import "./PostForm.css";
-import AddImages from "./AddImages";
-import ContactDetails from "./ContactDetails";
+import React, { useEffect, useState } from 'react';
+import { Form, Button, Row, Col, FormControl } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import './PostForm.css';
+import AddImages from './AddImages';
+import ContactDetails from './ContactDetails';
+import BrandModel from './BrandModel';
+import LocationForm from './LocationForm';
 
 const PostForm = () => {
+  const [condition, setCondition] = useState('');
   const [categories, setCategories] = useState([
     {
       _id: 634163136854,
-      categoryName: "Phones",
+      categoryName: 'Phones',
       subCategories: [
-        { Name: "Home Appliances", _id: 64564464556 },
-        { Name: "Living Room Furniture", _id: 216344444645313 },
-        { Name: "Sim card", _id: 21634644445313 },
-        { Name: "Bedroom Furniture", _id: 21634554645313 },
+        { Name: 'Home Appliances', _id: 64564464556 },
+        { Name: 'Living Room Furniture', _id: 216344444645313 },
+        { Name: 'Sim card', _id: 21634644445313 },
+        { Name: 'Bedroom Furniture', _id: 21634554645313 },
       ],
     },
     {
       _id: 634163135466854,
-      categoryName: "Electronics",
+      categoryName: 'Electronics',
       subCategories: [
-        { Name: "Mobile Phone", _id: 645645454456 },
-        { Name: "Home Appliances", _id: 2165454344645313 },
-        { Name: "Bedroom Furniture", _id: 216545346454313 },
+        { Name: 'Mobile Phone', _id: 645645454456 },
+        { Name: 'Home Appliances', _id: 2165454344645313 },
+        { Name: 'Bedroom Furniture', _id: 216545346454313 },
       ],
     },
     {
       _id: 6341645663136854,
-      categoryName: "Home and Living",
+      categoryName: 'Home and Living',
       subCategories: [
-        { Name: "Home Appliances", _id: 64564464556 },
-        { Name: "Living Room Furniture", _id: 216344444645313 },
-        { Name: "Sim card", _id: 21634644445313 },
-        { Name: "Bedroom Furniture", _id: 21634554645313 },
+        { Name: 'Home Appliances', _id: 64564464556 },
+        { Name: 'Living Room Furniture', _id: 216344444645313 },
+        { Name: 'Sim card', _id: 21634644445313 },
+        { Name: 'Bedroom Furniture', _id: 21634554645313 },
       ],
     },
     {
       _id: 63416313681154,
-      categoryName: "Property",
+      categoryName: 'Property',
       subCategories: [
-        { Name: "Mobile Phone", _id: 645645454456 },
-        { Name: "Home Appliances", _id: 2165454344645313 },
-        { Name: "Bedroom Furniture", _id: 216545346454313 },
+        { Name: 'Mobile Phone', _id: 645645454456 },
+        { Name: 'Home Appliances', _id: 2165454344645313 },
+        { Name: 'Bedroom Furniture', _id: 216545346454313 },
       ],
     },
     {
       _id: 63416341114136854,
-      categoryName: "Fashion and Beauty",
+      categoryName: 'Fashion and Beauty',
       subCategories: [
-        { Name: "Home Appliances", _id: 645665445456 },
-        { Name: "Living Room Furniture", _id: 216344645645313 },
-        { Name: "Sim card", _id: 21634645313 },
-        { Name: "Bedroom Furniture", _id: 2163354344645313 },
+        { Name: 'Home Appliances', _id: 645665445456 },
+        { Name: 'Living Room Furniture', _id: 216344645645313 },
+        { Name: 'Sim card', _id: 21634645313 },
+        { Name: 'Bedroom Furniture', _id: 2163354344645313 },
       ],
     },
     {
       _id: 634163136854,
-      categoryName: "Phones",
+      categoryName: 'Phones',
       subCategories: [
-        { Name: "Home Appliances", _id: 64564464556 },
-        { Name: "Living Room Furniture", _id: 216344444645313 },
-        { Name: "Sim card", _id: 21634644445313 },
-        { Name: "Bedroom Furniture", _id: 21634554645313 },
+        { Name: 'Home Appliances', _id: 64564464556 },
+        { Name: 'Living Room Furniture', _id: 216344444645313 },
+        { Name: 'Sim card', _id: 21634644445313 },
+        { Name: 'Bedroom Furniture', _id: 21634554645313 },
       ],
     },
     {
       _id: 634163135466854,
-      categoryName: "Electronics",
+      categoryName: 'Electronics',
       subCategories: [
-        { Name: "Mobile Phone", _id: 645645454456 },
-        { Name: "Home Appliances", _id: 2165454344645313 },
-        { Name: "Bedroom Furniture", _id: 216545346454313 },
+        { Name: 'Mobile Phone', _id: 645645454456 },
+        { Name: 'Home Appliances', _id: 2165454344645313 },
+        { Name: 'Bedroom Furniture', _id: 216545346454313 },
       ],
     },
     {
       _id: 6341645663136854,
-      categoryName: "Home and Living",
+      categoryName: 'Home and Living',
       subCategories: [
-        { Name: "Home Appliances", _id: 64564464556 },
-        { Name: "Living Room Furniture", _id: 216344444645313 },
-        { Name: "Sim card", _id: 21634644445313 },
-        { Name: "Bedroom Furniture", _id: 21634554645313 },
+        { Name: 'Home Appliances', _id: 64564464556 },
+        { Name: 'Living Room Furniture', _id: 216344444645313 },
+        { Name: 'Sim card', _id: 21634644445313 },
+        { Name: 'Bedroom Furniture', _id: 21634554645313 },
       ],
     },
     {
       _id: 63416313681154,
-      categoryName: "Property",
+      categoryName: 'Property',
       subCategories: [
-        { Name: "Mobile Phone", _id: 645645454456 },
-        { Name: "Home Appliances", _id: 2165454344645313 },
-        { Name: "Bedroom Furniture", _id: 216545346454313 },
+        { Name: 'Mobile Phone', _id: 645645454456 },
+        { Name: 'Home Appliances', _id: 2165454344645313 },
+        { Name: 'Bedroom Furniture', _id: 216545346454313 },
       ],
     },
     {
       _id: 63416341114136854,
-      categoryName: "Fashion and Beauty",
+      categoryName: 'Fashion and Beauty',
       subCategories: [
-        { Name: "Home Appliances", _id: 645665445456 },
-        { Name: "Living Room Furniture", _id: 216344645645313 },
-        { Name: "Sim card", _id: 21634645313 },
-        { Name: "Bedroom Furniture", _id: 2163354344645313 },
+        { Name: 'Home Appliances', _id: 645665445456 },
+        { Name: 'Living Room Furniture', _id: 216344645645313 },
+        { Name: 'Sim card', _id: 21634645313 },
+        { Name: 'Bedroom Furniture', _id: 2163354344645313 },
       ],
     },
   ]);
-  const [categoryText, setCategoryText] = useState("");
+  const [categoryText, setCategoryText] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
+  const [brandText, setBrandText] = useState('');
+  const [selectedBrand, setSelectedBrand] = useState(null);
+  const [selectedModel, setSelectedModel] = useState([]);
   const [locations, setLocations] = useState([]);
-  const [stateText, setStateText] = useState("");
+  const [stateText, setStateText] = useState('');
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCities, setSelectedCities] = useState([]);
   const [multiState, setMultiState] = useState([]);
+  const [priceType, setPriceType] = useState('');
 
   // console.log(selectedState?.state);
   useEffect(() => {
-    fetch("/locations.json")
+    fetch('/locations.json')
       .then((res) => res.json())
       .then((data) => setLocations(data));
   }, []);
@@ -135,6 +142,17 @@ const PostForm = () => {
       setSelectedCategory(selectCategory);
 
       setSelectedSubCategories([]);
+    }
+  };
+  const handleBrandChange = (value) => {
+    setBrandText(value);
+    console.log(value);
+
+    const selectBrand = categories.find((c) => c.categoryName === value.trim());
+    if (selectBrand) {
+      setSelectedBrand(selectBrand);
+    } else {
+      setSelectedBrand(selectBrand);
     }
   };
 
@@ -162,13 +180,16 @@ const PostForm = () => {
   };
 
   const handleCategoryClear = () => {
-    setCategoryText("");
+    setCategoryText('');
     setSelectedCategory(null);
     setSelectedSubCategories([]);
   };
+  const handleBrandClear = () => {
+    setBrandText('');
+  };
 
   const handleLocationClear = () => {
-    setStateText("");
+    setStateText('');
     setSelectedState(null);
     setSelectedCities([]);
   };
@@ -230,6 +251,22 @@ const PostForm = () => {
     setSelectedCities(newCities);
   };
 
+  const handlePriceTypeChange = (e) => {
+    setPriceType(e.target.value);
+
+    if (priceType === e.target.value) {
+      setPriceType('');
+    }
+  };
+
+  const handleConditionChange = (e) => {
+    setCondition(e.target.value);
+
+    if (condition === e.target.value) {
+      setCondition('');
+    }
+  };
+
   return (
     <div className="w-50 mx-auto">
       <Form>
@@ -239,13 +276,13 @@ const PostForm = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="description">
-          <Form.Label htmlFor="description">Descriptions</Form.Label>
+          <Form.Label htmlhtmlFor="description">Descriptions</Form.Label>
           <Form.Control
             id="description"
             as="textarea"
             type="text"
             rows="5"
-            placeholder="Share more details to make effectives"
+            placeholder="Share more details to make effective"
           />
         </Form.Group>
 
@@ -258,10 +295,86 @@ const PostForm = () => {
             required
           />
         </Form.Group>
-        
+        <Form.Group>
+          <Row md={2} className="">
+            <Form.Check
+              onChange={handlePriceTypeChange}
+              value="Negotiable"
+              checked={priceType === 'Negotiable'}
+              label="Negotiable"
+              id="negotiable"
+              name="negotiable"
+            />
+            <Form.Check
+              onChange={handlePriceTypeChange}
+              value="Fixed"
+              checked={priceType === 'Fixed'}
+              label="Fixed"
+              id="fixed"
+              name="fixed"
+            />
+          </Row>
+        </Form.Group>
+
+        <Form.Group className="my-4" controlId="condition">
+          <Form.Label>Condition</Form.Label>
+          <Row md={2} className="">
+            <Form.Check
+              onChange={handleConditionChange}
+              value="Used"
+              checked={condition === 'Used'}
+              label="Used"
+              id="used"
+              name="used"
+            />
+            <Form.Check
+              onChange={handleConditionChange}
+              value="New"
+              checked={condition === 'New'}
+              label="New"
+              id="new"
+              name="new"
+            />
+          </Row>
+        </Form.Group>
+        {/* select brand */}
+        <Form.Group className="mb-3" controlId="brand">
+          <Form.Label htmlhtmlFor="brand">Brand</Form.Label>
+          <div className="position-relative">
+            <input
+              value={brandText}
+              type="text"
+              name="brand"
+              className="form-control "
+              list="brand"
+              placeholder="Select Brand"
+              onChange={(e) => handleBrandChange(e.target.value)}
+              required
+            />
+            <FontAwesomeIcon
+              onClick={() => handleBrandClear()}
+              className={`ms-1 ${
+                !brandText && 'd-none'
+              } select-category-Xmark cursor-pointer`}
+              size="lg"
+              icon={faXmark}
+            />
+          </div>
+
+          <datalist id="brand" className="w-100">
+            {categories.map((c) => (
+              <option value={c.categoryName}></option>
+            ))}
+          </datalist>
+        </Form.Group>
+        {/* brand model */}
+        <Form.Group className="mb-3" controlId="title">
+          <Form.Label>Model</Form.Label>
+          <Form.Control type="text" name="model" placeholder="Model" required />
+        </Form.Group>
 
         {/* <Form.Group className="mb-3" controlId="category"> */}
-        <Form.Label htmlFor="category">Select Category</Form.Label>
+        <Form.Label htmlhtmlFor="category">Select Category</Form.Label>
         <div className="position-relative">
           <input
             value={categoryText}
@@ -275,7 +388,7 @@ const PostForm = () => {
           <FontAwesomeIcon
             onClick={() => handleCategoryClear()}
             className={`ms-1 ${
-              !categoryText && "d-none"
+              !categoryText && 'd-none'
             } select-category-Xmark cursor-pointer`}
             size="lg"
             icon={faXmark}
@@ -289,22 +402,22 @@ const PostForm = () => {
         </datalist>
 
         {/* show sub categories */}
-        <Form.Label htmlFor="sub-category">
+        <Form.Label htmlhtmlFor="sub-category">
           {selectedCategory && (
             <div className="fw-bold my-2">
               Select Sub Category for {selectedCategory?.categoryName}
             </div>
           )}
-          {/* <div className="ms-5 mb-3">
+          <div className="ms-5 mb-3">
             {selectedCategory?.subCategories.map((subCategory) => (
               <Form.Check
-                onChange={() => handleCheckboxChange(subCategory)}
+                // onChange={() => handleCheckboxChange(subCategory)}
                 type="checkbox"
                 id={subCategory.Name}
                 label={subCategory.Name}
               />
             ))}
-          </div> */}
+          </div>
 
           {selectedCategory && (
             <div className="ms-5 mb-3">
@@ -319,12 +432,6 @@ const PostForm = () => {
                 </option>
 
                 {selectedCategory?.subCategories.map((subCategory) => (
-                  // <Form.Check
-                  //   onChange={() => handleCheckboxChange(subCategory)}
-                  //   type="checkbox"
-                  //   id={subCategory.Name}
-                  //   label={subCategory.Name}
-                  // />
                   <option value={subCategory.Name}>{subCategory.Name}</option>
                 ))}
               </Form.Select>
@@ -334,7 +441,7 @@ const PostForm = () => {
           <div>
             {selectedSubCategories.map((slc) => (
               <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-                {slc}{" "}
+                {slc}{' '}
                 <FontAwesomeIcon
                   onClick={() => handleSubCategoryClose(slc)}
                   className="ms-1 cursor-pointer"
@@ -347,92 +454,7 @@ const PostForm = () => {
         </Form.Label>
 
         {/* select location */}
-
-        <Form.Group className="mb-3" controlId="location">
-          <Form.Label htmlFor="location">Select Location</Form.Label>
-          <div className="position-relative">
-            <input
-              value={stateText}
-              type="text"
-              className="form-control"
-              list="location"
-              placeholder="Select State"
-              name="location"
-              onChange={(e) => handleStateChange(e.target.value)}
-            />
-            <FontAwesomeIcon
-              onClick={() => handleLocationClear()}
-              className={`ms-1 ${
-                !stateText && "d-none"
-              } select-category-Xmark cursor-pointer`}
-              size="lg"
-              icon={faXmark}
-            />
-          </div>
-          <div>
-            {multiState?.map((state) => (
-              <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-                {state}{" "}
-                <FontAwesomeIcon
-                  onClick={() => handleCityClose(state)}
-                  className="ms-1 cursor-pointer"
-                  size="lg"
-                  icon={faXmark}
-                />
-              </div>
-            ))}
-          </div>
-
-          <datalist id="location" className="w-100">
-            {locations.map((c) => (
-              <option value={c.state}></option>
-            ))}
-          </datalist>
-
-          {/* show cities */}
-          {multiState.length <= 1 && (
-            <Form.Label htmlFor="city">
-              {selectedState && (
-                <div className="fw-bold my-2">
-                  Select City for {selectedState?.state}
-                </div>
-              )}
-
-              {selectedState && (
-                <div className="ms-5 mb-3">
-                  <Form.Select
-                    onChange={(e) => handleCityChange(e.target.value)}
-                    name="city"
-                    id="city"
-                    form="city"
-                  >
-                    <option selected disabled>
-                      --Select City--
-                    </option>
-
-                    {selectedState?.cities.map((city) => (
-                      <option value={city.Name}>{city.Name}</option>
-                    ))}
-                  </Form.Select>
-                </div>
-              )}
-
-              <div>
-                {selectedCities.map((city) => (
-                  <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-                    {city}{" "}
-                    <FontAwesomeIcon
-                      onClick={() => handleCityClose(city)}
-                      className="ms-1 cursor-pointer"
-                      size="lg"
-                      icon={faXmark}
-                    />
-                  </div>
-                ))}
-              </div>
-            </Form.Label>
-          )}
-        </Form.Group>
+        <LocationForm />
 
         {/* addImage */}
         <AddImages />

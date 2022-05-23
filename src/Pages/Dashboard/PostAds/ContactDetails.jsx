@@ -1,35 +1,35 @@
-import React from "react";
-import { Form, FormControl, FormLabel, InputGroup } from "react-bootstrap";
+import React from 'react';
+import { Form, FormControl, FormLabel, InputGroup } from 'react-bootstrap';
 
 const ContactDetails = () => {
   return (
     <div className="my-3">
-      <div className="fw-bold">Contact details</div>
+      {/* <div className="fw-bold">Contact details</div> */}
 
-      <Form.Label htmlFor="name">Name</Form.Label>
+      <Form.Label htmlhtmlFor="name">Name</Form.Label>
       <InputGroup className="mb-3">
         <FormControl
           placeholder="Seller name"
           aria-label="Seller Name"
           id="name"
           aria-describedby="basic-addon1"
-          defaultValue={"Ruhul Amin"}
+          defaultValue={'Ruhul Amin'}
         />
       </InputGroup>
-      <Form.Label htmlFor="email">Email</Form.Label>
+      <Form.Label htmlhtmlFor="email">Email</Form.Label>
       <InputGroup className="mb-3">
         <FormControl
-        id="email"
+          id="email"
           placeholder="Seller name"
           aria-label="Seller Name"
           aria-describedby="basic-addon1"
-          defaultValue={"ruhulaminbd99@gmail.com"}
+          defaultValue={'ruhulaminbd99@gmail.com'}
         />
       </InputGroup>
-      <Form.Label htmlFor="phone">Phone no</Form.Label>
+      <Form.Label htmlhtmlFor="phone">Phone no</Form.Label>
       <InputGroup className="mb-3">
         <FormControl
-        id="phone"
+          id="phone"
           placeholder="Phone no"
           aria-label="Phone no"
           aria-describedby="basic-addon1"

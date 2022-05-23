@@ -1,13 +1,13 @@
-import { Modal, Button, FormControl, InputGroup } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Modal, Button, FormControl, InputGroup } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const AddLocationModal = (props) => {
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
+  const [state, setState] = useState('');
+  const [city, setCity] = useState('');
   const [allCity, setAllCity] = useState([]);
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState('');
   const [allStates, setStates] = useState([]);
 
   // remove city if multiple states
@@ -21,30 +21,31 @@ const AddLocationModal = (props) => {
   }, [allStates]);
   // handle State
   const handleAddState = () => {
-    if (state.trim() !== "") {
+    if (state.trim() !== '') {
       const newState = [...allStates];
       if (newState.indexOf(state.trim()) === -1) {
         newState.push(state.trim());
         setStates(newState);
-        setState("");
-      }  if (allStates.length > 1) {
+        setState('');
+      }
+      if (allStates.length > 1) {
         setAllCity([]);
       } else {
-        alert("items already exist");
+        alert('items already exist');
       }
     }
   };
 
   // handle Add City
   const handleAddCity = () => {
-    if (city.trim() !== "") {
+    if (city.trim() !== '') {
       const newCity = [...allCity];
       if (newCity.indexOf(city.trim()) === -1) {
         newCity.push(city.trim());
         setAllCity(newCity);
-        setCity("");
+        setCity('');
       } else {
-        alert("items already exist");
+        alert('items already exist');
       }
     }
   };
@@ -78,7 +79,7 @@ const AddLocationModal = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <label htmlFor="locationName" className="mb-2">
+        <label htmlhtmlFor="locationName" className="mb-2">
           Country
         </label>
         <FormControl
@@ -91,7 +92,7 @@ const AddLocationModal = (props) => {
           onChange={(e) => setCountry(e.target.value.trim())}
         />
         {/* add state name */}
-        <label htmlFor="" className="mb-2">
+        <label htmlhtmlFor="" className="mb-2">
           State
         </label>
         <InputGroup className="mb-3">
@@ -112,7 +113,7 @@ const AddLocationModal = (props) => {
           {allStates &&
             allStates.map((c) => (
               <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-                {c}{" "}
+                {c}{' '}
                 <FontAwesomeIcon
                   onClick={() => handleClose(c)}
                   className="ms-1 cursor-pointer"
@@ -127,7 +128,7 @@ const AddLocationModal = (props) => {
         <div>
           {allStates && allStates.length === 1 && (
             <div>
-              <label htmlFor="" className="mb-2">
+              <label htmlhtmlFor="" className="mb-2">
                 Cities of {allStates.map((i) => i)}
               </label>
               <InputGroup className="mb-3">
@@ -147,7 +148,7 @@ const AddLocationModal = (props) => {
                 {allCity &&
                   allCity.map((c) => (
                     <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-                      {c}{" "}
+                      {c}{' '}
                       <FontAwesomeIcon
                         onClick={() => handleCityClose(c)}
                         className="ms-1 cursor-pointer"
@@ -166,10 +167,10 @@ const AddLocationModal = (props) => {
           onClick={() => {
             props.onHide();
             setStates([]);
-            setState("");
-            setCountry("");
+            setState('');
+            setCountry('');
             setAllCity([]);
-            setCity("");
+            setCity('');
           }}
           className="btn-danger"
         >

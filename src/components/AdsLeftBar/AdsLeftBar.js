@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./AdsLeftBar.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './AdsLeftBar.css';
 const AdsLeftBar = () => {
   return (
     <div className="display_ads_left_bar">
@@ -24,7 +24,7 @@ const AdsLeftBar = () => {
         />
         <label
           className="bg-info text-white ms-2 px-2 rounded mb-2"
-          for="doorstepdelivery"
+          htmlFor="doorstepdelivery"
         >
           Doorstep Delivery
         </label>
@@ -32,7 +32,7 @@ const AdsLeftBar = () => {
         <input type="checkbox" id="urgent" name="urgent" value="urgent" />
         <label
           className="bg-warning text-white ms-2 px-2 rounded mb-2"
-          for="urgent"
+          htmlFor="urgent"
         >
           Urgent
         </label>
@@ -40,7 +40,7 @@ const AdsLeftBar = () => {
         <input type="checkbox" id="featured" name="featured" value="featured" />
         <label
           className="bg-secondary text-white ms-2 px-2 rounded mb-2"
-          for="featured"
+          htmlFor="featured"
         >
           Featured
         </label>
