@@ -2,54 +2,58 @@ import React from 'react';
 
 const ProfileSetting = () => {
   return (
-    <div class="card my-4">
-      <h5 class="card-header">Profile Details</h5>
-      <div class="card-body">
-        <div class="d-flex align-items-start align-items-sm-center gap-4">
+    <div className="card my-4">
+      <h5 className="card-header">Profile Details</h5>
+      <div className="card-body">
+        <div className="d-flex align-items-start align-items-sm-center gap-4">
           <img
             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
             alt="user-avatar"
-            class="d-block rounded"
+            className="d-block rounded"
             height="100"
             width="100"
             id="uploadedAvatar"
           />
-          <div class="button-wrapper">
-            <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-              <span class="d-none d-sm-block">Upload new photo</span>
-              <i class="bx bx-upload d-block d-sm-none"></i>
+          <div className="button-wrapper">
+            <label
+              htmlFor="upload"
+              className="btn btn-primary me-2 mb-4"
+              tabIndex="0"
+            >
+              <span className="d-none d-sm-block">Upload new photo</span>
+              <i className="bx bx-upload d-block d-sm-none"></i>
               <input
                 type="file"
                 id="upload"
-                class="account-file-input"
+                className="account-file-input"
                 hidden
                 accept="image/png, image/jpeg"
               />
             </label>
             <button
               type="button"
-              class="btn btn-outline-secondary account-image-reset mb-4"
+              className="btn btn-outline-secondary account-image-reset mb-4"
             >
-              <i class="bx bx-reset d-block d-sm-none"></i>
-              <span class="d-none d-sm-block">Logout</span>
+              <i className="bx bx-reset d-block d-sm-none"></i>
+              <span className="d-none d-sm-block">Logout</span>
             </button>
 
-            <p class="text-muted mb-0">
+            <p className="text-muted mb-0">
               Allowed JPG, GIF or PNG. Max size of 800K
             </p>
           </div>
         </div>
       </div>
-      <hr class="my-0" />
-      <div class="card-body">
+      <hr className="my-0" />
+      <div className="card-body">
         <form id="formAccountSettings" method="POST" onsubmit="return false">
-          <div class="row">
-            <div class="mb-3 col-md-6">
-              <label for="firstName" class="form-label">
+          <div className="row">
+            <div className="mb-3 col-md-6">
+              <label htmlFor="firstName" className="form-label">
                 First Name
               </label>
               <input
-                class="form-control"
+                className="form-control"
                 type="text"
                 id="firstName"
                 name="firstName"
@@ -57,24 +61,24 @@ const ProfileSetting = () => {
                 autofocus
               />
             </div>
-            <div class="mb-3 col-md-6">
-              <label for="lastName" class="form-label">
+            <div className="mb-3 col-md-6">
+              <label htmlFor="lastName" className="form-label">
                 Last Name
               </label>
               <input
-                class="form-control"
+                className="form-control"
                 type="text"
                 name="lastName"
                 id="lastName"
                 value="Nobi Tanveer"
               />
             </div>
-            <div class="mb-3 col-md-6">
-              <label for="email" class="form-label">
+            <div className="mb-3 col-md-6">
+              <label htmlFor="email" className="form-label">
                 E-mail
               </label>
               <input
-                class="form-control"
+                className="form-control"
                 type="text"
                 id="email"
                 name="email"
@@ -82,63 +86,63 @@ const ProfileSetting = () => {
                 placeholder="john.doe@example.com"
               />
             </div>
-            <div class="mb-3 col-md-6">
-              <label class="form-label" for="phoneNumber">
+            <div className="mb-3 col-md-6">
+              <label className="form-label" htmlFor="phoneNumber">
                 Phone Number
               </label>
-              <div class="input-group input-group-merge">
-                <span class="input-group-text">BD (+880)</span>
+              <div className="input-group input-group-merge">
+                <span className="input-group-text">BD (+880)</span>
                 <input
                   type="text"
                   id="phoneNumber"
                   name="phoneNumber"
-                  class="form-control"
+                  className="form-control"
                   placeholder="1XXXXXXXXX"
                 />
               </div>
             </div>
-            <div class="mb-3 col-md-6">
-              <label for="address" class="form-label">
+            <div className="mb-3 col-md-6">
+              <label htmlFor="address" className="form-label">
                 Address
               </label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="address"
                 name="address"
                 placeholder="Address"
               />
             </div>
-            <div class="mb-3 col-md-6">
-              <label for="state" class="form-label">
+            <div className="mb-3 col-md-6">
+              <label htmlFor="state" className="form-label">
                 State
               </label>
               <input
-                class="form-control"
+                className="form-control"
                 type="text"
                 id="state"
                 name="state"
                 placeholder="Dhaka"
               />
             </div>
-            <div class="mb-3 col-md-6">
-              <label for="zipCode" class="form-label">
+            <div className="mb-3 col-md-6">
+              <label htmlFor="zipCode" className="form-label">
                 Zip Code
               </label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="zipCode"
                 name="zipCode"
                 placeholder="1720"
                 maxlength="6"
               />
             </div>
-            <div class="mb-3 col-md-6">
-              <label class="form-label" for="country">
+            <div className="mb-3 col-md-6">
+              <label className="form-label" htmlFor="country">
                 Country
               </label>
-              <select id="country" class="select2 form-select">
+              <select id="country" className="select2 form-select">
                 <option value="">Select</option>
                 <option value="Australia">Australia</option>
                 <option value="Bangladesh">Bangladesh</option>
@@ -168,11 +172,11 @@ const ProfileSetting = () => {
                 <option value="United States">United States</option>
               </select>
             </div>
-            <div class="mb-3 col-md-6">
-              <label for="language" class="form-label">
+            <div className="mb-3 col-md-6">
+              <label htmlFor="language" className="form-label">
                 Language
               </label>
-              <select id="language" class="select2 form-select">
+              <select id="language" className="select2 form-select">
                 <option value="">Select Language</option>
                 <option value="en">English</option>
                 <option value="fr">French</option>
@@ -180,11 +184,11 @@ const ProfileSetting = () => {
                 <option value="pt">Portuguese</option>
               </select>
             </div>
-            <div class="mb-3 col-md-6">
-              <label for="currency" class="form-label">
+            <div className="mb-3 col-md-6">
+              <label htmlFor="currency" className="form-label">
                 Currency
               </label>
-              <select id="currency" class="select2 form-select">
+              <select id="currency" className="select2 form-select">
                 <option value="">Select Currency</option>
                 <option value="usd">USD</option>
                 <option value="euro">Euro</option>
@@ -193,11 +197,11 @@ const ProfileSetting = () => {
               </select>
             </div>
           </div>
-          <div class="mt-2">
-            <button type="submit" class="btn btn-primary me-2">
+          <div className="mt-2">
+            <button type="submit" className="btn btn-primary me-2">
               Save changes
             </button>
-            <button type="reset" class="btn btn-outline-secondary">
+            <button type="reset" className="btn btn-outline-secondary">
               Cancel
             </button>
           </div>

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import "./DisplayAds.css";
-import mobile from "../../images/Xiaomi-Redmi-10A.jpg";
-import gp from "../../images/gp_ad.jpg";
-import SingleAd from "../SingleAd/SingleAd";
-import AdsLeftBar from "../AdsLeftBar/AdsLeftBar";
+import React, { useEffect, useState } from 'react';
+import './DisplayAds.css';
+import mobile from '../../images/Xiaomi-Redmi-10A.jpg';
+import gp from '../../images/gp_ad.jpg';
+import SingleAd from '../SingleAd/SingleAd';
+import AdsLeftBar from '../AdsLeftBar/AdsLeftBar';
 
 const DisplayAds = () => {
   const [ads, setAds] = useState([]);
   useEffect(() => {
-    fetch("./ads.json")
+    fetch('./ads.json')
       .then((res) => res.json())
       .then((data) => setAds(data));
   }, []);
@@ -24,29 +24,29 @@ const DisplayAds = () => {
               <SingleAd mobile={mobile} ad={ad} key={ad.id} />
             ))}
             <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#">
+              <ul className="pagination">
+                <li className="page-item">
+                  <a className="page-link" href="#">
                     Previous
                   </a>
                 </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
+                <li className="page-item">
+                  <a className="page-link" href="#">
                     1
                   </a>
                 </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
+                <li className="page-item">
+                  <a className="page-link" href="#">
                     2
                   </a>
                 </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
+                <li className="page-item">
+                  <a className="page-link" href="#">
                     3
                   </a>
                 </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
+                <li className="page-item">
+                  <a className="page-link" href="#">
                     Next
                   </a>
                 </li>
