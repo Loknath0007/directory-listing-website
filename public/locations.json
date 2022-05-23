@@ -1,0 +1,145 @@
+[
+  {
+    "country": "Bangladesh",
+    "states": [
+      {
+        "state": "Dhaka",
+        "cities": ["Gazipur", "Narayangonj", "Narshingdi"]
+      },
+      {
+        "state": "Rajshahi",
+        "cities": ["Naogaon", "Bogra", "Natore"]
+      },
+      {
+        "state": "Khulna",
+        "cities": ["Jhinaidah", "Jessore", "Satkhira"]
+      },
+      {
+        "state": "Sylhet",
+        "cities": ["Moulvibazar", "Habigonj", "Sunamgonj"]
+      },
+      {
+        "state": "Chottrogram",
+        "cities": ["Cox's Bazar", "Bandorban", "Khagrachori"]
+      }
+    ]
+  },
+  {
+    "country": "India",
+    "states": [
+      {
+        "state": "Andhra Pradesh",
+        "cities": ["Vizag", "Nellore", "Guntur"]
+      },
+      {
+        "state": "Arunachal Pradesh",
+        "cities": ["Itanagar", "Tawang", "Bomdila"]
+      },
+      {
+        "state": "Assam",
+        "cities": ["Guwahati", "Silchar", "Dibrugarh"]
+      },
+      {
+        "state": "Bihar",
+        "cities": ["Patna", "Gaya", "Bhagalpur"]
+      },
+      {
+        "state": "Chhattisgarh",
+        "cities": ["Raipur", "Bilaspur", "Korba"]
+      },
+      {
+        "state": "Goa",
+        "cities": ["Panaji", "Mapusa", "Margao"]
+      },
+      {
+        "state": "Gujarat",
+        "cities": ["Surat", "Vadodara", "Rajkot"]
+      },
+      {
+        "state": "Haryana",
+        "cities": ["Chandigarh", "Faridabad", "Gurgaon"]
+      },
+      {
+        "state": "Himachal Pradesh",
+        "cities": ["Shimla", "Kullu", "Mandi"]
+      },
+      {
+        "state": "Jammu and Kashmir",
+        "cities": ["Jammu", "Srinagar", "Anantnag"]
+      },
+      {
+        "state": "Jharkhand",
+        "cities": ["Ranchi", "Bokaro", "Dhanbad"]
+      },
+      {
+        "state": "Karnataka",
+        "cities": ["Bangalore", "Mysore", "Mangalore"]
+      },
+      {
+        "state": "Kerala",
+        "cities": ["Thiruvananthapuram", "Kochi", "Kozhikode"]
+      }
+    ]
+  },
+  {
+    "country": "Japan",
+    "states": [
+      {
+        "state": "Hokkaido",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Aomori",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Akita",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Iwate",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Miyagi",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Yamagata",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Fukushima",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Ibaraki",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Tochigi",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Gunma",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Saitama",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Chiba",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Tokyo",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      },
+      {
+        "state": "Kanagawa",
+        "cities": ["Aomori", "Akita", "Iwate"]
+      }
+    ]
+  }
+]

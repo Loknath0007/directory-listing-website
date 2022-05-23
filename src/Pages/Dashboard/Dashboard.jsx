@@ -19,7 +19,7 @@ const Dashboard = () => {
           }}
           className="w-100 vh-100"
         >
-          <div></div>
+         
           <Outlet />
         </div>
       </div>
