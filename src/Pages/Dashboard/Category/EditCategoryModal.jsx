@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Button, FormControl, InputGroup, Modal } from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
+import { Button, FormControl, InputGroup, Modal } from 'react-bootstrap';
 
 const EditCategoryModal = (props) => {
   const { category } = props;
@@ -7,7 +7,7 @@ const EditCategoryModal = (props) => {
 
   const handleChange = (value) => {
     const newEditedCategory = { ...editedCategory };
-    newEditedCategory["categoryName"] = value;
+    newEditedCategory['categoryName'] = value;
     setEditedCategory(newEditedCategory);
   };
 
@@ -31,7 +31,7 @@ const EditCategoryModal = (props) => {
         </Modal.Header>
         <Modal.Body>
           {/* add sub categories name */}
-          <label htmlFor="" className="mb-2">
+          <label htmlhtmlFor="" className="mb-2">
             Category Name
           </label>
           <InputGroup className="mb-3">

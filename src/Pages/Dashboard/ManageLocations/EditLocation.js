@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Button, FormControl, InputGroup, Modal } from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
+import { Button, FormControl, InputGroup, Modal } from 'react-bootstrap';
 
 const EditLocation = (props) => {
-    const { country } = props;
-    const [editedCountry, setEditedCountry] = useState(country);
-    
-    // console.log(country,);
-    console.log(editedCountry.countryName,);
+  const { country } = props;
+  const [editedCountry, setEditedCountry] = useState(country);
+
+  // console.log(country,);
+  console.log(editedCountry.countryName);
   const handleChange = (value) => {
     const newEditedCategory = { ...editedCountry };
-    newEditedCategory["categoryName"] = value;
+    newEditedCategory['categoryName'] = value;
     setEditedCountry(newEditedCategory);
   };
 
@@ -33,7 +33,7 @@ const EditLocation = (props) => {
         </Modal.Header>
         <Modal.Body>
           {/* add Country name */}
-          <label htmlFor="" className="mb-2">
+          <label htmlhtmlFor="" className="mb-2">
             Country Name
           </label>
           <InputGroup className="mb-3">
@@ -55,5 +55,4 @@ const EditLocation = (props) => {
   );
 };
 
-export default EditLocation
-    ;
+export default EditLocation;
