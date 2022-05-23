@@ -1,44 +1,73 @@
 import { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button, Form, ListGroup, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { BsFillCloudCheckFill, BsFillPlusCircleFill } from "react-icons/bs";
+import { FaEdit } from "react-icons/fa";
 
-const PackageModal = ({ setShow, show, pack}) => {
-    // console.log(pack);
-    const { packTitle } = useParams()
-    console.log(packTitle);
-    const [title, setTitle]=useState('')
-    const [price, setPrice]=useState('')
-    const [features, setFeatures]=useState('')
-    const [data, setData]=useState({})
+const PackageModal = ({ setShow, show, pack }) => {
+  // console.log(pack);
+  const { packTitle } = useParams();
+  
+  console.log(packTitle);
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
 
-    const handleClose = () => setShow(false);
-    
-    // handle title
-    const handleTitle = (e) => {
-        const value = e.target.value
-        setTitle(value);
+  const [data, setData] = useState({});
 
+  const [feature, setFeature] = useState("");
+  const [input, setInput] = useState(false);
+  const [value, setValue] = useState("");
+  const features = pack?.features;
+  const handleClose = () => setShow(false);
+
+  // handle title
+  const handleTitle = (e) => {
+    const value = e.target.value;
+    setTitle(value);
+  };
+  // handle Price
+  const handlePrice = (e) => {
+    const value = e.target.value;
+    setPrice(value);
+  };
+  // handle Features
+
+  const handleData = () => {
+    const newData = {
+      title,
+      price,
+      feature,
+    };
+    setData(newData);
+    console.log(data);
+  };
+
+  // handleEdit
+  const [index, setIndex] = useState();
+  const handleEdit = (el, index) => {
+    setFeature("");
+    setValue(el);
+    setInput(true);
+    setIndex(index);
+  };
+  console.log(feature, "index", index);
+
+  // handleChange
+  const handleChange = (e) => {
+    setFeature(e.target.value);
+    console.log(e.target.value);
+  };
+
+  // handleAdd
+  const handleAdd = (e) => {
+    const key = e.key;
+    if (key === "Enter") {
+      setInput(false);
+      // feature update
+      features[index] = feature;
+      console.log(pack.features);
     }
-    // handle Price
-    const handlePrice = (e) => {
-        const value = e.target.value
-        setPrice(value);
-
-    }
-    // handle Features
-    const handleFeatures = (e) => {
-        const value = e.target.value
-        setFeatures(value);
-
-    }
-    const handleData = () => {
-        const newData = {
-        title, price, features
-        }
-        setData(newData)
-        console.log(data);
-    }
-    
+  };
   return (
     <div>
       <Modal
@@ -59,8 +88,8 @@ const PackageModal = ({ setShow, show, pack}) => {
                 type="text"
                 defaultValue={pack.title}
                 placeholder="Package title"
-                              autoFocus
-                              onBlur={handleTitle}
+                autoFocus
+                onBlur={handleTitle}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.price">
@@ -68,21 +97,44 @@ const PackageModal = ({ setShow, show, pack}) => {
               <Form.Control
                 type="number"
                 placeholder="Price"
-                              defaultValue={pack.price}
-                              onBlur={handlePrice}
+                defaultValue={pack.price}
+                onBlur={handlePrice}
                 autoFocus
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.features">
               <Form.Label>Features</Form.Label>
-              <Form.Control
-                type="text"  onBlur={handleFeatures}
-                placeholder="Enter package features"
-                defaultValue={pack.features.map((e) => e)}
-                as="textarea"
-                rows={5}
-                autoFocus
-              />
+
+              <ListGroup>
+                {pack.features.map((el, i) =>
+                  input && index === i   ? (
+                    <div>
+                      <Form.Control
+                        defaultValue={value}
+                        onKeyPress={handleAdd}
+                        onChange={handleChange}
+                      />{" "}
+                    </div>
+                  ) : (
+                    <ListGroup.Item className="border-0">
+                      <BsFillCloudCheckFill className="text-primary" /> {el}{" "}
+                      <FaEdit
+                        className="cursor-pointer"
+                        onClick={() => handleEdit(el, i)}
+                      />
+                    </ListGroup.Item>
+                  )
+                )}
+                {/* {input && (
+                  <div>
+                    <Form.Control
+                      defaultValue={value}
+                      onKeyPress={handleAdd}
+                      onChange={handleChange}
+                    />{" "}
+                  </div>
+                )} */}
+              </ListGroup>
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -90,7 +142,9 @@ const PackageModal = ({ setShow, show, pack}) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button type="submit" onClick={handleData} variant="primary">Update</Button>
+          <Button type="submit" onClick={handleData} variant="primary">
+            Update
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>

@@ -51,7 +51,7 @@ const UsersWallet = () => {
               <Row sm="1" md="2" className="g-1 text-center">
                 <Col>
                   <Button variant="warning">
-                    <FaEdit />{" "}
+                    <FaEdit />{" Edit "}
                   </Button>
                 </Col>
                 <Col>

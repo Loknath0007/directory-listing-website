@@ -26,6 +26,7 @@ import Packages from "./Pages/Dashboard/Packages/Packages";
 import Payment from "./Pages/Dashboard/Payment/Payment";
 import Users from "./Pages/Dashboard/Users/Users";
 import Settings from "./Pages/Dashboard/Settings/Settings";
+import Location from "./Pages/Location/Location";
 
 function App() {
   return (
@@ -45,9 +46,8 @@ function App() {
         <Route path="packages" element={<Packages />} />
         <Route path="packages/:packTitle" element={<Packages />} />
         <Route path="settings" element={<Settings />} />
-        <Route path="footers" element={<Footers />}>
-          
-        </Route>
+        <Route path="footers" element={<Footers />}/>
+         
         <Route path="detail" element={<FooterDetails />}></Route>
         <Route path={`columns/:col`} element={<ColOne />} />
         <Route path="subFooter" element={<SubFooter />} />
@@ -55,6 +55,7 @@ function App() {
       </Route>
 
       <Route path="adDetail" element={<SingleAdDetail />} />
+      <Route path="location" element={<Location />} />
       <Route path="registration" element={<Registration />} />
 
       <Route path="ads" element={<Ads />} />

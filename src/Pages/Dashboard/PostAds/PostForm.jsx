@@ -121,6 +121,8 @@ const PostForm = () => {
       .then((data) => setLocations(data));
   }, []);
 
+  
+
   const handleCategoryChange = (value) => {
     setCategoryText(value);
 
@@ -170,6 +172,7 @@ const PostForm = () => {
     setSelectedState(null);
     setSelectedCities([]);
   };
+
 
   // const handleSubCategoryChange = (subCategory) => {
   //   console.log(subCategory.target.value);
@@ -226,6 +229,7 @@ const PostForm = () => {
     const newCities = existCities.filter((c) => c !== city);
     setSelectedCities(newCities);
   };
+
   return (
     <div className="w-50 mx-auto">
       <Form>
@@ -254,6 +258,7 @@ const PostForm = () => {
             required
           />
         </Form.Group>
+        
 
         {/* <Form.Group className="mb-3" controlId="category"> */}
         <Form.Label htmlFor="category">Select Category</Form.Label>
