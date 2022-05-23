@@ -31,6 +31,7 @@ import BuyCredits from "./Pages/Profile/BuyCredits";
 import VerifyBadge from "./Pages/Profile/VerifyBadge";
 import ManageAds from "./Pages/Profile/ManageAds";
 import Login from "./Pages/Login/Login";
+import AdminLogin from "./Pages/Login/AdminLogin";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
       <Route path="contact" element={<ContactUs />} />
       <Route path="login" element={<Login />} />
       <Route path="registration" element={<Registration />} />
+      <Route path="admin" element={<AdminLogin />} />
       <Route path="*" element={<NotFound />} />
 
       <Route path="profile" element={<Profile />}>
