@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 
-const UserAccount = () => {
+const AdminAccount = () => {
     return (
         <div>
             
@@ -27,4 +27,4 @@ const UserAccount = () => {
     );
 };
 
-export default UserAccount;
+export default AdminAccount;

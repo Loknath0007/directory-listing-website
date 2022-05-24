@@ -128,6 +128,8 @@ const PostForm = () => {
       .then((data) => setLocations(data));
   }, []);
 
+  
+
   const handleCategoryChange = (value) => {
     setCategoryText(value);
 
@@ -191,6 +193,7 @@ const PostForm = () => {
     setSelectedState(null);
     setSelectedCities([]);
   };
+
 
   // const handleSubCategoryChange = (subCategory) => {
   //   console.log(subCategory.target.value);

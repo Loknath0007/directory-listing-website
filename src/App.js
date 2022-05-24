@@ -19,12 +19,13 @@ import Pages from "./Pages/Dashboard/DashboardPages/Pages";
 import AddNewPage from "./Pages/Dashboard/DashboardPages/AddNewPage";
 import SubFooter from "./Pages/Dashboard/Footers/SubFooter";
 import ColOne from "./Pages/Dashboard/Footers/Columns/ColOne";
-import UserProfile from "./Pages/Dashboard/UserProfile/UserProfile";
+import AdminProfile from "./Pages/Dashboard/Profile/AdminProfile";
 import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
 import Packages from "./Pages/Dashboard/Packages/Packages";
 import Payment from "./Pages/Dashboard/Payment/Payment";
 import Users from "./Pages/Dashboard/Users/Users";
 import Settings from "./Pages/Dashboard/Settings/Settings";
+import Location from "./Pages/Location/Location";
 import Profile from "./Pages/Profile";
 import ProfileHome from "./Pages/Profile/ProfileHome";
 import BuyCredits from "./Pages/Profile/BuyCredits";
@@ -42,7 +43,7 @@ function App() {
         <Route path="headers" element={<Headers />} />
         <Route path="new-post-ads" element={<PostAds />} />
         <Route path="search-ads" element={<SearchAds />} />
-        <Route path="userProfile" element={<UserProfile />} />
+        <Route path="profile" element={<AdminProfile />} />
         <Route path="users" element={<Users />} />
         <Route path="pages" element={<Pages />} />
         <Route path="categories" element={<Categories />} />
@@ -60,6 +61,7 @@ function App() {
       </Route>
 
       <Route path="adDetail" element={<SingleAdDetail />} />
+      <Route path="location" element={<Location />} />
       <Route path="registration" element={<Registration />} />
 
       <Route path="ads" element={<Ads />} />

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Card, Col, Form, FormGroup, FormSelect, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import { Button,  Col, Form, FormGroup, FormSelect, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 
 
 
-const UserDetails = () => {
+const AdminDetails = () => {
     return (
         <div>
            
@@ -119,4 +119,4 @@ const UserDetails = () => {
     );
 };
 
-export default UserDetails;
+export default AdminDetails;
