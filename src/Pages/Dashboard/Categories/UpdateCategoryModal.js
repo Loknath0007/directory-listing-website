@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BiMessageSquareEdit } from 'react-icons/bi';
+import { FiEdit } from 'react-icons/fi';
 import { BsXCircleFill } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { updateCategory } from '../../../store/actions/categoryActions';
@@ -15,7 +15,7 @@ const UpdateCategoryModal = ({ updateList, category, index }) => {
 
   const handleAddCategory = (e) => {
     e.preventDefault();
-  
+
     if (name) {
       dispatch(updateCategory(category._id, formData));
       updateList();
@@ -30,7 +30,7 @@ const UpdateCategoryModal = ({ updateList, category, index }) => {
         data-bs-target={`#updateCategoryModal${index}`}
         className="btn btn-outline-success"
       >
-        <BiMessageSquareEdit className="fs-5" />
+        <FiEdit className="fs-5" />
       </button>
       <div
         className="modal fade"
