@@ -82,7 +82,7 @@ const Categories = () => {
                         <button
                           type="button"
                           data-bs-toggle="collapse"
-                          className="btn btn-outline-info"
+                          className="btn btn-outline-primary"
                           data-bs-target={`#collapse${index}`}
                           aria-expanded="false"
                           aria-controls={`collapse${index}`}
