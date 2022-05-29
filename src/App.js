@@ -7,7 +7,6 @@ import Headers from "./Pages/Dashboard/Headers/Headers";
 import PostAds from "./Pages/Dashboard/PostAds/PostAds";
 import SearchAds from "./Pages/Dashboard/SearchAds/SearchAds";
 import Categories from "./Pages/Dashboard/Categories";
-import ManageLocations from "./Pages/Dashboard/ManageLocations/ManageLocations";
 import Registration from "./Pages/Registration/Registration";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import ContactUs from "./Pages/ContactUs/ContactUs";
@@ -32,7 +31,7 @@ import BuyCredits from "./Pages/Profile/BuyCredits";
 import VerifyBadge from "./Pages/Profile/VerifyBadge";
 import ManageAds from "./Pages/Profile/ManageAds";
 import Login from "./Pages/Login/Login";
-import AdminLogin from "./Pages/Login/AdminLogin";
+import Locations from "./Pages/Dashboard/Locations";
 
 function App() {
   return (
@@ -47,7 +46,7 @@ function App() {
         <Route path="users" element={<Users />} />
         <Route path="pages" element={<Pages />} />
         <Route path="categories" element={<Categories />} />
-        <Route path="manage-locations" element={<ManageLocations />} />
+        <Route path="manage-locations" element={<Locations />} />
         <Route path="payment" element={<Payment />} />
         <Route path="packages" element={<Packages />} />
         <Route path="footers" element={<Footers />}></Route>
@@ -69,7 +68,7 @@ function App() {
       <Route path="contact" element={<ContactUs />} />
       <Route path="user/login" element={<Login />} />
       <Route path="user/registration" element={<Registration />} />
-      <Route path="user/admin" element={<AdminLogin />} />
+      {/* <Route path="user/admin" element={<AdminLogin />} /> */}
       <Route path="*" element={<NotFound />} />
 
       <Route path="profile" element={<Profile />}>

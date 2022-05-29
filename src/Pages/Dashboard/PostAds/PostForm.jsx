@@ -7,6 +7,8 @@ import AddImages from './AddImages';
 import ContactDetails from './ContactDetails';
 import BrandModel from './BrandModel';
 import LocationForm from './LocationForm';
+import LocationFormTest from './LocationFormTest';
+import LocationFormTest2 from './LocationFormTest2';
 
 const PostForm = () => {
   const [condition, setCondition] = useState('');
@@ -113,7 +115,6 @@ const PostForm = () => {
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
   const [brandText, setBrandText] = useState('');
   const [selectedBrand, setSelectedBrand] = useState(null);
-  const [selectedModel, setSelectedModel] = useState([]);
   const [locations, setLocations] = useState([]);
   const [stateText, setStateText] = useState('');
   const [selectedState, setSelectedState] = useState(null);
@@ -127,8 +128,6 @@ const PostForm = () => {
       .then((res) => res.json())
       .then((data) => setLocations(data));
   }, []);
-
-  
 
   const handleCategoryChange = (value) => {
     setCategoryText(value);
@@ -193,7 +192,6 @@ const PostForm = () => {
     setSelectedState(null);
     setSelectedCities([]);
   };
-
 
   // const handleSubCategoryChange = (subCategory) => {
   //   console.log(subCategory.target.value);
@@ -268,8 +266,8 @@ const PostForm = () => {
   };
 
   return (
-    <div className="w-50 mx-auto">
-      <Form>
+    <div className="row container-sm mx-auto">
+      <Form className="col-lg-8 mx-auto">
         <Form.Group className="mb-3" controlId="title">
           <Form.Label>Title</Form.Label>
           <Form.Control type="text" placeholder="Title to be short!" required />
@@ -454,7 +452,10 @@ const PostForm = () => {
         </Form.Label>
 
         {/* select location */}
-        <LocationForm />
+        {/* <LocationForm /> */}
+        {/* <LocationFormTest /> */}
+        <LocationFormTest2 />
+        {/* <LocationForm2 /> */}
 
         {/* addImage */}
         <AddImages />
