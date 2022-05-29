@@ -8,10 +8,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 // import reducers
 import { categoriesReducer } from './reducers/categoryReducers';
+import { locationsReducer } from './reducers/locationReducers';
 
 // combine reducers
 const reducer = combineReducers({
   categories: categoriesReducer,
+  locations: locationsReducer,
 });
 
 let initialState = {};

@@ -1,0 +1,299 @@
+import React, { useEffect, useState } from 'react';
+import { BsXCircle } from 'react-icons/bs';
+import {
+  Form,
+  Button,
+  Row,
+  Col,
+  Spinner,
+  FormControl,
+  InputGroup,
+} from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  createNewLocation,
+  updateLocationData,
+} from '../../../store/actions/locationActions';
+
+const ManageLocationForm = ({ updateData, updateLocation }) => {
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.locations);
+
+  const { isUpdating, location } = updateLocation;
+
+  const [states, setStates] = useState([
+    {
+      name: '',
+      city: [],
+    },
+  ]);
+  const [formData, setFormData] = useState({
+    name: location.name || '',
+    state: states,
+  });
+
+  useEffect(() => {
+    if (isUpdating) {
+      setFormData({
+        name: location.name,
+        state: location.state,
+      });
+
+      setStates(location.state);
+    }
+  }, [isUpdating, location]);
+
+  const reset = (confirmation) => {
+    if (confirmation) {
+      const confirm = window.confirm(
+        'Are you sure? All the selections will be lost.'
+      );
+
+      if (confirm) {
+        setStates([
+          {
+            name: '',
+            city: [],
+          },
+        ]);
+        setFormData({
+          name: '',
+          state: states,
+        });
+      } else {
+        return;
+      }
+    } else {
+      setStates([
+        {
+          name: '',
+          city: [],
+        },
+      ]);
+      setFormData({
+        name: '',
+        state: states,
+      });
+    }
+    updateLocation.isUpdating = false;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    formData.state = states;
+
+    if (isUpdating) {
+      dispatch(updateLocationData(location._id, formData));
+    } else {
+      dispatch(createNewLocation(formData));
+    }
+    reset();
+    updateData();
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      {formData.name && (
+        <div className="mb-3">
+          <div className="ps-2 d-flex flex-wrap gap-3 align-items-center">
+            <h6 className="fs-5 text-uppercase">#{formData.name}</h6>
+          </div>
+          <ul className="list-group mb-3">
+            {states
+              .filter((st) => st.name)
+              .map((st, index) => (
+                <li
+                  key={index}
+                  className="list-group-item fs-5 d-flex align-items-center gap-2 flex-wrap"
+                >
+                  {st.name} -{' '}
+                  {st.city.filter(Boolean).map((ct, index) => (
+                    <div
+                      key={index}
+                      className="badge rounded-pill border py-1 px-2.5 fw-normal bg-light text-dark d-flex gap-2 align-items-center"
+                    >
+                      {ct}
+                      <button
+                        type="button"
+                        className="btn p-0 shadow-none"
+                        onClick={() => {
+                          const newState = states.map((state) => {
+                            if (state.name === st.name) {
+                              return {
+                                ...state,
+                                city: state.city.filter((city) => city !== ct),
+                              };
+                            } else {
+                              return state;
+                            }
+                          });
+                          setStates(newState);
+                        }}
+                      >
+                        <BsXCircle className="text-danger mb-1" />
+                      </button>
+                    </div>
+                  ))}
+                </li>
+              ))}
+          </ul>
+          <hr />
+        </div>
+      )}
+
+      <Form.Group className="mb-2">
+        <div className="d-flex justify-content-between align-items-center">
+          <Form.Label>
+            <h6>Country</h6>
+          </Form.Label>
+          <Button
+            onClick={() => reset()}
+            type="button"
+            variant="link"
+            disabled={!formData.name}
+            className="mr-2 shadow-none text-danger ms-auto inline"
+          >
+            -Reset
+          </Button>
+        </div>
+        <Row>
+          <Col md="12">
+            <FormControl
+              className="mb-3"
+              type="text"
+              placeholder="Country"
+              required
+              value={formData.name}
+              onChange={(e) => {
+                if (formData.name !== '') {
+                  reset();
+                }
+                setFormData({ ...formData, name: e.target.value });
+              }}
+            />
+          </Col>
+          {states.map((_, index) => (
+            <StateCityGroup
+              key={index}
+              index={index}
+              states={states}
+              setStates={setStates}
+              formData={formData}
+            />
+          ))}
+        </Row>
+      </Form.Group>
+
+      {states[0].name && (
+        <Button
+          type="button"
+          onClick={() => {
+            setStates([...states, { name: '', city: [] }]);
+          }}
+          variant="link"
+          className="mr-2 mb-3 ms-auto d-flex"
+        >
+          + Add More States
+        </Button>
+      )}
+      {/* Submit button */}
+      <Button
+        type="submit"
+        variant="primary"
+        className="shadow-none w-100"
+        disabled={!formData.name}
+      >
+        {loading ? (
+          <Spinner animation="border" size="sm" />
+        ) : isUpdating ? (
+          'Update'
+        ) : (
+          'Add'
+        )}
+      </Button>
+    </Form>
+  );
+};
+
+const StateCityGroup = ({ index, states, setStates, formData }) => {
+  const [cityName, setCityName] = useState('');
+  return (
+    <React.Fragment>
+      <div className="d-flex align-items-end">
+        <h6>{index > 0 && `${index + 1} - `} State & City</h6>
+        {index > 0 && (
+          <Button
+            type="button"
+            onClick={() => {
+              setStates(states.filter((st, i) => i !== index));
+            }}
+            variant="link"
+            className="d-inline-block shadow-none text-danger ms-auto inline"
+          >
+            -Remove
+          </Button>
+        )}
+      </div>
+
+      <Col md="6">
+        <FormControl
+          className="mb-3"
+          type="text"
+          placeholder="State"
+          disabled={formData.name === ''}
+          value={states[index].name}
+          required
+          onChange={(e) => {
+            if (states[index].name !== '') {
+              setStates((states[index].city = []));
+            }
+            setStates(
+              states.map((state, i) =>
+                i === index ? { ...state, name: e.target.value } : state
+              )
+            );
+          }}
+        />
+      </Col>
+      <Col md="6">
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="Cities"
+            value={cityName}
+            disabled={states[index].name === ''}
+            onChange={(e) => {
+              setCityName(e.target.value);
+            }}
+          />
+          <Button
+            disabled={states[index].name === ''}
+            onClick={() => {
+              setStates(
+                states.map((state, i) =>
+                  i === index
+                    ? {
+                        ...state,
+                        city: [
+                          ...state.city,
+                          state.city.includes(cityName)
+                            ? alert('City already added')
+                            : cityName.trim(),
+                        ],
+                      }
+                    : state
+                )
+              );
+              setCityName('');
+            }}
+            variant="primary"
+            id="button-addon2"
+          >
+            +
+          </Button>
+        </InputGroup>
+      </Col>
+    </React.Fragment>
+  );
+};
+
+export default ManageLocationForm;
