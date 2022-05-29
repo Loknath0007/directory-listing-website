@@ -8,6 +8,7 @@ import {
   Spinner,
   FormControl,
   InputGroup,
+  FloatingLabel,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -142,10 +143,11 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
       )}
 
       <Form.Group className="mb-2">
-        <div className="d-flex justify-content-between align-items-center">
-          <Form.Label>
-            <h6>Country</h6>
-          </Form.Label>
+        <div className="d-flex justify-content-between align-items-end">
+          <h6>
+            {isUpdating ? 'Update Location' : 'Add Location'}{' '}
+            <span className="text-danger">*</span>
+          </h6>
           <Button
             onClick={() => reset()}
             type="button"
@@ -158,19 +160,21 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
         </div>
         <Row>
           <Col md="12">
-            <FormControl
-              className="mb-3"
-              type="text"
-              placeholder="Country"
-              required
-              value={formData.name}
-              onChange={(e) => {
-                if (formData.name !== '') {
-                  reset();
-                }
-                setFormData({ ...formData, name: e.target.value });
-              }}
-            />
+            <FloatingLabel label="Country" className="mb-3">
+              <FormControl
+                className="mb-3"
+                type="text"
+                placeholder="Country"
+                required
+                value={formData.name}
+                onChange={(e) => {
+                  if (formData.name !== '') {
+                    reset();
+                  }
+                  setFormData({ ...formData, name: e.target.value });
+                }}
+              />
+            </FloatingLabel>
           </Col>
           {states.map((_, index) => (
             <StateCityGroup
@@ -185,16 +189,19 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
       </Form.Group>
 
       {states[0].name && (
-        <Button
+        <button
           type="button"
           onClick={() => {
             setStates([...states, { name: '', city: [] }]);
           }}
-          variant="link"
-          className="mr-2 mb-3 ms-auto d-flex"
+          style={{
+            border: '2px solid #a7a7a7',
+            borderStyle: 'dashed',
+          }}
+          className="mr-2 mb-3 d-flex align-items-center justify-content-center w-100 btn"
         >
           + Add More States
-        </Button>
+        </button>
       )}
       {/* Submit button */}
       <Button
@@ -206,9 +213,9 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
         {loading ? (
           <Spinner animation="border" size="sm" />
         ) : isUpdating ? (
-          'Update'
+          'Update Location'
         ) : (
-          'Add'
+          'Add New Location'
         )}
       </Button>
     </Form>
@@ -220,7 +227,7 @@ const StateCityGroup = ({ index, states, setStates, formData }) => {
   return (
     <React.Fragment>
       <div className="d-flex align-items-end">
-        <h6>{index > 0 && `${index + 1} - `} State & City</h6>
+        <h6>{index > 0 && `${index + 1} - State & City`}</h6>
         {index > 0 && (
           <Button
             type="button"
@@ -236,35 +243,47 @@ const StateCityGroup = ({ index, states, setStates, formData }) => {
       </div>
 
       <Col md="6">
-        <FormControl
+        <FloatingLabel
+          label={formData.name ? `State of ${formData.name}` : `State`}
           className="mb-3"
-          type="text"
-          placeholder="State"
-          disabled={formData.name === ''}
-          value={states[index].name}
-          required
-          onChange={(e) => {
-            if (states[index].name !== '') {
-              setStates((states[index].city = []));
-            }
-            setStates(
-              states.map((state, i) =>
-                i === index ? { ...state, name: e.target.value } : state
-              )
-            );
-          }}
-        />
-      </Col>
-      <Col md="6">
-        <InputGroup className="mb-3">
+        >
           <FormControl
-            placeholder="Cities"
-            value={cityName}
-            disabled={states[index].name === ''}
+            className="mb-3"
+            type="text"
+            placeholder="State"
+            disabled={formData.name === ''}
+            value={states[index].name}
+            required
             onChange={(e) => {
-              setCityName(e.target.value);
+              if (states[index].name !== '') {
+                setStates((states[index].city = []));
+              }
+              setStates(
+                states.map((state, i) =>
+                  i === index ? { ...state, name: e.target.value } : state
+                )
+              );
             }}
           />
+        </FloatingLabel>
+      </Col>
+      <Col md="6">
+        <InputGroup className="mb-3 w-100">
+          <FloatingLabel
+            label={
+              states[index].name ? `Cities of ${states[index].name}` : `Cities`
+            }
+            className="flex-grow-1"
+          >
+            <FormControl
+              placeholder="Cities"
+              value={cityName}
+              disabled={states[index].name === ''}
+              onChange={(e) => {
+                setCityName(e.target.value);
+              }}
+            />
+          </FloatingLabel>
           <Button
             disabled={states[index].name === ''}
             onClick={() => {
@@ -288,7 +307,7 @@ const StateCityGroup = ({ index, states, setStates, formData }) => {
             variant="primary"
             id="button-addon2"
           >
-            +
+            + Add
           </Button>
         </InputGroup>
       </Col>
