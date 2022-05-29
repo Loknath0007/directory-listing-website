@@ -7,7 +7,7 @@ import { FaEdit } from "react-icons/fa";
 const PackageModal = ({ setShow, show, pack }) => {
   // console.log(pack);
   const { packTitle } = useParams();
-  
+
   console.log(packTitle);
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -45,7 +45,7 @@ const PackageModal = ({ setShow, show, pack }) => {
   // handleEdit
   const [index, setIndex] = useState();
   const handleEdit = (el, index) => {
-    setFeature("");
+    setFeature(el);
     setValue(el);
     setInput(true);
     setIndex(index);
@@ -54,7 +54,9 @@ const PackageModal = ({ setShow, show, pack }) => {
 
   // handleChange
   const handleChange = (e) => {
-    setFeature(e.target.value);
+    if (e.target.value) {
+      setFeature(e.target.value);
+    }
     console.log(e.target.value);
   };
 
@@ -107,7 +109,7 @@ const PackageModal = ({ setShow, show, pack }) => {
 
               <ListGroup>
                 {pack.features.map((el, i) =>
-                  input && index === i   ? (
+                  input && index === i ? (
                     <div>
                       <Form.Control
                         defaultValue={value}
