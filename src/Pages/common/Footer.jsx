@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import playStore from "../../images/google-play.png";
 import appStore from "../../images/app-store.png";
 import "./Footer.css";

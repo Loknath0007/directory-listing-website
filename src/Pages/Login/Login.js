@@ -80,10 +80,20 @@ const Login = () => {
     });
     return () => unsubscribed;
   }, []);
+
+  // log in
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const userData = Object.fromEntries(formData.entries());
+    console.log(userData);
+  };
   return (
     <>
       <Header />
-      <Form className="login_form">
+      <Form className="login_form" onSubmit={handleSubmit}>
         {!user.name ? (
           <div>
             <h3 className="text-muted">Please Login</h3>

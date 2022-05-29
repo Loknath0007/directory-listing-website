@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Form, ListGroup, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { BsFillCloudCheckFill, BsFillPlusCircleFill } from "react-icons/bs";
+import { BsFillCloudCheckFill } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
 
 const PackageModal = ({ setShow, show, pack }) => {

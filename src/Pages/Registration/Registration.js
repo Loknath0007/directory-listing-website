@@ -5,11 +5,25 @@ import { Link } from "react-router-dom";
 import Header from "../common/Header";
 
 const Registration = () => {
+  // handle Submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    // form data in object
+    const newUser = Object.fromEntries(formData.entries());
+
+    if (newUser.password === newUser.confirmPassword) {
+      console.log(newUser, formData);
+    } else {
+      alert("Please confirm your password");
+    }
+  };
+
   return (
     <div>
       <Header />
 
-      <Form className="registration_form">
+      <Form className="registration_form" onSubmit={handleSubmit}>
         <h3 className="text-muted">Please Register</h3>
 
         <FormGroup className="my-3">
@@ -41,8 +55,8 @@ const Registration = () => {
         </FormGroup>
         <FormGroup className="my-3">
           <FormControl
-            name="confirm-password"
-            id="confirm-password"
+            name="confirmPassword"
+            id="confirmPassword"
             placeholder="Confirm Password"
             type="password"
             required
@@ -51,7 +65,6 @@ const Registration = () => {
         <FormGroup className="my-3">
           <FormControl
             name="mobile"
-            id="mobile"
             placeholder="Mobile No"
             type="text"
           ></FormControl>
