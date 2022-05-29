@@ -78,9 +78,9 @@ const Locations = () => {
                         <button
                           type="button"
                           className="btn btn-outline-success"
-                          onClick={() =>
-                            setUpdateLocation({ isUpdating: true, location })
-                          }
+                          onClick={() => {
+                            setUpdateLocation({ isUpdating: true, location });
+                          }}
                         >
                           <FiEdit className="fs-5" />
                         </button>

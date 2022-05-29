@@ -2,3 +2,16 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif !important;
 }
+
+@media (min-width: 576px) {
+  .country-list {
+    columns: 2;
+    column-fill: balance;
+  }
+}
+@media (min-width: 992px) {
+  .country-list {
+    columns: 3;
+    column-fill: balance;
+  }
+}
