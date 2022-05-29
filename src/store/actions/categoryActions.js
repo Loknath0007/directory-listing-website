@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   ALL_CATEGORIES_REQUEST,
   ALL_CATEGORIES_SUCCESS,
@@ -14,7 +14,7 @@ import {
   DELETE_CATEGORY_REQUEST,
   DELETE_CATEGORY_SUCCESS,
   DELETE_CATEGORY_FAIL,
-} from '../constants/categoryConstants';
+} from "../constants/categoryConstants";
 
 // Get all categories
 export const getAllCategories = () => async (dispatch) => {
@@ -22,7 +22,7 @@ export const getAllCategories = () => async (dispatch) => {
     dispatch({
       type: ALL_CATEGORIES_REQUEST,
     });
-    const response = await axios.get('/api/categories');
+    const response = await axios.get("/api/categories");
     dispatch({
       type: ALL_CATEGORIES_SUCCESS,
       payload: response.data,
@@ -41,7 +41,7 @@ export const createNewCategory = (category) => async (dispatch) => {
     dispatch({
       type: NEW_CATEGORY_REQUEST,
     });
-    const response = await axios.post('/api/categories', category);
+    const response = await axios.post("/api/categories", category);
     dispatch({
       type: NEW_CATEGORY_SUCCESS,
       payload: response.data,

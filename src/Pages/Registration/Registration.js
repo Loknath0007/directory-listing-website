@@ -59,7 +59,7 @@ const Registration = () => {
         <Button type="submit" className="registration_btn mb-3">
           Register
         </Button>
-        <NavLink as={Link} to="/login">
+        <NavLink as={Link} to="/user/login">
           {"Already registered? Please login "}
         </NavLink>
       </Form>

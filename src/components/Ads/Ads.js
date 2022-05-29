@@ -4,7 +4,6 @@ import { MdLocationOn } from "react-icons/md";
 import { AiFillTag } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import DisplayAds from "../DisplayAds/DisplayAds";
-
 const Ads = () => {
   return (
     <div>

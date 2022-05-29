@@ -109,7 +109,7 @@ const Login = () => {
             <Button type="submit" className="mb-3">
               Login
             </Button>
-            <NavLink as={Link} to="/registration">
+            <NavLink as={Link} to="/user/registration">
               {"New use? Please register "}
             </NavLink>
             {/* 

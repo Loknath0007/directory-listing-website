@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
-import DashboardNav from '../DashboardNav/DashboardNav';
-import AddCategoriesModal from './AddCategoriesModal';
-import AddSubCategoryModal from './AddSubCategoryModal';
-import EditCategoryModal from './EditCategoryModal';
-import { getAllCategories } from '../../../store/actions/categoryActions';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
+import DashboardNav from "../DashboardNav/DashboardNav";
+import AddCategoriesModal from "./AddCategoriesModal";
+import AddSubCategoryModal from "./AddSubCategoryModal";
+import EditCategoryModal from "./EditCategoryModal";
+import { getAllCategories } from "../../../store/actions/categoryActions";
+import { useDispatch, useSelector } from "react-redux";
 const Categories = () => {
   const dispatch = useDispatch();
   const { categories: allCategories } = useSelector(
@@ -114,7 +114,7 @@ const Categories = () => {
                 <h6>Sub Categories</h6>
                 <div>
                   <Button onClick={() => setSubCategoriesModal(true)} size="sm">
-                    Add New{' '}
+                    Add New{" "}
                     <FontAwesomeIcon className="mb-0" size="md" icon={faPlus} />
                   </Button>
                 </div>
@@ -151,7 +151,7 @@ const CategoriesListItem = (props) => {
       onClick={() => handleItemClick(_id)}
       className="list-group-item d-flex align-items-center justify-content-between"
     >
-      <div className={`${activeCategory?._id === _id && 'text-info'}`}>
+      <div className={`${activeCategory?._id === _id && "text-info"}`}>
         {name}
       </div>
       <div className="d-flex align-items-center">

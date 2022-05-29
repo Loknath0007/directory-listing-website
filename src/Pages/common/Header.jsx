@@ -24,7 +24,10 @@ const Header = () => {
             </Nav>
             <Nav>
               <Nav.Link>
-                <Link to="/login" className="text-decoration-none text-white">
+                <Link
+                  to="/user/login"
+                  className="text-decoration-none text-white"
+                >
                   Login
                 </Link>
               </Nav.Link>
