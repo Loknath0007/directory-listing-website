@@ -86,10 +86,10 @@ const Login = () => {
       <Form className="login_form">
         {!user.name ? (
           <div>
-            <h3 className="text-muted">Please Login</h3>
+            <h3 className="text-muted">User Login</h3>
             <FormGroup className="my-3">
               <FormControl
-                placeholder="Enter Your Email"
+                placeholder="Email"
                 id="email"
                 name="email"
                 type="email"
@@ -101,7 +101,7 @@ const Login = () => {
                 name="password"
                 type="password"
                 id="password"
-                placeholder="Enter Your Password"
+                placeholder="Password"
                 required
               ></FormControl>
             </FormGroup>
@@ -109,11 +109,11 @@ const Login = () => {
             <Button type="submit" className="mb-3">
               Login
             </Button>
-            <NavLink as={Link} to="/registration">
+            <NavLink as={Link} to="/user/registration">
               {"New use? Please register "}
             </NavLink>
-
-            {/* <Button variant="warning" onClick={handleGoogleLogin}>
+            {/* 
+            <Button variant="warning" onClick={handleGoogleLogin}>
               Login with google
             </Button> */}
           </div>

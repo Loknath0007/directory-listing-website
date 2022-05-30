@@ -10,11 +10,11 @@ const Registration = () => {
       <Header />
 
       <Form className="registration_form">
-        <h3 className="text-muted">Please Register</h3>
+        <h3 className="text-muted">User Register</h3>
 
         <FormGroup className="my-3">
           <FormControl
-            placeholder="Enter Your Name"
+            placeholder="Your Name"
             id="name"
             name="name"
             required
@@ -22,7 +22,7 @@ const Registration = () => {
         </FormGroup>
         <FormGroup className="my-3">
           <FormControl
-            placeholder="Enter Your Email"
+            placeholder="Email"
             id="email"
             name="email"
             type="email"
@@ -35,7 +35,7 @@ const Registration = () => {
             name="password"
             type="password"
             id="password"
-            placeholder="Enter Your Password"
+            placeholder="Password"
             required
           ></FormControl>
         </FormGroup>
@@ -59,7 +59,7 @@ const Registration = () => {
         <Button type="submit" className="registration_btn mb-3">
           Register
         </Button>
-        <NavLink as={Link} to="/login">
+        <NavLink as={Link} to="/user/login">
           {"Already registered? Please login "}
         </NavLink>
       </Form>
