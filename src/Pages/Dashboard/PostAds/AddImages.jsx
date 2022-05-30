@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { BsImages } from 'react-icons/bs';
-import { faImage } from '@fortawesome/free-solid-svg-icons';
-import './AddImages.css';
-import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
-import { IoIosCloseCircle } from 'react-icons/io';
+import React, { useState } from "react";
+import { BsImages } from "react-icons/bs";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
+import "./AddImages.css";
+import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
+import { IoIosCloseCircle } from "react-icons/io";
 
 const AddImages = () => {
   const [images, setImages] = useState([]);
@@ -12,7 +12,7 @@ const AddImages = () => {
   const handleImageChange = (files) => {
     setImages([...images, ...files].slice(0, 5));
     if (files.length > 5 || images.length >= 5) {
-      alert('You can only upload 5 images');
+      alert("You can only upload 5 images");
     }
   };
 
@@ -65,8 +65,8 @@ const AddImages = () => {
             <div ref={provided.innerRef} className="mt-2 w-100 d-inline-block">
               {images.map((image, index) => (
                 <Draggable
-                  draggableId={index + ''}
-                  key={index + ''}
+                  draggableId={index + ""}
+                  key={index + ""}
                   index={index}
                 >
                   {(provided, snapshot) => (
@@ -81,10 +81,10 @@ const AddImages = () => {
                         <img
                           className="rounded-3 my-3 shadow "
                           style={{
-                            width: '92px',
-                            height: '80px',
-                            objectFit: 'cover',
-                            cursor: 'default',
+                            width: "92px",
+                            height: "80px",
+                            objectFit: "cover",
+                            cursor: "default",
                           }}
                           src={URL.createObjectURL(image)}
                           alt=""
@@ -107,7 +107,7 @@ const AddImages = () => {
                   You can reorder the images by dragging them.
                 </p>
               ) : (
-                ''
+                ""
               )}
             </div>
           )}

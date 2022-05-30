@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { BsXCircle } from 'react-icons/bs';
+import React, { useEffect, useState } from "react";
+import { BsXCircle } from "react-icons/bs";
 import {
   Form,
   Button,
@@ -9,12 +9,12 @@ import {
   FormControl,
   InputGroup,
   FloatingLabel,
-} from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+} from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import {
   createNewLocation,
   updateLocationData,
-} from '../../../store/actions/locationActions';
+} from "../../../store/actions/locationActions";
 
 const ManageLocationForm = ({ updateData, updateLocation }) => {
   const dispatch = useDispatch();
@@ -24,12 +24,12 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
 
   const [states, setStates] = useState([
     {
-      name: '',
+      name: "",
       city: [],
     },
   ]);
   const [formData, setFormData] = useState({
-    name: location.name || '',
+    name: location.name || "",
     state: states,
   });
 
@@ -47,18 +47,18 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
   const reset = (confirmation) => {
     if (confirmation) {
       const confirm = window.confirm(
-        'Are you sure? All the selections will be lost.'
+        "Are you sure? All the selections will be lost."
       );
 
       if (confirm) {
         setStates([
           {
-            name: '',
+            name: "",
             city: [],
           },
         ]);
         setFormData({
-          name: '',
+          name: "",
           state: states,
         });
       } else {
@@ -67,12 +67,12 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
     } else {
       setStates([
         {
-          name: '',
+          name: "",
           city: [],
         },
       ]);
       setFormData({
-        name: '',
+        name: "",
         state: states,
       });
     }
@@ -91,7 +91,6 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
       updateData();
     }
     reset();
-    updateData();
   };
 
   return (
@@ -109,7 +108,7 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
                   key={index}
                   className="list-group-item fs-5 d-flex align-items-center gap-2 flex-wrap"
                 >
-                  {st.name} -{' '}
+                  {st.name} -{" "}
                   {st.city.filter(Boolean).map((ct, index) => (
                     <div
                       key={index}
@@ -147,7 +146,7 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
       <Form.Group className="mb-2">
         <div className="d-flex justify-content-between align-items-end">
           <h6>
-            {isUpdating ? 'Update Location' : 'Add Location'}{' '}
+            {isUpdating ? "Update Location" : "Add Location"}{" "}
             <span className="text-danger">*</span>
           </h6>
           <Button
@@ -194,11 +193,11 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
         <button
           type="button"
           onClick={() => {
-            setStates([...states, { name: '', city: [] }]);
+            setStates([...states, { name: "", city: [] }]);
           }}
           style={{
-            border: '2px solid #a7a7a7',
-            borderStyle: 'dashed',
+            border: "2px solid #a7a7a7",
+            borderStyle: "dashed",
           }}
           className="mr-2 mb-3 d-flex align-items-center justify-content-center w-100 btn"
         >
@@ -215,9 +214,9 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
         {loading ? (
           <Spinner animation="border" size="sm" />
         ) : isUpdating ? (
-          'Update Location'
+          "Update Location"
         ) : (
-          'Add New Location'
+          "Add New Location"
         )}
       </Button>
     </Form>
@@ -225,7 +224,7 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
 };
 
 const StateCityGroup = ({ index, states, setStates, formData }) => {
-  const [cityName, setCityName] = useState('');
+  const [cityName, setCityName] = useState("");
   return (
     <React.Fragment>
       <div className="d-flex align-items-end">
@@ -253,7 +252,7 @@ const StateCityGroup = ({ index, states, setStates, formData }) => {
             className="mb-3"
             type="text"
             placeholder="State"
-            disabled={formData.name === ''}
+            disabled={formData.name === ""}
             value={states[index].name}
             required
             onChange={(e) => {
@@ -280,14 +279,14 @@ const StateCityGroup = ({ index, states, setStates, formData }) => {
             <FormControl
               placeholder="Cities"
               value={cityName}
-              disabled={states[index].name === ''}
+              disabled={states[index].name === ""}
               onChange={(e) => {
                 setCityName(e.target.value);
               }}
             />
           </FloatingLabel>
           <Button
-            disabled={states[index].name === ''}
+            disabled={states[index].name === ""}
             onClick={() => {
               setStates(
                 states.map((state, i) =>
@@ -297,14 +296,14 @@ const StateCityGroup = ({ index, states, setStates, formData }) => {
                         city: [
                           ...state.city,
                           state.city.includes(cityName)
-                            ? alert('City already added')
+                            ? alert("City already added")
                             : cityName.trim(),
                         ],
                       }
                     : state
                 )
               );
-              setCityName('');
+              setCityName("");
             }}
             variant="primary"
             id="button-addon2"
