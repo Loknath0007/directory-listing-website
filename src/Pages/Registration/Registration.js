@@ -13,7 +13,7 @@ const Registration = () => {
     const newUser = Object.fromEntries(formData.entries());
 
     if (newUser.password === newUser.confirmPassword) {
-      console.log(newUser, formData);
+      console.log(newUser);
     } else {
       alert("Please confirm your password");
     }
