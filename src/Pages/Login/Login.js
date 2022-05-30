@@ -63,6 +63,7 @@ const Login = () => {
                   id="email"
                   name="email"
                   required
+                  value={formData.email}
                   onChange={handleChange}
                   placeholder="Email"
                 />
@@ -83,6 +84,7 @@ const Login = () => {
                   id="password"
                   name="password"
                   required
+                  value={formData.password}
                   onChange={handleChange}
                   placeholder="Password"
                 />
