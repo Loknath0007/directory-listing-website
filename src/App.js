@@ -76,8 +76,8 @@ function App() {
       <Route path="ads" element={<Ads />} />
       <Route path="about" element={<AboutUs />} />
       <Route path="contact" element={<ContactUs />} />
-      <Route path="user/login" element={<Login />} />
-      <Route path="user/registration" element={<Registration />} />
+      <Route path="login" element={<Login />} />
+      <Route path="registration" element={<Registration />} />
       <Route path="user/admin" element={<AdminLogin />} />
       <Route path="*" element={<NotFound />} />
 
