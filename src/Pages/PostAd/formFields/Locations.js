@@ -3,7 +3,7 @@ import { BsChevronDown } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocations } from '../../../store/actions/locationActions';
 
-const LocationFormTest2 = () => {
+const Locations = () => {
   const searchRef = useRef(null);
   const dispatch = useDispatch();
   const { locations } = useSelector((state) => state.locations);
@@ -21,8 +21,6 @@ const LocationFormTest2 = () => {
     //   ],
     // },
   ]);
-
-  console.log(selectedLocations);
 
   useEffect(() => {
     setSearchedLocations(locations);
@@ -55,36 +53,36 @@ const LocationFormTest2 = () => {
         item.states.some((item) => item.cities.some((item) => item === city))
     );
 
-  const handleCountry = (e, location) => {
-    isCountryExist(location.country);
-    if (isCountryExist(location.name)) {
-      setSelectedLocations(
-        selectedLocations.filter((item) => item.country !== location.name)
-      );
-    } else {
-      // add country
-      setSelectedLocations([
-        ...selectedLocations,
-        {
-          country: location.name,
-          states: [],
-        },
-      ]);
-      // add the country
-      // setSelectedLocations([
-      //   ...selectedLocations,
-      //   {
-      //     country: location.name,
-      //     states: [
-      //       ...location.state.map((state) => ({
-      //         state: state.name,
-      //         cities: state.city,
-      //       })),
-      //     ],
-      //   },
-      // ]);
-    }
-  };
+  // const handleCountry = (e, location) => {
+  //   isCountryExist(location.country);
+  //   if (isCountryExist(location.name)) {
+  //     setSelectedLocations(
+  //       selectedLocations.filter((item) => item.country !== location.name)
+  //     );
+  //   } else {
+  //     // add country
+  //     setSelectedLocations([
+  //       ...selectedLocations,
+  //       {
+  //         country: location.name,
+  //         states: [],
+  //       },
+  //     ]);
+  // add the country
+  // setSelectedLocations([
+  //   ...selectedLocations,
+  //   {
+  //     country: location.name,
+  //     states: [
+  //       ...location.state.map((state) => ({
+  //         state: state.name,
+  //         cities: state.city,
+  //       })),
+  //     ],
+  //   },
+  // ]);
+  //   }
+  // };
 
   const handleState = (e, location, state) => {
     isStateExist(location.name, state.name);
@@ -216,15 +214,58 @@ const LocationFormTest2 = () => {
   };
 
   return (
-    <section className="">
+    <section className="mb-5">
+      {/* title */}
+      <h5>
+        Select Locations<span className="text-danger">*</span>
+      </h5>
+      {/* title */}
+
+      {/* button */}
       <button
         type="button"
-        className="btn btn-primary w-100"
+        className="btn btn-outline-light text-dark py-2 w-100"
+        style={{
+          border: '2px solid #a7a7a7',
+          borderStyle: 'dashed',
+        }}
         data-bs-toggle="modal"
         data-bs-target="#selectLocation"
       >
-        Select Locations
+        Browse Locations
       </button>
+      {/* button */}
+
+      {/* Locations Preview */}
+      {selectedLocations.length > 0 &&
+        selectedLocations.map((location) => (
+          <div className="mb-3 mt-4">
+            <div className="ps-2 d-flex flex-wrap gap-3 align-items-center">
+              <h6 className="fs-5 text-uppercase">{location.country}</h6>
+            </div>
+            <ul className="list-group mb-3">
+              {location.states
+                .filter((st) => st.state)
+                .map((st, index) => (
+                  <li
+                    key={index}
+                    className="list-group-item fs-6 d-flex align-items-center gap-2 flex-wrap"
+                  >
+                    {st.state} -{' '}
+                    {st.cities.filter(Boolean).map((ct, index) => (
+                      <div
+                        key={index}
+                        className="badge rounded-pill border py-1 px-2.5 fw-normal bg-light text-dark d-flex gap-2 align-items-center"
+                      >
+                        {ct}
+                      </div>
+                    ))}
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))}
+      {/* Locations Preview */}
 
       {/* Modal */}
       <div className="modal fade" id="selectLocation">
@@ -444,4 +485,4 @@ const LocationFormTest2 = () => {
   );
 };
 
-export default LocationFormTest2;
+export default Locations;

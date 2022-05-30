@@ -18,8 +18,6 @@ import {
 export const locationsReducer = (
   state = {
     locations: [],
-    newLocation: {},
-    updateLocation: {},
     loading: false,
     error: null,
   },
@@ -80,7 +78,7 @@ export const locationsReducer = (
     case UPDATE_LOCATION_SUCCESS:
       return {
         ...state,
-        updateLocation: action.payload,
+        isUpdated: action.payload,
         loading: false,
         error: null,
       };

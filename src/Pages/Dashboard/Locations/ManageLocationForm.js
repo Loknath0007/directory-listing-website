@@ -169,9 +169,9 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
                 required
                 value={formData.name}
                 onChange={(e) => {
-                  if (formData.name !== "") {
-                    reset();
-                  }
+                  // if (formData.name !== '') {
+                  //   reset();
+                  // }
                   setFormData({ ...formData, name: e.target.value });
                 }}
               />
@@ -256,9 +256,9 @@ const StateCityGroup = ({ index, states, setStates, formData }) => {
             value={states[index].name}
             required
             onChange={(e) => {
-              if (states[index].name !== "") {
-                setStates((states[index].city = []));
-              }
+              // if (states[index].name === '') {
+              //   setStates((states[index].city = []));
+              // }
               setStates(
                 states.map((state, i) =>
                   i === index ? { ...state, name: e.target.value } : state
