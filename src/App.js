@@ -32,6 +32,7 @@ import VerifyBadge from "./Pages/Profile/VerifyBadge";
 import ManageAds from "./Pages/Profile/ManageAds";
 import Login from "./Pages/Login/Login";
 import Locations from "./Pages/Dashboard/Locations";
+import AdminLogin from "./Pages/Login/AdminLogin";
 
 function App() {
   return (
@@ -68,7 +69,7 @@ function App() {
       <Route path="contact" element={<ContactUs />} />
       <Route path="user/login" element={<Login />} />
       <Route path="user/registration" element={<Registration />} />
-      {/* <Route path="user/admin" element={<AdminLogin />} /> */}
+      <Route path="user/admin" element={<AdminLogin />} />
       <Route path="*" element={<NotFound />} />
 
       <Route path="profile" element={<Profile />}>
