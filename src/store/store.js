@@ -9,11 +9,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import reducers
 import { categoriesReducer } from './reducers/categoryReducers';
 import { locationsReducer } from './reducers/locationReducers';
+import { authReducer, userReducer } from './reducers/userReducers';
 
 // combine reducers
 const reducer = combineReducers({
   categories: categoriesReducer,
   locations: locationsReducer,
+  auth: authReducer,
+  user: userReducer,
 });
 
 let initialState = {};
