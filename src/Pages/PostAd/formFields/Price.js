@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Price = () => {
+const Price = ({ setData }) => {
   const [price, setPrice] = useState();
+
+  useEffect(() => {
+    setData('price', price);
+  }, [price]);
+
   return (
     <div className="form-floating mb-3">
       <input

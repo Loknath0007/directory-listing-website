@@ -4,7 +4,7 @@ import { BsXCircle } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategories } from '../../../store/actions/categoryActions';
 
-const Category = () => {
+const Category = ({ setData }) => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
 
@@ -12,6 +12,11 @@ const Category = () => {
     category: '',
     subCategories: [],
   });
+
+  useEffect(() => {
+    setData('category', selectedCategories);
+    // eslint-disable-next-line
+  }, [selectedCategories]);
 
   useEffect(() => {
     dispatch(getAllCategories());

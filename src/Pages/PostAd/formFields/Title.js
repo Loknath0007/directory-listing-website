@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Title = () => {
+const Title = ({ setData }) => {
   const [title, setTitle] = useState('');
+
+  useEffect(() => {
+    setData('title', title);
+  }, [title]);
 
   return (
     <>

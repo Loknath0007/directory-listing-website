@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../common/Header';
 import {
   Brand,
@@ -14,68 +14,84 @@ import {
   Title,
 } from './formFields';
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  console.log({
-    title: e.target.title.value,
-    description: e.target.description.value,
-    // locations: selectedLocations,
-  });
-};
-
 const PostAd = () => {
+  const [adPostData, setAdPostData] = useState({
+    title: '',
+    description: '',
+    brand: '',
+    model: '',
+    price: '',
+    priceType: '',
+    condition: '',
+    category: {},
+    locations: [],
+    images: [],
+    contactDetails: {},
+  });
+
+  const setData = (key, value) =>
+    setAdPostData({
+      ...adPostData,
+      [key]: value,
+    });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(adPostData);
+  };
+
   return (
     <>
       <Header />
       <section className="container py-5" style={{ maxWidth: '756px' }}>
         <form onSubmit={handleSubmit}>
           {/* Title */}
-          <Title />
+          <Title setData={setData} />
           {/* End of Title */}
 
           {/* Description */}
-          <Description />
+          <Description setData={setData} />
           {/* End of Description */}
 
           {/* Category */}
-          <Category />
+          <Category setData={setData} />
           {/* End of Category */}
 
           {/* Brand */}
-          <Brand />
+          <Brand setData={setData} />
           {/* End of Brand */}
 
           {/* Model */}
-          <Model />
+          <Model setData={setData} />
           {/* End of Model */}
 
           {/* Price */}
-          <Price />
+          <Price setData={setData} />
           {/* End of Price */}
 
           {/* Price Type */}
-          <PriceType />
+          <PriceType setData={setData} />
           {/* End of Price Type */}
 
           {/* condition */}
-          <Condition />
+          <Condition setData={setData} />
           {/* end of condition */}
 
           {/* Locations */}
-          <Locations />
+          <Locations setData={setData} />
           {/* End of Locations */}
 
           {/* Images */}
-          <Images />
+          <Images setData={setData} />
           {/* End of Images */}
 
           {/* Contact Details */}
-          <ContactDetails />
+          <ContactDetails setData={setData} />
           {/* End of Contact Details */}
 
           {/* Submit button */}
-          <div class="d-grid gap-2 col-6 ms-auto my-5">
-            <button class="btn btn-primary" type="submit">
+          <div className="d-grid gap-2 col-6 ms-auto my-5">
+            <button className="btn btn-primary" type="submit">
               Submit
             </button>
           </div>

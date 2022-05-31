@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
 import { BsImages, BsXLg } from 'react-icons/bs';
-import { toast } from 'react-toastify';
 
-const Images = () => {
+const Images = ({ setData }) => {
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
+
+  useEffect(() => {
+    setData('images', images);
+  }, [images]);
 
   const reorder = (images, startIndex, endIndex) => {
     const result = Array.from(images);
@@ -60,11 +64,11 @@ const Images = () => {
                         <img
                           src={image}
                           alt={image + 'preview'}
-                          class="img-fluid"
+                          className="img-fluid h-100"
                         />
                         <button
                           type="button"
-                          class="btn btn-sm rounded-pill btn-danger position-absolute"
+                          className="btn btn-sm rounded-pill btn-danger position-absolute"
                           style={{
                             top: '-10px',
                             right: '-10px',
@@ -87,7 +91,9 @@ const Images = () => {
                 {5 - imagesPreview.length > 0 &&
                   [...Array(5 - imagesPreview.length)].map((_, index) => (
                     <div
-                      class={`card ${index !== 0 ? 'opacity-50 pe-none' : ''}`}
+                      className={`card ${
+                        index !== 0 ? 'opacity-50 pe-none' : ''
+                      }`}
                       key={index}
                       style={{
                         width: '92px',
@@ -99,7 +105,7 @@ const Images = () => {
                       }}
                     >
                       {/* images select */}
-                      <div class="w-100 h-100">
+                      <div className="w-100 h-100">
                         <label
                           htmlFor="images"
                           className="w-100 h-100 d-flex gap-1 flex-column align-items-center justify-content-center"
@@ -124,8 +130,9 @@ const Images = () => {
                           name="images"
                           disabled={index !== 0}
                           id="images"
+                          accept="image/jpeg,image/png,image/jpg"
                           multiple={true}
-                          class="form-control-file visually-hidden"
+                          className="form-control-file visually-hidden"
                           onChange={(e) => {
                             if (
                               e.target.files.length + imagesPreview.length >

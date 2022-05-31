@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
-const Brand = () => {
+const Brand = ({ setData }) => {
   const [brand, setBrand] = useState('');
+
+  useEffect(() => {
+    setData('brand', brand);
+  }, [brand]);
+
   return (
     <div className="form-floating mb-3">
       <input
