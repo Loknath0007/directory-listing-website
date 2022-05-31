@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
-const Condition = () => {
+const Condition = ({ setData }) => {
   const [condition, setCondition] = useState('');
 
   const handleConditionChange = (e) => {
@@ -10,6 +11,10 @@ const Condition = () => {
       setCondition('');
     }
   };
+
+  useEffect(() => {
+    setData('condition', condition);
+  }, [condition]);
 
   return (
     <fieldset className="row pb-5">

@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-const ContactDetails = () => {
+const ContactDetails = ({ setData }) => {
   const { user } = useSelector((state) => state.auth);
   const [contactDetails, setContactDetails] = useState({
     name: '',
     email: '',
     phone: '',
   });
+
+  useEffect(() => {
+    setData('contactDetails', contactDetails);
+  }, [contactDetails]);
 
   useEffect(() => {
     if (user) {
