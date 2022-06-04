@@ -3,7 +3,7 @@ import { BsChevronDown } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocations } from '../../../store/actions/locationActions';
 
-const Locations = () => {
+const Locations = ({ setData }) => {
   const searchRef = useRef(null);
   const dispatch = useDispatch();
   const { locations } = useSelector((state) => state.locations);
@@ -21,6 +21,10 @@ const Locations = () => {
     //   ],
     // },
   ]);
+
+  useEffect(() => {
+    setData('locations', selectedLocations);
+  }, [selectedLocations]);
 
   useEffect(() => {
     setSearchedLocations(locations);
@@ -238,8 +242,8 @@ const Locations = () => {
 
       {/* Locations Preview */}
       {selectedLocations.length > 0 &&
-        selectedLocations.map((location) => (
-          <div className="mb-3 mt-4">
+        selectedLocations.map((location, index) => (
+          <div key={index} className="mb-3 mt-4">
             <div className="ps-2 d-flex flex-wrap gap-3 align-items-center">
               <h6 className="fs-5 text-uppercase">{location.country}</h6>
             </div>
@@ -328,8 +332,9 @@ const Locations = () => {
                     All{' '}
                     <span className="badge bg-primary">{locations.length}</span>
                   </li>
-                  {locations.map((location) => (
+                  {locations.map((location,index) => (
                     <li
+                    key={index}
                       onClick={() => {
                         searchRef.current.value = location.name;
                         const search = location.name;
@@ -354,7 +359,7 @@ const Locations = () => {
                     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
                   )
                   .map((location, index) => (
-                    <li className="mb-1">
+                    <li key={index} className="mb-1">
                       <div className="card mb-2">
                         <div className="form-check p-0 d-flex align-items-center">
                           {/* <input
@@ -389,7 +394,7 @@ const Locations = () => {
                                   .localeCompare(b.name.toLowerCase())
                               )
                               .map((state, index) => (
-                                <li className="mb-1">
+                                <li key={index} className="mb-1">
                                   <div className="form-check d-flex align-items-center">
                                     <input
                                       className="form-check-input"

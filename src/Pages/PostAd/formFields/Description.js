@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Description = () => {
+const Description = ({ setData }) => {
   const [description, setDescription] = useState('');
+
+  useEffect(() => {
+    setData('description', description);
+  }, [description]);
+
   return (
     <>
       <div className="d-flex justify-content-end ms-auto">

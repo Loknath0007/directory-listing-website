@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
-const PriceType = () => {
+const PriceType = ({ setData }) => {
   const [priceType, setPriceType] = useState('');
 
   const handlePriceTypeChange = (e) => {
@@ -10,6 +11,10 @@ const PriceType = () => {
       setPriceType('');
     }
   };
+
+  useEffect(() => {
+    setData('priceType', priceType);
+  }, [priceType]);
 
   return (
     <fieldset className="row mb-5">
