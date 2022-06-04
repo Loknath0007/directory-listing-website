@@ -1,143 +1,118 @@
 import React, { useEffect, useState } from "react";
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut,
-  onAuthStateChanged,
-} from "firebase/auth";
-import initializeAuthentication from "../../firebase/firebase.initialize";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../../store/actions/userActions";
 import Header from "../common/Header";
-import "./Login.css";
-import {
-  Button,
-  Form,
-  FormControl,
-  FormGroup,
-  FormLabel,
-  InputGroup,
-  NavLink,
-} from "react-bootstrap";
-import { Link } from "react-router-dom";
 
-initializeAuthentication();
-const provider = new GoogleAuthProvider();
 const Login = () => {
-  const [user, setUser] = useState({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { error, loading, isAuthenticated } = useSelector(
+    (state) => state.auth
+  );
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const auth = getAuth();
-  function handleGoogleLogin() {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const { displayName, email, photoUrl } = result.user;
-
-        const displayUser = {
-          name: displayName,
-          email: email,
-          photo: photoUrl,
-        };
-        console.log(user);
-        setUser(displayUser);
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
-  }
-
-  function logOut() {
-    const auth = getAuth();
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        // setUser({});
-        console.log(user);
-      })
-      .catch((error) => {
-        // An error happened.
-      });
-  }
-
-  // observer of states
   useEffect(() => {
-    const unsubscribed = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser({});
-      }
-    });
-    return () => unsubscribed;
-  }, []);
+    if (isAuthenticated) {
+      toast.success("You are logged in");
+      navigate("/");
+    }
+    if (error) {
+      toast.error(error);
+    }
+  }, [isAuthenticated, error, navigate]);
 
-  // log in
+  const handleChange = (e) =>
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const userData = Object.fromEntries(formData.entries());
-    console.log(userData);
+    dispatch(loginUser(formData));
   };
+
   return (
-    <>
+    <div>
       <Header />
-      <Form className="login_form" onSubmit={handleSubmit}>
-        {!user.name ? (
-          <div>
-            <h3 className="text-muted">Please Login</h3>
-            <FormGroup className="my-3">
-              <FormControl
-                placeholder="Enter Your Email"
-                id="email"
-                name="email"
-                type="email"
-                required
-              ></FormControl>
-            </FormGroup>
-            <FormGroup className="my-3">
-              <FormControl
-                name="password"
-                type="password"
-                id="password"
-                placeholder="Enter Your Password"
-                required
-              ></FormControl>
-            </FormGroup>
-
-            <Button type="submit" className="mb-3">
-              Login
-            </Button>
-            <NavLink as={Link} to="/registration">
-              {"New use? Please register "}
-            </NavLink>
-
-            {/* <Button variant="warning" onClick={handleGoogleLogin}>
-              Login with google
-            </Button> */}
+      <div className="container-sm" style={{ maxWidth: "600px" }}>
+        <div className="card my-5">
+          <div className="my-3 mx-auto card-body w-100">
+            <h2 className="card-title">Login</h2>
+            <p className="card-subtitle mb-2 text-muted">
+              Provide your credentials to login.
+            </p>
+            <form onSubmit={handleSubmit} className="mt-5">
+              <div className="form-floating mb-3">
+                <input
+                  type="email"
+                  className={`form-control ${
+                    formData.email.match(
+                      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+                    )
+                      ? "is-valid"
+                      : formData.email === ""
+                      ? ""
+                      : "is-invalid"
+                  }`}
+                  id="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email"
+                />
+                <label htmlFor="email">
+                  Email address<span className="text-danger">*</span>
+                </label>
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  type="password"
+                  className={`form-control ${
+                    formData.password.length >= 6
+                      ? "is-valid"
+                      : formData.password === ""
+                      ? ""
+                      : "is-invalid"
+                  }`}
+                  id="password"
+                  name="password"
+                  required
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Password"
+                />
+                <label htmlFor="password">
+                  Password<span className="text-danger">*</span>
+                </label>
+              </div>
+              <button
+                type="submit"
+                disabled={formData.email === "" || formData.password === ""}
+                className="btn btn-primary w-100"
+              >
+                {loading ? (
+                  <div className="spinner-border text-light" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                ) : (
+                  "Login"
+                )}
+              </button>
+            </form>
+            <p className="text-center mt-3">
+              New to us? <Link to="/registration">Register</Link>
+            </p>
           </div>
-        ) : (
-          <Button onClick={logOut}>Log out</Button>
-        )}
-        {user.name && (
-          <div className="display_user mt-5">
-            <h2>Welcome {user.displayName}</h2>
-            <h5>User Email: {user.email}</h5>
-          </div>
-        )}
-      </Form>
-    </>
+        </div>
+      </div>
+    </div>
   );
 };
 

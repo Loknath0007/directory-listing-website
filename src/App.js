@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home';
@@ -32,8 +33,17 @@ import VerifyBadge from './Pages/Profile/VerifyBadge';
 import ManageAds from './Pages/Profile/ManageAds';
 import Login from './Pages/Login/Login';
 import Locations from './Pages/Dashboard/Locations';
+import store from './store/store';
+import { loadUser } from './store/actions/userActions';
+import ProtectedRoute from './Pages/protectedRoute';
+import PostAd from './Pages/PostAd';
+import AdminLogin from './Pages/Login/AdminLogin';
 
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -68,7 +78,17 @@ function App() {
       <Route path="contact" element={<ContactUs />} />
       <Route path="login" element={<Login />} />
       <Route path="registration" element={<Registration />} />
+      <Route path="user/admin" element={<AdminLogin />} />
       <Route path="*" element={<NotFound />} />
+
+      <Route
+        path="create-ad"
+        element={
+          <ProtectedRoute>
+            <PostAd />
+          </ProtectedRoute>
+        }
+      ></Route>
 
       <Route path="profile" element={<Profile />}>
         <Route path="" element={<ProfileHome />} />

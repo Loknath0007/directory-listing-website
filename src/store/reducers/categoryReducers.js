@@ -18,8 +18,6 @@ import {
 export const categoriesReducer = (
   state = {
     categories: [],
-    newCategory: {},
-    updateCategory: {},
     loading: false,
     error: null,
   },
@@ -61,7 +59,6 @@ export const categoriesReducer = (
     case NEW_CATEGORY_RESET:
       return {
         ...state,
-        newCategory: {},
         loading: false,
         error: null,
       };
