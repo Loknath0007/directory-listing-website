@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 
 const Description = ({ setData }) => {
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
-    setData('description', description);
-    // eslint-disable-next-line
+    setData("description", description);
   }, [description]);
 
   return (
@@ -14,28 +13,28 @@ const Description = ({ setData }) => {
         <span
           className={
             description.length > 0 && description.length <= 5000
-              ? 'text-success'
-              : description === ''
-              ? ''
-              : 'text-danger'
+              ? "text-success"
+              : description === ""
+              ? ""
+              : "text-danger"
           }
         >
-          {description.length > 0 ? `${description.length}/5000` : '0/5000'}
+          {description.length > 0 ? `${description.length}/5000` : "0/5000"}
         </span>
       </div>
       <div className="form-floating mb-3">
         <textarea
           className={`form-control ${
             description.length > 0 && description.length <= 5000
-              ? 'is-valid'
-              : description === ''
-              ? ''
-              : 'is-invalid'
+              ? "is-valid"
+              : description === ""
+              ? ""
+              : "is-invalid"
           }`}
           placeholder="Description"
           id="description"
           required
-          style={{ height: '150px' }}
+          style={{ height: "150px" }}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>

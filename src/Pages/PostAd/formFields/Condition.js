@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 
 const Condition = ({ setData }) => {
-  const [condition, setCondition] = useState('');
+  const [condition, setCondition] = useState("");
 
   const handleConditionChange = (e) => {
     setCondition(e.target.value);
 
     if (condition === e.target.value) {
-      setCondition('');
+      setCondition("");
     }
   };
 
   useEffect(() => {
-    setData('condition', condition);
+    setData("condition", condition);
   }, [condition]);
 
   return (
@@ -25,17 +24,17 @@ const Condition = ({ setData }) => {
         <div className="form-check form-switch mb-3">
           <input
             className="form-check-input"
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             type="checkbox"
             role="switch"
             id="newCondition"
             value="new"
             onChange={handleConditionChange}
-            checked={condition === 'new'}
+            checked={condition === "new"}
           />
           <label
             className="form-check-label"
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             htmlFor="newCondition"
           >
             New
@@ -44,17 +43,17 @@ const Condition = ({ setData }) => {
         <div className="form-check form-switch">
           <input
             className="form-check-input"
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             type="checkbox"
             role="switch"
             id="usedCondition"
             value="used"
             onChange={handleConditionChange}
-            checked={condition === 'used'}
+            checked={condition === "used"}
           />
           <label
             className="form-check-label"
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             htmlFor="usedCondition"
           >
             Used

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const Title = ({ setData }) => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
-    setData('title', title);
-    // eslint-disable-next-line
+    setData("title", title);
   }, [title]);
 
   return (
@@ -14,13 +13,13 @@ const Title = ({ setData }) => {
         <span
           className={
             title.length > 0 && title.length <= 50
-              ? 'text-success'
-              : title === ''
-              ? ''
-              : 'text-danger'
+              ? "text-success"
+              : title === ""
+              ? ""
+              : "text-danger"
           }
         >
-          {title.length > 0 ? `${title.length}/50` : '0/50'}
+          {title.length > 0 ? `${title.length}/50` : "0/50"}
         </span>
       </div>
       <div className="form-floating mb-3">
@@ -28,10 +27,10 @@ const Title = ({ setData }) => {
           type="text"
           className={`form-control ${
             title.length > 0 && title.length <= 50
-              ? 'is-valid'
-              : title === ''
-              ? ''
-              : 'is-invalid'
+              ? "is-valid"
+              : title === ""
+              ? ""
+              : "is-invalid"
           }`}
           id="title"
           required

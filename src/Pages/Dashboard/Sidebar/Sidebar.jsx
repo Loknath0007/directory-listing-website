@@ -18,11 +18,12 @@ import {
   faSearch,
   faDollar,
   faHeader,
-  faPager,faUsers
+  faPager,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { GoLocation } from "react-icons/go";
 import { MdSettings } from "react-icons/md";
-import { Link,  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GrPlan } from "react-icons/gr";
 // const element = <FontAwesomeIcon icon={faCoffee} />;
 
@@ -40,7 +41,7 @@ const Sidebar = () => {
                 className="cursor-pointer p-2"
                 onClick={() => setIsCollapse(!isCollapse)}
               >
-                <FontAwesomeIcon size="lg" icon={faBars} />
+                <FontAwesomeIcon size="lg" fs="lg" icon={faBars} />
               </div>
             </div>
           </SidebarHeader>
@@ -63,8 +64,8 @@ const Sidebar = () => {
               <MenuItem icon={<FontAwesomeIcon icon={faSearch} />}>
                 <Link to="/dashboard/search-ads"> Search Ads</Link>
               </MenuItem>
-              <MenuItem icon={<CgProfile/>}>
-                <Link to="/dashboard/profile">  Profile</Link>
+              <MenuItem icon={<CgProfile />}>
+                <Link to="/dashboard/profile"> Profile</Link>
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faUsers} />}>
                 <Link to="/dashboard/users"> Users</Link>
@@ -86,13 +87,17 @@ const Sidebar = () => {
                 <Link to="/dashboard/manage-locations"> Manage Locations</Link>
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faDollar} />}>
-              <Link to="/dashboard/payment"> Payment</Link>
+                <Link to="/dashboard/payment"> Payment</Link>
               </MenuItem>
-              <MenuItem icon={<GrPlan style={{backgroundColor: "lightgray"}}/>}>
-              <Link to="/dashboard/packages"> Packages</Link> 
+              <MenuItem
+                icon={<GrPlan style={{ backgroundColor: "lightgray" }} />}
+              >
+                <Link to="/dashboard/packages"> Packages</Link>
               </MenuItem>
-              <MenuItem icon={<MdSettings style={{backgroundColor: "lightgray"}}/>}>
-              <Link to="/dashboard/settings"> Settings</Link> 
+              <MenuItem
+                icon={<MdSettings style={{ backgroundColor: "lightgray" }} />}
+              >
+                <Link to="/dashboard/settings"> Settings</Link>
               </MenuItem>
             </Menu>
           </SidebarContent>
@@ -111,9 +116,18 @@ const Sidebar = () => {
                     <MenuItem>
                       <Link to={`/dashboard/columns/col${1}`}>Col 1</Link>{" "}
                     </MenuItem>
-                    <MenuItem> <Link to={`/dashboard/columns/col${2}`}>Col 2</Link> </MenuItem>
-                    <MenuItem> <Link to={`/dashboard/columns/col${3}`}>Col 3</Link> </MenuItem>
-                    <MenuItem> <Link to={`/dashboard/columns/col${4}`}>Col 4</Link></MenuItem>
+                    <MenuItem>
+                      {" "}
+                      <Link to={`/dashboard/columns/col${2}`}>Col 2</Link>{" "}
+                    </MenuItem>
+                    <MenuItem>
+                      {" "}
+                      <Link to={`/dashboard/columns/col${3}`}>Col 3</Link>{" "}
+                    </MenuItem>
+                    <MenuItem>
+                      {" "}
+                      <Link to={`/dashboard/columns/col${4}`}>Col 4</Link>
+                    </MenuItem>
                   </SubMenu>
                   <MenuItem>
                     <Link to="/dashboard/subFooter">Sub Footer </Link>

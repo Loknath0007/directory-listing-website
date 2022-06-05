@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
-import { BsImages, BsXLg } from 'react-icons/bs';
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
+import { BsImages, BsXLg } from "react-icons/bs";
 
 const Images = ({ setData }) => {
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
   useEffect(() => {
-    setData('images', images);
+    setData("images", images);
   }, [images]);
 
   const reorder = (images, startIndex, endIndex) => {
@@ -28,7 +28,7 @@ const Images = ({ setData }) => {
   return (
     <div className="pb-4">
       <h5>
-        Select Images<span className="text-danger">*</span>{' '}
+        Select Images<span className="text-danger">*</span>{" "}
       </h5>
 
       <DragDropContext onDragEnd={onEnd}>
@@ -40,8 +40,8 @@ const Images = ({ setData }) => {
             >
               {imagesPreview.map((image, index) => (
                 <Draggable
-                  draggableId={index + ''}
-                  key={index + ''}
+                  draggableId={index + ""}
+                  key={index + ""}
                   index={index}
                 >
                   {(provided, snapshot) => (
@@ -55,23 +55,27 @@ const Images = ({ setData }) => {
                       <div
                         className="position-relative d-flex justify-content-center align-items-center bg-white"
                         style={{
-                          width: '92px',
-                          height: '92px',
-                          border: '2px solid #a7a7a7',
-                          borderStyle: 'dashed',
+                          width: "92px",
+                          height: "92px",
+                          border: "2px solid #a7a7a7",
+                          borderStyle: "dashed",
                         }}
                       >
                         <img
                           src={image}
-                          alt={image + 'preview'}
-                          style={{objectFit: 'contain', width: '100%', height: '100%'}}
+                          alt={image + "preview"}
+                          style={{
+                            objectFit: "contain",
+                            width: "100%",
+                            height: "100%",
+                          }}
                         />
                         <button
                           type="button"
                           className="btn btn-sm rounded-pill btn-danger position-absolute"
                           style={{
-                            top: '-10px',
-                            right: '-10px',
+                            top: "-10px",
+                            right: "-10px",
                           }}
                           onClick={() => {
                             setImagesPreview(
@@ -92,16 +96,16 @@ const Images = ({ setData }) => {
                   [...Array(5 - imagesPreview.length)].map((_, index) => (
                     <div
                       className={`card ${
-                        index !== 0 ? 'opacity-50 pe-none' : ''
+                        index !== 0 ? "opacity-50 pe-none" : ""
                       }`}
                       key={index}
                       style={{
-                        width: '92px',
-                        height: '92px',
+                        width: "92px",
+                        height: "92px",
                         border: `2px dashed ${
-                          index !== 0 ? '#a7a7a7' : '#0B5ED7'
+                          index !== 0 ? "#a7a7a7" : "#0B5ED7"
                         }`,
-                        borderStyle: 'dashed',
+                        borderStyle: "dashed",
                       }}
                     >
                       {/* images select */}
@@ -109,18 +113,18 @@ const Images = ({ setData }) => {
                         <label
                           htmlFor="images"
                           className="w-100 h-100 d-flex gap-1 flex-column align-items-center justify-content-center"
-                          style={{ cursor: 'pointer' }}
+                          style={{ cursor: "pointer" }}
                         >
                           <BsImages
                             className={`fs-3 ${
-                              index === 0 ? 'text-primary' : 'text-muted'
+                              index === 0 ? "text-primary" : "text-muted"
                             }`}
                           />
                           <span
                             className={
-                              index === 0 ? 'text-primary' : 'text-muted'
+                              index === 0 ? "text-primary" : "text-muted"
                             }
-                            style={{ fontSize: '12px' }}
+                            style={{ fontSize: "12px" }}
                           >
                             Add Image
                           </span>
@@ -174,7 +178,7 @@ const Images = ({ setData }) => {
       </DragDropContext>
 
       <span className="text-primary fs-6">
-        {' '}
+        {" "}
         Images: {imagesPreview.length}/5
       </span>
     </div>
