@@ -36,7 +36,7 @@ const Title = ({ setData }) => {
           required
           placeholder="Title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onInput={(e) => setTitle(e.target.value)}
         />
         <label htmlFor="title">
           Ad Title<span className="text-danger">*</span>

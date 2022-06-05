@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { clearErrors, createPost } from '../../store/actions/postActions';
+import { NEW_POST_RESET } from '../../store/constants/postConstants';
 import Header from '../common/Header';
 import {
   Brand,
@@ -15,6 +20,8 @@ import {
 } from './formFields';
 
 const PostAd = () => {
+  const dispatch = useDispatch();
+  const { loading, error, success } = useSelector((state) => state.newPost);
   const [adPostData, setAdPostData] = useState({
     title: '',
     description: '',
@@ -29,22 +36,71 @@ const PostAd = () => {
     contactDetails: {},
   });
 
-  const setData = (key, value) =>
+  const setData = (key, value) => {
     setAdPostData({
       ...adPostData,
       [key]: value,
     });
+  };
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+    if (success) {
+      toast('Ad posted successfully');
+      dispatch(clearErrors());
+      dispatch({ type: NEW_POST_RESET });
+    }
+  }, [dispatch, error, success]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(adPostData);
+
+    if (adPostData.title === '') {
+      toast.error('Please enter title');
+      return;
+    } else if (adPostData.description === '') {
+      toast.error('Please enter description');
+      return;
+    } else if (adPostData.price === '') {
+      toast.error('Please enter price');
+      return;
+    } else if (adPostData.category.category === '') {
+      toast.error('Please select category');
+      return;
+    } else if (adPostData.locations.length === 0) {
+      toast.error('Please select atleast one location');
+      return;
+    } else if (adPostData.images.length === 0) {
+      toast.error('Please select atleast one image');
+      return;
+    } else {
+      const formData = new FormData();
+      formData.append('title', adPostData.title);
+      formData.append('description', adPostData.description);
+      formData.append('brand', adPostData.brand);
+      formData.append('model', adPostData.model);
+      formData.append('price', adPostData.price);
+      formData.append('priceType', adPostData.priceType);
+      formData.append('condition', adPostData.condition);
+      formData.append('category', JSON.stringify(adPostData.category));
+      formData.append('locations', JSON.stringify(adPostData.locations));
+      if (adPostData.images.length > 0) {
+        adPostData.images.forEach((image) => {
+          formData.append('images', image);
+        });
+      }
+
+      dispatch(createPost(formData));
+    }
   };
 
   return (
     <>
       <Header />
       <section className="container py-5" style={{ maxWidth: '756px' }}>
-        <form onSubmit={handleSubmit}>
+        <form encType="multipart/form-data" onSubmit={handleSubmit}>
           {/* Title */}
           <Title setData={setData} />
           {/* End of Title */}
@@ -90,11 +146,24 @@ const PostAd = () => {
           {/* End of Contact Details */}
 
           {/* Submit button */}
-          <div className="d-grid gap-2 col-6 ms-auto my-5">
-            <button className="btn btn-primary" type="submit">
-              Submit
-            </button>
-          </div>
+          {loading ? (
+            <div className="d-grid gap-2 col-6 ms-auto my-5">
+              <button className="btn btn-primary" type="button" disabled>
+                <span
+                  className="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Loading...
+              </button>
+            </div>
+          ) : (
+            <div className="d-grid gap-2 col-6 ms-auto my-5">
+              <button className="btn btn-primary" type="submit">
+                Submit
+              </button>
+            </div>
+          )}
           {/* End of Submit button */}
         </form>
       </section>
