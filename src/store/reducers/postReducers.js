@@ -106,6 +106,7 @@ export const newPostReducer = (state = { post: {} }, action) => {
       return {
         ...state,
         loading: false,
+        success: false,
         post: {},
       };
     case NEW_POST_FAIL:
