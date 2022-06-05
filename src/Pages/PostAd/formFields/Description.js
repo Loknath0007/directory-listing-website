@@ -5,6 +5,7 @@ const Description = ({ setData }) => {
 
   useEffect(() => {
     setData('description', description);
+    // eslint-disable-next-line
   }, [description]);
 
   return (
