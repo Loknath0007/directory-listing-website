@@ -64,7 +64,7 @@ const Images = ({ setData }) => {
                         <img
                           src={image}
                           alt={image + 'preview'}
-                          className="img-fluid h-100"
+                          style={{objectFit: 'contain', width: '100%', height: '100%'}}
                         />
                         <button
                           type="button"
