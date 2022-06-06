@@ -10,6 +10,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { categoriesReducer } from './reducers/categoryReducers';
 import { locationsReducer } from './reducers/locationReducers';
 import { authReducer, userReducer } from './reducers/userReducers';
+import {
+  newPostReducer,
+  postDetailsReducer,
+  postReducer,
+  postsReducer,
+} from './reducers/postReducers';
 
 // combine reducers
 const reducer = combineReducers({
@@ -17,6 +23,10 @@ const reducer = combineReducers({
   locations: locationsReducer,
   auth: authReducer,
   user: userReducer,
+  posts: postsReducer,
+  post: postReducer,
+  postDetails: postDetailsReducer,
+  newPost: newPostReducer,
 });
 
 let initialState = {};

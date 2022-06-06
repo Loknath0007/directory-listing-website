@@ -1,130 +1,127 @@
-import React, { useEffect, useState } from 'react';
-import { Form, Button, Row, Col, FormControl } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import './PostForm.css';
-import AddImages from './AddImages';
-import ContactDetails from './ContactDetails';
-import BrandModel from './BrandModel';
-import LocationForm from './LocationForm';
-import LocationFormTest from './LocationFormTest';
-import LocationFormTest2 from './LocationFormTest2';
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
+import { Button, Form, Row } from "react-bootstrap";
+import AddImages from "./AddImages";
+import ContactDetails from "./ContactDetails";
+import LocationFormTest2 from "./LocationFormTest2";
+import "./PostForm.css";
 
 const PostForm = () => {
-  const [condition, setCondition] = useState('');
+  const [condition, setCondition] = useState("");
   const [categories, setCategories] = useState([
     {
       _id: 634163136854,
-      categoryName: 'Phones',
+      categoryName: "Phones",
       subCategories: [
-        { Name: 'Home Appliances', _id: 64564464556 },
-        { Name: 'Living Room Furniture', _id: 216344444645313 },
-        { Name: 'Sim card', _id: 21634644445313 },
-        { Name: 'Bedroom Furniture', _id: 21634554645313 },
+        { Name: "Home Appliances", _id: 64564464556 },
+        { Name: "Living Room Furniture", _id: 216344444645313 },
+        { Name: "Sim card", _id: 21634644445313 },
+        { Name: "Bedroom Furniture", _id: 21634554645313 },
       ],
     },
     {
       _id: 634163135466854,
-      categoryName: 'Electronics',
+      categoryName: "Electronics",
       subCategories: [
-        { Name: 'Mobile Phone', _id: 645645454456 },
-        { Name: 'Home Appliances', _id: 2165454344645313 },
-        { Name: 'Bedroom Furniture', _id: 216545346454313 },
+        { Name: "Mobile Phone", _id: 645645454456 },
+        { Name: "Home Appliances", _id: 2165454344645313 },
+        { Name: "Bedroom Furniture", _id: 216545346454313 },
       ],
     },
     {
       _id: 6341645663136854,
-      categoryName: 'Home and Living',
+      categoryName: "Home and Living",
       subCategories: [
-        { Name: 'Home Appliances', _id: 64564464556 },
-        { Name: 'Living Room Furniture', _id: 216344444645313 },
-        { Name: 'Sim card', _id: 21634644445313 },
-        { Name: 'Bedroom Furniture', _id: 21634554645313 },
+        { Name: "Home Appliances", _id: 64564464556 },
+        { Name: "Living Room Furniture", _id: 216344444645313 },
+        { Name: "Sim card", _id: 21634644445313 },
+        { Name: "Bedroom Furniture", _id: 21634554645313 },
       ],
     },
     {
       _id: 63416313681154,
-      categoryName: 'Property',
+      categoryName: "Property",
       subCategories: [
-        { Name: 'Mobile Phone', _id: 645645454456 },
-        { Name: 'Home Appliances', _id: 2165454344645313 },
-        { Name: 'Bedroom Furniture', _id: 216545346454313 },
+        { Name: "Mobile Phone", _id: 645645454456 },
+        { Name: "Home Appliances", _id: 2165454344645313 },
+        { Name: "Bedroom Furniture", _id: 216545346454313 },
       ],
     },
     {
       _id: 63416341114136854,
-      categoryName: 'Fashion and Beauty',
+      categoryName: "Fashion and Beauty",
       subCategories: [
-        { Name: 'Home Appliances', _id: 645665445456 },
-        { Name: 'Living Room Furniture', _id: 216344645645313 },
-        { Name: 'Sim card', _id: 21634645313 },
-        { Name: 'Bedroom Furniture', _id: 2163354344645313 },
+        { Name: "Home Appliances", _id: 645665445456 },
+        { Name: "Living Room Furniture", _id: 216344645645313 },
+        { Name: "Sim card", _id: 21634645313 },
+        { Name: "Bedroom Furniture", _id: 2163354344645313 },
       ],
     },
     {
       _id: 634163136854,
-      categoryName: 'Phones',
+      categoryName: "Phones",
       subCategories: [
-        { Name: 'Home Appliances', _id: 64564464556 },
-        { Name: 'Living Room Furniture', _id: 216344444645313 },
-        { Name: 'Sim card', _id: 21634644445313 },
-        { Name: 'Bedroom Furniture', _id: 21634554645313 },
+        { Name: "Home Appliances", _id: 64564464556 },
+        { Name: "Living Room Furniture", _id: 216344444645313 },
+        { Name: "Sim card", _id: 21634644445313 },
+        { Name: "Bedroom Furniture", _id: 21634554645313 },
       ],
     },
     {
       _id: 634163135466854,
-      categoryName: 'Electronics',
+      categoryName: "Electronics",
       subCategories: [
-        { Name: 'Mobile Phone', _id: 645645454456 },
-        { Name: 'Home Appliances', _id: 2165454344645313 },
-        { Name: 'Bedroom Furniture', _id: 216545346454313 },
+        { Name: "Mobile Phone", _id: 645645454456 },
+        { Name: "Home Appliances", _id: 2165454344645313 },
+        { Name: "Bedroom Furniture", _id: 216545346454313 },
       ],
     },
     {
       _id: 6341645663136854,
-      categoryName: 'Home and Living',
+      categoryName: "Home and Living",
       subCategories: [
-        { Name: 'Home Appliances', _id: 64564464556 },
-        { Name: 'Living Room Furniture', _id: 216344444645313 },
-        { Name: 'Sim card', _id: 21634644445313 },
-        { Name: 'Bedroom Furniture', _id: 21634554645313 },
+        { Name: "Home Appliances", _id: 64564464556 },
+        { Name: "Living Room Furniture", _id: 216344444645313 },
+        { Name: "Sim card", _id: 21634644445313 },
+        { Name: "Bedroom Furniture", _id: 21634554645313 },
       ],
     },
     {
       _id: 63416313681154,
-      categoryName: 'Property',
+      categoryName: "Property",
       subCategories: [
-        { Name: 'Mobile Phone', _id: 645645454456 },
-        { Name: 'Home Appliances', _id: 2165454344645313 },
-        { Name: 'Bedroom Furniture', _id: 216545346454313 },
+        { Name: "Mobile Phone", _id: 645645454456 },
+        { Name: "Home Appliances", _id: 2165454344645313 },
+        { Name: "Bedroom Furniture", _id: 216545346454313 },
       ],
     },
     {
       _id: 63416341114136854,
-      categoryName: 'Fashion and Beauty',
+      categoryName: "Fashion and Beauty",
       subCategories: [
-        { Name: 'Home Appliances', _id: 645665445456 },
-        { Name: 'Living Room Furniture', _id: 216344645645313 },
-        { Name: 'Sim card', _id: 21634645313 },
-        { Name: 'Bedroom Furniture', _id: 2163354344645313 },
+        { Name: "Home Appliances", _id: 645665445456 },
+        { Name: "Living Room Furniture", _id: 216344645645313 },
+        { Name: "Sim card", _id: 21634645313 },
+        { Name: "Bedroom Furniture", _id: 2163354344645313 },
       ],
     },
   ]);
-  const [categoryText, setCategoryText] = useState('');
+  const [categoryText, setCategoryText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
-  const [brandText, setBrandText] = useState('');
+  const [brandText, setBrandText] = useState("");
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [locations, setLocations] = useState([]);
-  const [stateText, setStateText] = useState('');
+  const [stateText, setStateText] = useState("");
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCities, setSelectedCities] = useState([]);
   const [multiState, setMultiState] = useState([]);
-  const [priceType, setPriceType] = useState('');
+  const [priceType, setPriceType] = useState("");
 
   // console.log(selectedState?.state);
   useEffect(() => {
-    fetch('/locations.json')
+    fetch("/locations.json")
       .then((res) => res.json())
       .then((data) => setLocations(data));
   }, []);
@@ -179,16 +176,16 @@ const PostForm = () => {
   };
 
   const handleCategoryClear = () => {
-    setCategoryText('');
+    setCategoryText("");
     setSelectedCategory(null);
     setSelectedSubCategories([]);
   };
   const handleBrandClear = () => {
-    setBrandText('');
+    setBrandText("");
   };
 
   const handleLocationClear = () => {
-    setStateText('');
+    setStateText("");
     setSelectedState(null);
     setSelectedCities([]);
   };
@@ -251,17 +248,16 @@ const PostForm = () => {
 
   const handlePriceTypeChange = (e) => {
     setPriceType(e.target.value);
-
     if (priceType === e.target.value) {
-      setPriceType('');
+      setPriceType("");
     }
   };
-
+  console.log("out site after function " + priceType);
   const handleConditionChange = (e) => {
     setCondition(e.target.value);
 
     if (condition === e.target.value) {
-      setCondition('');
+      setCondition("");
     }
   };
 
@@ -274,7 +270,7 @@ const PostForm = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="description">
-          <Form.Label htmlhtmlFor="description">Descriptions</Form.Label>
+          <Form.Label htmlFor="description">Descriptions</Form.Label>
           <Form.Control
             id="description"
             as="textarea"
@@ -298,7 +294,7 @@ const PostForm = () => {
             <Form.Check
               onChange={handlePriceTypeChange}
               value="Negotiable"
-              checked={priceType === 'Negotiable'}
+              checked={priceType === "Negotiable"}
               label="Negotiable"
               id="negotiable"
               name="negotiable"
@@ -306,7 +302,7 @@ const PostForm = () => {
             <Form.Check
               onChange={handlePriceTypeChange}
               value="Fixed"
-              checked={priceType === 'Fixed'}
+              checked={priceType === "Fixed"}
               label="Fixed"
               id="fixed"
               name="fixed"
@@ -320,7 +316,7 @@ const PostForm = () => {
             <Form.Check
               onChange={handleConditionChange}
               value="Used"
-              checked={condition === 'Used'}
+              checked={condition === "Used"}
               label="Used"
               id="used"
               name="used"
@@ -328,7 +324,7 @@ const PostForm = () => {
             <Form.Check
               onChange={handleConditionChange}
               value="New"
-              checked={condition === 'New'}
+              checked={condition === "New"}
               label="New"
               id="new"
               name="new"
@@ -352,7 +348,7 @@ const PostForm = () => {
             <FontAwesomeIcon
               onClick={() => handleBrandClear()}
               className={`ms-1 ${
-                !brandText && 'd-none'
+                !brandText && "d-none"
               } select-category-Xmark cursor-pointer`}
               size="lg"
               icon={faXmark}
@@ -386,7 +382,7 @@ const PostForm = () => {
           <FontAwesomeIcon
             onClick={() => handleCategoryClear()}
             className={`ms-1 ${
-              !categoryText && 'd-none'
+              !categoryText && "d-none"
             } select-category-Xmark cursor-pointer`}
             size="lg"
             icon={faXmark}
@@ -439,7 +435,7 @@ const PostForm = () => {
           <div>
             {selectedSubCategories.map((slc) => (
               <div className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-                {slc}{' '}
+                {slc}{" "}
                 <FontAwesomeIcon
                   onClick={() => handleSubCategoryClose(slc)}
                   className="ms-1 cursor-pointer"

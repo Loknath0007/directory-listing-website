@@ -112,18 +112,39 @@ const Location = () => {
     // setSelectedCity([]);
     // setFinalSelectedCity([]);
   };
+  const [title, setTitle] = useState();
+  const [images, setImage] = useState();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(images);
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("images", "{ 'ima': 'lafjk' }");
+    formData.append("im", JSON.stringify(images));
+    // formData.append("images", JSON.stringify(images));
 
-    const newLocation = {
-      country: countryInput,
-      states: [{ Name: stateInput, selectedCity }],
-    };
+    console.log(...formData);
+    for (var value of formData.entries()) {
+      console.log(value);
+    }
 
-    const oldLocation = [];
-    oldLocation.push(newLocation);
-    setAdLocation(oldLocation);
+    // const newLocation = {
+    //   country: countryInput,
+    //   states: [{ Name: stateInput, selectedCity }],
+    // };
+
+    // const oldLocation = [];
+    // oldLocation.push(newLocation);
+    // setAdLocation(oldLocation);
     // console.log(adLocation);
+  };
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value);
+  };
+  const handleImage = (e) => {
+    setImage(e.target.files);
   };
   //   console.log(
   //     "countryInput",
@@ -158,8 +179,32 @@ const Location = () => {
   return (
     <div className="m-5">
       <Form>
+        <input
+          type="text"
+          name="title"
+          onChange={handleTitle}
+          placeholder="title"
+        />
+        <label for="formFileSm" class="form-label ">
+          <img
+            className="cursor-pointer"
+            src="https://media.geeksforgeeks.org/wp-content/uploads/gfg-40.png"
+            width="140"
+            height="140"
+            alt="submit"
+          />
+        </label>
+        <input
+          name="image"
+          class="form-control form-control-sm d-none"
+          id="formFileSm"
+          type="file"
+          accept="image/*"
+          onClick={handleImage}
+          multiple
+        />
         {/* country input */}
-        <Form.Group className="mb-3" controlId="country Name">
+        {/* <Form.Group className="mb-3" controlId="country Name">
           <Form.Label>Country</Form.Label>
           <div className="position-relative">
             <Form.Control
@@ -184,7 +229,6 @@ const Location = () => {
             ))}
           </datalist>
 
-          {/* state input */}
           {countryInput && (
             <div>
               <Form.Label>State of {countryInput}</Form.Label>
@@ -213,7 +257,7 @@ const Location = () => {
               </datalist>
             </div>
           )}
-          {/* city input */}
+          
           {stateInput && (
             <div>
               <Form.Label>City of {stateInput}</Form.Label>
@@ -242,24 +286,11 @@ const Location = () => {
               </datalist>
             </div>
           )}
-        </Form.Group>
+        </Form.Group> */}
         <Button type="submit" onClick={handleSubmit}>
           Add Location
         </Button>
       </Form>
-      <div>
-        {finalSelectedCity?.map((c) => (
-          <p className="bg-secondary rounded-pill px-2 py-1 text-white shadow-sm me-2 my-1 d-inline-block">
-            {c}{" "}
-            <FontAwesomeIcon
-              onClick={() => handleCityClose(c)}
-              className="ms-1 cursor-pointer"
-              size="lg"
-              icon={faXmark}
-            />
-          </p>
-        ))}
-      </div>
     </div>
   );
 };

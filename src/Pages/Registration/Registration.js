@@ -38,6 +38,7 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
     if (formData.password !== formData.confirmPassword) {
       toast.success("Password and Confirm Password do not match");
       return;

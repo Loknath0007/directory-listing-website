@@ -32,7 +32,7 @@ const Category = ({ setData }) => {
           }`}
           id="categorySelect"
           required
-          onChange={(e) => {
+          onInput={(e) => {
             if (e.target.value === '') {
               setSelectedCategories({
                 category: '',
@@ -43,6 +43,7 @@ const Category = ({ setData }) => {
             setSelectedCategories({
               ...selectedCategories,
               category: e.target.value,
+              subCategories: [],
             });
           }}
         >
@@ -67,7 +68,7 @@ const Category = ({ setData }) => {
           }`}
           id="subCategorySelect"
           disabled={selectedCategories.category === ''}
-          onChange={(e) => {
+          onInput={(e) => {
             if (e.target.value === '') {
               return;
             }
@@ -103,7 +104,7 @@ const Category = ({ setData }) => {
             )}
         </select>
         <label htmlFor="subCategorySelect">
-          Subcategories<span className="text-danger">*</span>
+          Subcategories
         </label>
       </div>
       {/* end of sub categories */}
