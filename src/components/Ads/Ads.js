@@ -4,9 +4,11 @@ import { MdLocationOn } from "react-icons/md";
 import { AiFillTag } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import DisplayAds from "../DisplayAds/DisplayAds";
+import Header from "../../Pages/common/Header";
 const Ads = () => {
   return (
     <div>
+      <Header />
       <div className="main_container">
         <div className="ads_top">
           <div className="ads_top_left">
