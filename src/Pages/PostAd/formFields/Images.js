@@ -18,7 +18,6 @@ const Images = ({ setData }) => {
     return result;
   };
   const onEnd = (result) => {
-    console.log(result);
     setImagesPreview(
       reorder(imagesPreview, result.source.index, result.destination.index)
     );
@@ -63,11 +62,11 @@ const Images = ({ setData }) => {
                       >
                         <img
                           src={image}
-                          alt={image + "preview"}
+                          alt={image + 'preview'}
                           style={{
-                            objectFit: "contain",
-                            width: "100%",
-                            height: "100%",
+                            objectFit: 'contain',
+                            width: '100%',
+                            height: '100%',
                           }}
                         />
                         <button
@@ -146,7 +145,7 @@ const Images = ({ setData }) => {
                                 images.concat(
                                   [...e.target.files]
                                     .slice(0, 5 - imagesPreview.length)
-                                    .map((file) => URL.createObjectURL(file))
+                                    .map((file) => file)
                                 )
                               );
                               setImagesPreview(
