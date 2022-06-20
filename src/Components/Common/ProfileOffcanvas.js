@@ -42,7 +42,7 @@ const ProfileOffcanvas = () => {
   return (
     <div
       className="offcanvas offcanvas-end"
-      tabindex="-1"
+      tabIndex="-1"
       data-bs-backdrop="true"
       id="account-sidebar"
       aria-labelledby="account-sidebar-label"
@@ -83,7 +83,7 @@ const ProfileOffcanvas = () => {
           aria-label="Close"
         ></button>
       </div>
-      <hr className='m-0' />
+      <hr className="m-0" />
       <div className="h-100 overflow-auto mt-3">
         <ul className="list-group">
           {profileLinks.map((link) => (

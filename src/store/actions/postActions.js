@@ -54,6 +54,21 @@ export const createPost = (post) => async (dispatch) => {
   }
 };
 
+// Get post details
+export const getPostDetails = (id) => async (dispatch) => {
+  dispatch({ type: POST_DETAILS_REQUEST });
+
+  try {
+    const { data } = await axios.get(`/api/posts/${id}`);
+    dispatch({ type: POST_DETAILS_SUCCESS, payload: data.post });
+  } catch (error) {
+    dispatch({
+      type: POST_DETAILS_FAIL,
+      payload: error.error || error.message,
+    });
+  }
+};
+
 // clear errors
 export const clearErrors = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });

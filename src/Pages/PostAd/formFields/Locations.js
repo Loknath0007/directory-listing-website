@@ -332,9 +332,9 @@ const Locations = ({ setData }) => {
                     All{' '}
                     <span className="badge bg-primary">{locations.length}</span>
                   </li>
-                  {locations.map((location,index) => (
+                  {locations.map((location, index) => (
                     <li
-                    key={index}
+                      key={index}
                       onClick={() => {
                         searchRef.current.value = location.name;
                         const search = location.name;
@@ -362,15 +362,6 @@ const Locations = ({ setData }) => {
                     <li key={index} className="mb-1">
                       <div className="card mb-2">
                         <div className="form-check p-0 d-flex align-items-center">
-                          {/* <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value={location.name}
-                            checked={isCountryExist(location.name)}
-                            onChange={(e) => {
-                              handleCountry(e, location);
-                            }}
-                          /> */}
                           <button
                             className="btn fs-5 d-inline-flex gap-2 align-items-center justify-content-between rounded shadow-none flex-grow-1"
                             data-bs-toggle="collapse"
