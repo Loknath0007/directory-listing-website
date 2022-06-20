@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { Link, useNavigate } from 'react-router-dom';
-import { loginUser } from '../../store/actions/userActions';
-import Header from '../common/Header';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { loginUser } from "../../store/actions/userActions";
+import Header from "../common/Header";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -12,14 +12,14 @@ const Login = () => {
     (state) => state.auth
   );
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   useEffect(() => {
     if (isAuthenticated) {
-      toast.success('You are logged in');
-      navigate('/');
+      toast.success("You are logged in");
+      navigate("/");
     }
     if (error) {
       toast.error(error);
@@ -40,7 +40,7 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="container-sm" style={{ maxWidth: '600px' }}>
+      <div className="container-sm" style={{ maxWidth: "600px" }}>
         <div className="card my-5">
           <div className="my-3 mx-auto card-body w-100">
             <h2 className="card-title">Login</h2>
@@ -55,10 +55,10 @@ const Login = () => {
                     formData.email.match(
                       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
                     )
-                      ? 'is-valid'
-                      : formData.email === ''
-                      ? ''
-                      : 'is-invalid'
+                      ? "is-valid"
+                      : formData.email === ""
+                      ? ""
+                      : "is-invalid"
                   }`}
                   id="email"
                   name="email"
@@ -76,10 +76,10 @@ const Login = () => {
                   type="password"
                   className={`form-control ${
                     formData.password.length >= 6
-                      ? 'is-valid'
-                      : formData.password === ''
-                      ? ''
-                      : 'is-invalid'
+                      ? "is-valid"
+                      : formData.password === ""
+                      ? ""
+                      : "is-invalid"
                   }`}
                   id="password"
                   name="password"
@@ -94,7 +94,7 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                disabled={formData.email === '' || formData.password === ''}
+                disabled={formData.email === "" || formData.password === ""}
                 className="btn btn-primary w-100"
               >
                 {loading ? (
@@ -102,7 +102,7 @@ const Login = () => {
                     <span className="visually-hidden">Loading...</span>
                   </div>
                 ) : (
-                  'Login'
+                  "Login"
                 )}
               </button>
             </form>
