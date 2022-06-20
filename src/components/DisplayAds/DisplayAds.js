@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import './DisplayAds.css';
-import mobile from '../../images/Xiaomi-Redmi-10A.jpg';
 import gp from '../../images/gp_ad.jpg';
 import SingleAd from '../SingleAd/SingleAd';
 import AdsLeftBar from '../AdsLeftBar/AdsLeftBar';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllPosts } from '../../store/actions/postActions';
 
 const DisplayAds = () => {
+  const dispatch = useDispatch();
+  const { posts } = useSelector((state) => state.posts);
   const [ads, setAds] = useState([]);
+
   useEffect(() => {
-    fetch('./ads.json')
-      .then((res) => res.json())
-      .then((data) => setAds(data));
+    dispatch(getAllPosts());
   }, []);
+
+  useEffect(() => {
+    if (posts.length > 0) {
+      setAds(posts);
+    }
+  }, [posts]);
+
+  // console.log(ads)
   return (
     <div>
       <div className="main_container">
@@ -21,7 +31,7 @@ const DisplayAds = () => {
             <h6>Mobiles Phones and Accessories for Sale in Bangladesh</h6>
             <p>Showing 1-25 of 355 ads</p>
             {ads.map((ad) => (
-              <SingleAd mobile={mobile} ad={ad} key={ad.id} />
+              <SingleAd ad={ad} key={ad._id} />
             ))}
             <nav aria-label="Page navigation example">
               <ul className="pagination">

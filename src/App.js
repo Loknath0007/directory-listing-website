@@ -38,6 +38,8 @@ import { loadUser } from './store/actions/userActions';
 import ProtectedRoute from './Pages/protectedRoute';
 import PostAd from './Pages/PostAd';
 import AdminLogin from './Pages/Login/AdminLogin';
+import AllAds from './components/AdsComponents';
+import AdDetails from './components/AdsComponents/AdDetails';
 
 function App() {
   useEffect(() => {
@@ -74,6 +76,8 @@ function App() {
       <Route path="registration" element={<Registration />} />
 
       <Route path="ads" element={<Ads />} />
+      <Route path="all-ads" element={<AllAds />} />
+      <Route path="ads/:id" element={<AdDetails />} />
       <Route path="about" element={<AboutUs />} />
       <Route path="contact" element={<ContactUs />} />
       <Route path="login" element={<Login />} />

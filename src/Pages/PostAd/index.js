@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { clearErrors, createPost } from '../../store/actions/postActions';
 import { NEW_POST_RESET } from '../../store/constants/postConstants';
-import Header from '../common/Header';
+import Header from '../../components/Common/Header';
 import {
   Brand,
   Category,
@@ -18,8 +19,10 @@ import {
   PriceType,
   Title,
 } from './formFields';
+import Footer from '../common/Footer';
 
 const PostAd = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading, error, success } = useSelector((state) => state.newPost);
   const [adPostData, setAdPostData] = useState({
@@ -51,8 +54,9 @@ const PostAd = () => {
       toast('Ad posted successfully');
       dispatch(clearErrors());
       dispatch({ type: NEW_POST_RESET });
+      navigate('/all-ads');
     }
-  }, [dispatch, error, success]);
+  }, [dispatch, error, success, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -86,6 +90,10 @@ const PostAd = () => {
       formData.append('condition', adPostData.condition);
       formData.append('category', JSON.stringify(adPostData.category));
       formData.append('locations', JSON.stringify(adPostData.locations));
+      formData.append(
+        'contactDetails',
+        JSON.stringify(adPostData.contactDetails)
+      );
       if (adPostData.images.length > 0) {
         adPostData.images.forEach((image) => {
           formData.append('images', image);
@@ -99,74 +107,83 @@ const PostAd = () => {
   return (
     <>
       <Header />
-      <section className="container py-5" style={{ maxWidth: '756px' }}>
-        <form encType="multipart/form-data" onSubmit={handleSubmit}>
-          {/* Title */}
-          <Title setData={setData} />
-          {/* End of Title */}
+      <section className="my-md-3 bg-light">
+        <div
+          className="container mx-auto bg-white rounded-3 shadow-sm py-3 px-4 overflow-hidden"
+          style={{ maxWidth: '800px' }}
+        >
+          <h3 className="mb-3">
+            Create<span className="text-danger"> AD</span>
+          </h3>
+          <form encType="multipart/form-data" onSubmit={handleSubmit}>
+            {/* Title */}
+            <Title setData={setData} />
+            {/* End of Title */}
 
-          {/* Description */}
-          <Description setData={setData} />
-          {/* End of Description */}
+            {/* Description */}
+            <Description setData={setData} />
+            {/* End of Description */}
 
-          {/* Category */}
-          <Category setData={setData} />
-          {/* End of Category */}
+            {/* Category */}
+            <Category setData={setData} />
+            {/* End of Category */}
 
-          {/* Brand */}
-          <Brand setData={setData} />
-          {/* End of Brand */}
+            {/* Brand */}
+            <Brand setData={setData} />
+            {/* End of Brand */}
 
-          {/* Model */}
-          <Model setData={setData} />
-          {/* End of Model */}
+            {/* Model */}
+            <Model setData={setData} />
+            {/* End of Model */}
 
-          {/* Price */}
-          <Price setData={setData} />
-          {/* End of Price */}
+            {/* Price */}
+            <Price setData={setData} />
+            {/* End of Price */}
 
-          {/* Price Type */}
-          <PriceType setData={setData} />
-          {/* End of Price Type */}
+            {/* Price Type */}
+            <PriceType setData={setData} />
+            {/* End of Price Type */}
 
-          {/* condition */}
-          <Condition setData={setData} />
-          {/* end of condition */}
+            {/* condition */}
+            <Condition setData={setData} />
+            {/* end of condition */}
 
-          {/* Locations */}
-          <Locations setData={setData} />
-          {/* End of Locations */}
+            {/* Locations */}
+            <Locations setData={setData} />
+            {/* End of Locations */}
 
-          {/* Images */}
-          <Images setData={setData} />
-          {/* End of Images */}
+            {/* Images */}
+            <Images setData={setData} />
+            {/* End of Images */}
 
-          {/* Contact Details */}
-          <ContactDetails setData={setData} />
-          {/* End of Contact Details */}
+            {/* Contact Details */}
+            <ContactDetails setData={setData} />
+            {/* End of Contact Details */}
 
-          {/* Submit button */}
-          {loading ? (
-            <div className="d-grid gap-2 col-6 ms-auto my-5">
-              <button className="btn btn-primary" type="button" disabled>
-                <span
-                  className="spinner-border spinner-border-sm me-2"
-                  role="status"
-                  aria-hidden="true"
-                ></span>
-                Loading...
-              </button>
-            </div>
-          ) : (
-            <div className="d-grid gap-2 col-6 ms-auto my-5">
-              <button className="btn btn-primary" type="submit">
-                Submit
-              </button>
-            </div>
-          )}
-          {/* End of Submit button */}
-        </form>
+            {/* Submit button */}
+            {loading ? (
+              <div className="d-grid gap-2 col-6 ms-auto my-5">
+                <button className="btn btn-primary" type="button" disabled>
+                  <span
+                    className="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Loading...
+                </button>
+              </div>
+            ) : (
+              <div className="d-grid gap-2 col-6 ms-auto mt-5 mb-3">
+                <button className="btn btn-primary" type="submit">
+                  Submit
+                </button>
+              </div>
+            )}
+            {/* End of Submit button */}
+          </form>
+        </div>
       </section>
+      <Footer />
     </>
   );
 };

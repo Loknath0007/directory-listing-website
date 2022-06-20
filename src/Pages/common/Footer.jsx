@@ -7,8 +7,8 @@ import { AiFillFacebook } from "react-icons/ai";
 
 const Footer = () => {
   return (
-    <div>
-      <div className="hr_footer" />
+    <div className="bg-white">
+      <hr className="mt-0" />
       <div className="main_container">
         <div className="footer_container mt-5">
           <Row>
@@ -16,7 +16,7 @@ const Footer = () => {
               <h6>Download our app</h6>
               <Row xs={2} sm={2} md={2} lg={2} className="footer_app">
                 <a href="">
-                  {" "}
+                  {' '}
                   <img src={playStore} alt="play store" />
                 </a>
                 <a href="">

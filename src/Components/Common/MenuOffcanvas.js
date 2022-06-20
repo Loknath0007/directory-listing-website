@@ -9,7 +9,7 @@ const MenuOffcanvas = () => {
   return (
     <div
       className="offcanvas offcanvas-start"
-      tabindex="-1"
+      tabIndex="-1"
       id="menu-sidebar"
       aria-labelledby="menu-sidebar-label"
       style={{ zIndex: 1051 }}
@@ -60,7 +60,7 @@ const MenuOffcanvas = () => {
       <div className="offcanvas-body">
         <ul className="list-group">
           {[...Array(10).keys()].map((i) => (
-            <li className="list-group-item list-group-item-action border-0">
+            <li key={i} className="list-group-item list-group-item-action border-0">
               <a
                 href="#"
                 className="nav-link text-secondary d-flex justify-content-between align-items-center"

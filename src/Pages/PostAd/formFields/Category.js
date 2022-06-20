@@ -103,9 +103,7 @@ const Category = ({ setData }) => {
               ))
             )}
         </select>
-        <label htmlFor="subCategorySelect">
-          Subcategories
-        </label>
+        <label htmlFor="subCategorySelect">Subcategories</label>
       </div>
       {/* end of sub categories */}
 
